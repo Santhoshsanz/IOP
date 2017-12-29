@@ -1,0 +1,14 @@
+
+<svg width="52px" height="52px" viewBox="0 0 52 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Dashboard---Notification" transform="translate(-759.000000, -378.000000)" fill-rule="nonzero" fill="#9B9B9B">
+            <g id="Alert-Line" transform="translate(722.000000, 377.000000)">
+                <g id="flt-Alert" transform="translate(36.000000, 0.000000)">
+                    <g id="forbidden" transform="translate(0.000000, 1.000000)">
+                        <path d="M45.373,7.603 C35.236,-2.534 18.74,-2.534 8.603,7.603 C-1.535,17.741 -1.535,34.235 8.603,44.373 C13.671,49.441 20.33,51.977 26.988,51.977 C33.646,51.977 40.304,49.442 45.373,44.373 C55.51,34.235 55.51,17.74 45.373,7.603 Z M10.017,9.017 C14.696,4.338 20.842,1.998 26.988,1.998 C32.82,1.998 38.637,4.132 43.216,8.345 L9.346,42.215 C0.693,32.812 0.899,18.135 10.017,9.017 Z M43.959,42.958 C34.84,52.077 20.164,52.283 10.76,43.629 L44.63,9.76 C53.284,19.163 53.078,33.84 43.959,42.958 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

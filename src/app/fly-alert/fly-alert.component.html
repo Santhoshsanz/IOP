@@ -1,0 +1,308 @@
+		<!-- Container : starts -->
+    <section class="contain-fluid single-alert" *ngFor="let topA of alert">
+      <div class="row no-gutters">
+        <div class="col-md-7">
+
+          <!-- Content Pane Left : starts -->
+          <section class="content-pane-left">
+            <div class="inner">
+              <div class="row">
+                <div class="offset-md-1"></div>
+                                <div class="col-md-10">
+                  <div class="alert-message-detailed white-bg">
+                    <div class="row">
+                      <div class="col-md-2">
+                        <div class="icon-wrap red-bg text-center">
+                                              <div class="pos-center-wrap">
+                                                  <div class="pos-center">
+                                                      <div class="icon">
+                                                          <img class="svg-convert" [src]="topA.ImgUrl" alt="icon">
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                      </div>
+                      <div class="col-md-10">
+                        <div class="alert-message">
+                          <h4 class="medium-black font-size-07 font-01 font-600">ALERT <span>{{topA.Id}}</span></h4>
+                          <p class="font-01 font-size-06 medium-black font-weight-400">
+                              Sensor <span class="font-weight-600 light-blue">{{topA.SensorName}}</span> detected a <span class="text-uppercase">CRAWLER PEST</span> activity on zone <span class="gold text-uppercase">{{topA.ZoneName}}</span> in facility <span class="green text-uppercase">{{topA.FacilityName}}</span>s
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="zone-map white-bg">
+                    <img src="assets/images/zones/zone-prespective-map-bottle-fly.svg" class="img-fluid" alt="zone-map">
+                  </div>
+                  <div class="processing-steps">
+                    <div class="title">
+                      <h4 class="medium-black font-weight-600 font-01 text-uppercase"><span class="font-weight-300">Processing</span> Steps</h4>
+                    </div>
+                    <div class="pocessing-steps-flow" *ngFor="let a of alert">
+                        <div class="step-circle-wrap text-center" [ngClass]="a.ProccessingSteps.Open?'completed':'no'">
+                          <div class="step-circle completed">
+                            <div class="pos-center-wrap">
+                              <div class="pos-center">
+                                <img class="svg-convert" [src]="topA.ImgUrl" alt="process-icon">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="description" >
+                            <p class="font-01 medium-black font-weight-600">Alert generated</p>
+                          </div>
+                        </div>
+                        <div class="steps-seperator-wrap" >
+                          <div class="pos-center-wrap">
+                            <div class="pos-center">
+                              <div class="steps-seperator light-grey-bg"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="step-circle-wrap text-center">
+                          <div class="step-circle text-center" [ngClass]="a.ProccessingSteps.Assigned?'completed':'no'">
+                            <div class="pos-center-wrap">
+                              <div class="pos-center">
+                                <img class="svg-convert" src="assets/images/processing-steps/step-02.svg" alt="process-icon">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="description">
+                            <p class="font-01 medium-black font-weight-600">Assigned to fieldtech</p>
+                          </div>
+                        </div>
+                        <div class="steps-seperator-wrap">
+                          <div class="pos-center-wrap">
+                            <div class="pos-center">
+                              <div class="steps-seperator light-grey-bg"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="step-circle-wrap text-center">
+                          <div class="step-circle text-center"[ngClass]="a.ProccessingSteps.Service?'completed':'no'">
+                            <div class="pos-center-wrap">
+                              <div class="pos-center">
+                                <img class="svg-convert" src="assets/images/processing-steps/step-03.svg" alt="process-icon">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="description">
+                            <p class="font-01 medium-black font-weight-600">Service Procedure</p>
+                          </div>
+                        </div>
+                        <div class="steps-seperator-wrap">
+                          <div class="pos-center-wrap">
+                            <div class="pos-center">
+                              <div class="steps-seperator light-grey-bg"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="step-circle-wrap text-center">
+                          <div class="step-circle text-center" [ngClass]="a.ProccessingSteps.FurtherAction?'completed':'no'">
+                            <div class="pos-center-wrap">
+                              <div class="pos-center">
+                                <img class="svg-convert" src="assets/images/processing-steps/step-04.svg" alt="process-icon">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="description">
+                            <p class="font-01 medium-black font-weight-600">Furthur Action Required</p>
+                          </div>
+                        </div>
+                        <div class="steps-seperator-wrap">
+                          <div class="pos-center-wrap">
+                            <div class="pos-center">
+                              <div class="steps-seperator light-grey-bg"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="step-circle-wrap text-center">
+                          <div class="step-circle text-center"  [ngClass]="a.ProccessingSteps.Closed?'completed':'no'">
+                            <div class="pos-center-wrap">
+                              <div class="pos-center">
+                                <img class="svg-convert" src="assets/images/processing-steps/step-05.svg" alt="process-icon">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="description">
+                            <p class="font-01 medium-black font-weight-600">Alert Closed</p>
+                            <!-- [ngClass]="a.ProccessingSteps.Open?'completed':'no'" -->
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="chart-block-wrap chart-wrapper">
+                    <div class="row">
+                      <div class="col-md-12">
+                          <div class="title">
+                      <h4 class="font-01 font-size-05 font-weight-600 text-uppercase"><span class="font-weight-300">Fly count vs time of day</span> vs day of week over the last 7 days</h4>
+                    </div>
+                    <div class="switch-facility-button" style="float:right;border: 1px solid #979797;border-radius: 20px;">
+                        <div class="button round-button has-dropdown hover-blue switch-button white-bg">
+                          <a href="#" class="font-02 font-size-01 light-black font-weight-400">Options<span class="direction-icon "></span></a>
+                          <ul class="dropdown">
+                            <li><a href="#" class="font-size-02 font-01">Expand</a></li>
+                            <li><a href="#" class="font-size-02 font-01">Date Range</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                  
+                    <div id="flyCountvsTime" style="width:100%; height: 400px; margin: 0 auto"></div>
+                  </div>
+                </div>
+                            </div>
+            </div>
+          </section>
+          <!-- Content Pane Left : ends -->
+
+        </div>
+        <div class="col-md-5">
+          <div class="content-pane-right white-bg" style="height:1800px;">
+            <div class="inner">
+              <div class="alert-location-details">
+                <div class="row">
+                  <div class="col-md-6 no-padding">
+                    <div class="zone-details">
+                      <div class="title">
+                        <h5 class="light-grey font-size-05 font-01">Zone Name</h5>
+                      </div>
+                      <div class="zone-id">
+                        <h4 class="gold font-size-06 font-weight-600 text-uppercase">{{topA.ZoneName}}</h4>
+                      </div>
+                      <div class="zone-type">
+                        <h5 class="font-size-05 medium-black">Warehouse</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 no-padding">
+                    <div class="facility-details">
+                      <div class="title">
+                        <h5 class="light-grey font-size-05 font-01">Facility Name</h5>
+                      </div>
+                      <div class="facility-id">
+                        <h4 class="green font-size-06 font-weight-600 text-uppercase">{{topA.FacilityName}}</h4>
+                      </div>
+                      <div class="facility-type">
+                        <h5 class="font-size-05 medium-black">Nestle</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="single-alert-options-clickable-wrap text-center">
+                <a href="#" class="mail single-alert-options-clickable light-black white-bg">
+                  <div class="pos-center-wrap">
+                    <div class="pos-center">
+                      <span class="icon light-black fa fa-square-o"></span>
+                    </div>
+                  </div>
+                </a>
+                <a href="#" class="user single-alert-options-clickable light-black white-bg">
+                  <div class="pos-center-wrap">
+                    <div class="pos-center">
+                      <span class="icon light-black fa fa-map-marker"></span>
+                    </div>
+                  </div>
+                </a>
+                <a href="#" class="settings single-alert-options-clickable light-black white-bg active">
+                  <div class="pos-center-wrap">
+                    <div class="pos-center">
+                      <span class="icon light-black fa fa-cog"></span>
+                    </div>
+                  </div>
+                </a>
+                <div class="seperator-line grey-bg"></div>
+              </div>
+              <div class="alert-timeline">
+                <div class="title">
+                  <h4 class="text-uppercase font-size-05 medium-black font-01 font-weight-600"><span class="font-weight-300">Alert</span> Timeline</h4>
+                </div>
+
+                <div class="timeline-wrap">
+                    <div class="timeline-each right-content text-left" *ngFor="let a of alert[0].TimeLine">
+                        <div class="timeline-each-content">
+                          <div class="date-time">
+                            <p class="font-01 medium-black font-weight-400">{{a.DateT}}</p>
+                          </div>
+                          <div class="alert-message">
+                            <p class="font-01 medium-black font-weight-600">{{a.Steps}}</p>
+                          </div>
+                        </div>
+                      </div>
+
+                  <!-- <div class="timeline-each right-content text-left">
+                    <div class="timeline-each-content">
+                      <div class="date-time">
+                        <p class="font-01 medium-black font-weight-400">28th June, 2017  5.30PM ( +5.30 IST )</p>
+                      </div>
+                      <div class="alert-message">
+                        <p class="font-01 medium-black font-weight-600">Alert Generated</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="timeline-each right-content text-left">
+                    <div class="timeline-each-content">
+                      <div class="date-time">
+                        <p class="font-01 medium-black font-weight-400">29th June, 2017  5.30PM ( +5.30 IST )</p>
+                      </div>
+                      <div class="alert-message">
+                        <p class="font-01 medium-black font-weight-600">Alert Generated</p>
+                      </div>
+                    </div>
+                  </div> -->
+                </div>
+
+              </div>
+              <div class="chart-block-wrap space-top">
+                <div class="row">
+                  <div class="col-md-12">
+                  <div class="title">
+                <h4 class="font-01 font-size-05 font-weight-600 text-uppercase"><span class="font-weight-300">Fly Count vs</span> Time</h4>
+                <div class="switch-facility-button" style="float:right;border: 1px solid #979797;border-radius: 20px;">
+                    <div class="button round-button has-dropdown hover-blue switch-button white-bg">
+                      <a href="#" class="font-02 font-size-01 light-black font-weight-400">Options<span class="direction-icon "></span></a>
+                      <ul class="dropdown">
+                        <li><a href="#" class="font-size-02 font-01">Expand</a></li>
+                        <li><a href="#" class="font-size-02 font-01">Date Range</a></li>
+                      </ul>
+                    </div>
+                  </div>
+              </div>
+                  </div>
+                </div>
+              
+              <div id="flyCount" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+            </div>
+            </div>
+          </div>
+        </div>
+              </div>
+      <!-- <div class="manage-alerts">
+        <div class="title text-left light-blue-bg">
+          <h4 class="text-uppercase font-size-05 white font-01 font-weight-600"><span class="font-weight-300">Manage</span> Alert - <span class="alert-id">#126788</span></h4>
+        </div>
+        <div class="manage-alerts-options-wrap white-bg">
+          <div class="option-block text-center">
+            <img class="icon svg-convert" src="assets/images/manage-alerts/fieldtech-icon.svg" alt="">
+            <h5 class="title font-01 font-weight-600 font-size-02 light-black">Assign<br>Fieldtech</h5>
+          </div>
+          <div class="option-block text-center">
+            <img class="icon svg-convert" src="assets/images/manage-alerts/view-alert-history-icon.svg" alt="">
+            <h5 class="title font-01 font-weight-600 font-size-02 light-black">View<br>Alert History</h5>
+          </div>
+          <div class="option-block text-center">
+            <img class="icon svg-convert" src="assets/images/manage-alerts/cancel-alert-icon.svg" alt="">
+            <h5 class="title font-01 font-weight-600 font-size-02 light-black">Cancel<br>This Alert</h5>
+          </div>
+          <div class="option-block text-center">
+            <img class="icon svg-convert" src="assets/images/manage-alerts/close-alert-icon.svg" alt="">
+            <h5 class="title font-01 font-weight-600 font-size-02 light-black">Close<br>This Alert</h5>
+          </div>
+        </div>
+        <div class="close">
+          <img class="svg-convert" src="assets/images/manage-alerts/close-icon.svg" alt="">
+        </div>
+      </div> -->
+    </section>

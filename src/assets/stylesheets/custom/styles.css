@@ -1,0 +1,121 @@
+/* You can add global styles to this file, and also import other style files */
+body.preloader-running{
+    overflow: hidden;
+}
+div#preloader {
+    background: #fff;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99999;
+}
+
+#status  {
+     width: 200px;
+     height: 200px;
+     position: fixed;
+     left: 50%;
+     top: 50%;
+     background-image: url(../../images/loader.gif);
+     background-repeat: no-repeat;
+     background-position: center;
+     margin: -100px 0 0 -100px;
+ }
+ #status img{
+     margin: 0 auto;
+ }
+
+
+
+ /* Styles for Thermal Card */
+ .card.card-xs {
+    height: 95px;
+    overflow: hidden;
+}
+.card:not([class*=card-outline-]) {
+    border: 0;
+}
+.card {
+    height: 100%;
+    box-shadow: 0 9px 23px rgba(0, 0, 0, 0.09), 0 5px 5px rgba(0, 0, 0, 0.06) !important;
+    -webkit-transition: box-shadow 0.7s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    -moz-transition: box-shadow 0.7s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    -o-transition: box-shadow 0.7s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    transition: box-shadow 0.7s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    -webkit-border-radius: 0.4167rem;
+    -moz-border-radius: 0.4167rem;
+    -ms-border-radius: 0.4167rem;
+    -o-border-radius: 0.4167rem;
+    border-radius: 0.4167rem;
+}
+.card, .card .card-text {
+    font-weight: 400;
+}
+.bg-gradient {
+    color: #FFFFFF !important;
+    background: #07a7e3;
+    background: linear-gradient(135deg, #07a7e3 0%, #51b9a3 100%);
+    transition: opacity 0.2s ease-out;
+}
+.bg-gradientGreen {
+    color: #FFFFFF !important;
+    background: #07e33e;
+    background: linear-gradient(135deg, #07e38f 0%, #055f4c 100%);
+    transition: opacity 0.2s ease-out;
+}
+.bg-gradientYellow {
+    color: #FFFFFF !important;
+    background: #e0dd07;
+    background: linear-gradient(135deg, #d4e307 0%, #b4cc2b 100%);
+    transition: opacity 0.2s ease-out;
+}
+.bg-gradientDYellow {
+    color: #FFFFFF !important;
+    background: #daf105;
+    background: linear-gradient(135deg, #f0ec13 0%, #dbd809 100%);
+    transition: opacity 0.2s ease-out;
+}
+.bg-gradientRed {
+    color: #FFFFFF !important;
+    background: #e33a07;
+    background: linear-gradient(135deg, #dd4b31 0%, #ad3d10 100%);
+    transition: opacity 0.2s ease-out;
+}
+.bg-gradientDRed {
+    color: #FFFFFF !important;
+    background: #b90505;
+    background: linear-gradient(135deg, #c40808 0%, #b3082d 100%);
+    transition: opacity 0.2s ease-out;
+}
+.bg-gradientPurple {
+    color: #FFFFFF !important;
+    background: #660469;
+    background: linear-gradient(135deg, #580246 0%, #2b0424 100%);
+    transition: opacity 0.2s ease-out;
+}
+.bg-primary {
+    color: #FFFFFF;
+    background-color: #07a7e3 !important;
+}
+.card .card-body {
+    padding: 8px;
+    font-weight: 400;
+}
+.bg-gradient{
+    color:white !important;
+
+}
+.card .card-body .tile-right {
+    float: right;
+    text-align: right;
+    line-height: 1.618;
+}
+.card .card-body .tile-right .tile-number {
+    font-size: 2rem;
+    font-weight: 400;
+}
+.title{
+    padding-bottom:15px;
+}

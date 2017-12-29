@@ -1,0 +1,19 @@
+
+<svg width="29px" height="29px" viewBox="0 0 29 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="-----" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Dashboard---MENU-" transform="translate(-161.000000, -8.000000)" fill-rule="nonzero" fill="#CFDAE3">
+            <g id="Header">
+                <g id="nav-trigger-horizontal" transform="translate(161.000000, 19.000000)">
+                    <circle id="Oval1" cx="3.5" cy="3.5" r="3.5"></circle>
+                    <circle id="Oval2" cx="14.5" cy="3.5" r="3.5"></circle>
+                    <circle id="Oval3" cx="25.5" cy="3.5" r="3.5"></circle>
+                </g>
+                <g id="nav-trigger-vertical" transform="translate(175.500000, 22.500000) rotate(90.000000) translate(-175.500000, -22.500000) translate(161.000000, 19.000000)">
+                    <circle id="Oval4" cx="3.5" cy="3.5" r="3.5"></circle>
+                    <circle id="Oval5" cx="14.5" cy="3.5" r="3.5"></circle>
+                    <circle id="Oval6" cx="25.5" cy="3.5" r="3.5"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -8,7 +8,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build:sass": "node-sass src/assets/stylesheets/custom/ -o src/assets/stylesheets/custom/",
+    "watch:sass": "npm run build:sass && node-sass src/assets/stylesheets/custom/ -wo src/assets/stylesheets/custom/"
   },
   "private": true,
   "dependencies": {
@@ -21,8 +23,11 @@
     "@angular/platform-browser": "^5.0.0",
     "@angular/platform-browser-dynamic": "^5.0.0",
     "@angular/router": "^5.0.0",
+    "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
+    "node-sass": "^4.7.2",
     "rxjs": "^5.5.2",
+    "sass-loader": "^6.0.6",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
@@ -44,6 +49,8 @@
     "protractor": "~5.1.2",
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
-    "typescript": "~2.4.2"
+    "typescript": "~2.4.2",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6"
   }
 }

@@ -1,0 +1,543 @@
+<section class="contain-fluid single-facility" *ngFor="let client of clients"> 
+  <div class="row no-gutters">
+    <div class="col-md-7">
+
+      <!-- Content Pane Left : starts -->
+      <section class="content-pane-left">
+        <div class="inner">
+            <div class="row">
+                <div class="offset-md-1"></div>
+                <div class="col-md-10">
+
+                  <!-- BLock Title -->
+                  <div class="block-title">
+                    <h4 class="font-01 font-weight-300 font-size-05"><span class="font-weight-600 text-uppercase">{{client.ClientName}}</span> </h4>
+                  </div>
+
+                  <!-- Button -->
+                  <div class="switch-facility-button">
+                    <div class="button round-button has-dropdown hover-blue switch-button white-bg">
+                      <a href="#" class="font-02 font-size-01 light-black font-weight-400">Switch Facitity<span class="direction-icon fa fa-map-marker"></span></a>
+                      <ul class="dropdown" >
+                        <li *ngFor="let facility of client.Facilities"><a  (click)="facilityChange()"[routerLink]="['../'+facility.FacilityName]" class="font-size-02 font-01">{{facility.FacilityId}}</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        <!-- Prespective Zone Map : starts -->
+          <div class="prespective-zone-maps" style="margin-bottom:60px;">
+            <div class="row">
+              <div class="offset-md-1"></div>
+              <div class="col-md-10">
+                <div class="title">
+                  <h4 class="font-01 font-weight-600 font-size-05 light-black text-uppercase"><span class="font-weight-400">Prespective</span> Zone Maps</h4>
+                </div>
+                <div class="options-button-block">
+                  <div class="options-button">
+                    <div class="round-button hover-blue">
+                      <a href="#" class="font-01 font-size-01 text-uppercase light-black font-weight-500">Options</a>
+                    </div>
+                  </div>
+                  <div class="options-button-expand">
+                    <div class="options-button-expand-inner white-bg">
+                      <a class="options-button-expand-close red" href="#">
+                        <span class="option-icon fa fa-times-circle-o"></span>
+                      </a>
+                      <ul>
+                        <li class="has-dropdown">
+                          <a href="#" class="light-grey">
+                            <span class="option-icon fa fa-handshake-o"></span>
+                            <span class="option-text font-size-01">
+                              Zones
+                            </span>
+                          </a>
+                          <ul class="dropdown" >
+                            <li class="font-size-02 font-01"><a href="#">Main Atrium</a></li>
+                            <li class="font-size-02 font-01"><a href="#">Food Storage 1</a></li>
+                            
+                          </ul>
+                        </li>
+                        <!-- <li class="has-dropdown select-country">
+                          <a href="#" class="light-grey">
+                            <span class="option-icon fa fa-map-marker"></span>
+                            <span class="option-text font-size-01">
+                              Country
+                            </span>
+                          </a>
+                          <ul class="dropdown">
+                            <li class="font-size-02 font-01 "><a href="#" data-location-id="US" >USA</a></li>
+                            <li class="font-size-02 font-01 "><a href="#" data-location-id="LK" >Srilanka</a></li>
+                            <li class="font-size-02 font-01 "><a href="#" data-location-id="IT" >Italy</a></li>
+                            <li class="font-size-02 font-01 "><a href="#" data-location-id="GB" >UK</a></li>
+                            <li class="font-size-02 font-01 "><a href="#" data-location-id="JP" >Japan</a></li>
+                            <li class="font-size-02 font-01 "><a href="#" data-location-id="AE" >UAE</a></li>
+                            <li class="font-size-02 font-01 "><a href="#" data-location-id="IN" >India</a></li>
+                            <li class="font-size-02 font-01 "><a href="#" data-location-id="ZA" >South Africa</a></li>
+                          </ul>
+                        </li>
+                        <li>
+                          <a href="#" class="map-zoom-in light-grey">
+                            <span class="option-icon fa fa-search-plus">
+                            </span>
+                            <span class="option-text font-size-01">
+                              Zoom In
+                            </span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" class="map-zoom-out light-grey">
+                            <span class="option-icon fa fa-search-minus"></span>
+                            <span class="option-text font-size-01">
+                              Zoom Out
+                            </span>
+                          </a>
+                        </li> -->
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="zone-map">
+                  <img src="assets/images/zones/zone-prespective-map-one.svg" class="img-fluid" alt="zone-map">
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Prespective Zone Map : ends -->
+    
+
+            <!-- Info Bubble Block : starts -->
+            <div class="info-bubble-block">
+              <div class="row">
+                <div class="offset-md-1"></div>
+
+                <!-- Bubble One -->
+                <div class="col-md-2">
+                  <div class="info-bubble info-bubble-one text-right">
+                    <div class="info-bubble-image">
+                      <img class="svg-convert" src="assets/images/info-bubble/icon-01.svg" alt="info-bubble">
+                      <div class="count-to-wrap">
+                        <span class="count-to font-weight-400 font-01" data-from="0" data-to="2"></span>
+                      </div>
+                    </div>
+                    <div class="info-bubble-text">
+                      <h5 class="font-02 font-weight-400 font-size-02 light-black">Active Alerts</h5>
+                    </div>
+
+                  </div>
+                </div>
+
+                <!-- Bubble Two -->
+                <div class="col-md-2">
+                  <div class="info-bubble info-bubble-two text-right">
+                    <div class="info-bubble-image">
+                      <img class="svg-convert" src="assets/images/info-bubble/icon-02.svg" alt="info-bubble">
+                      <div class="count-to-wrap">
+                        <p><span class="count-to font-weight-400 font-01" data-from="0" data-to="-82"></span>%</p>
+                      </div>
+                    </div>
+                    <div class="info-bubble-text">
+                      <h5 class="font-02 font-weight-400 font-size-02 light-black">Change in pest activity - last 30 days</h5>
+                    </div>
+                  </div>
+                </div>
+                <!-- Bubble Three -->
+                <div class="col-md-2">
+                  <div class="info-bubble info-bubble-three text-right">
+                    <div class="info-bubble-image">
+                      <img class="svg-convert" src="assets/images/info-bubble/icon-03.svg" alt="info-bubble">
+                      <div class="count-to-wrap">
+                        <p><span class="count-to font-weight-400 font-01" data-from="0" data-to="45"></span></p>
+                      </div>
+                    </div>
+                    <div class="info-bubble-text">
+                      <h5 class="font-02 font-weight-400 font-size-02 light-black">Total Events closed over last 30 days</h5>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bubble Four -->
+                <div class="col-md-2">
+                  <div class="info-bubble info-bubble-four text-right">
+                    <div class="info-bubble-image">
+                      <img class="svg-convert" src="assets/images/info-bubble/icon-04.svg" alt="info-bubble">
+                      <div class="count-to-wrap">
+                        <p><span class="count-to font-weight-400 font-01" data-from="0" data-to="89"></span>%</p>
+                      </div>
+                    </div>
+                    <div class="info-bubble-text">
+                      <h5 class="font-02 font-weight-400 font-size-02 light-black">Customer satisfation</h5>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bubble Five -->
+                <div class="col-md-2">
+                  <div class="info-bubble info-bubble-five text-right">
+                    <div class="info-bubble-image">
+                      <img class="svg-convert" src="assets/images/info-bubble/icon-05.svg" alt="info-bubble">
+                      <div class="count-to-wrap">
+                        <p><span class="count-to font-weight-400 font-01" data-from="0" data-to="2"></span></p>
+                      </div>
+                    </div>
+                    <div class="info-bubble-text">
+                      <h5 class="font-02 font-weight-400 font-size-02 light-black">Zone</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+          <!-- Alert Table Block : starts -->
+          <div class="alert-table-block">
+            <div class="row">
+              <div class="offset-md-1"></div>
+              <div class="col-md-10">
+                <div class="alert-table">
+
+                  <!-- Title -->
+                  <div class="title">
+                    <h4 class="font-01 font-size-05 font-weight-600 text-uppercase"><span class="font-weight-300">Latest</span> Alerts</h4>
+                  </div>
+
+                  <!-- Alert Table : starts -->
+                  <div class="table">
+
+                    <!-- Table Head Row : starts -->
+                    <div class="table-row table-head-row">
+                      <div class="table-cell">
+                        <h4 class="table-head font-01 font-size-02 light-grey font-weight-400">ID</h4>
+                      </div>
+                      <div class="table-cell">
+                        <h4 class="table-head font-01 font-size-02 light-grey font-weight-400">Alert Name</h4>
+                      </div>
+                      <div class="table-cell">
+                        <h4 class="table-head font-01 font-size-02 light-grey font-weight-400">Facility Name</h4>
+                      </div>
+                      <div class="table-cell">
+                        <h4 class="table-head font-01 font-size-02 light-grey font-weight-400">Alert Status</h4>
+                      </div>
+                      <div class="table-cell">
+                        <h4 class="table-head font-01 font-size-02 light-grey font-weight-400">Latest Update</h4>
+                      </div>
+                    </div>
+                    <!-- Table Head Row : ends -->
+
+                    
+                    <!-- Table Content Row One : starts -->
+                    <a [routerLink]="'../../../'+[alert.AlertType=='Crawl'?'Client/AlertC/'+alert.ClientId+'/'+alert.FacilityId+'/'+alert.Id:'Client/AlertF/'+alert.ClientId+'/'+alert.FacilityId+'/'+alert.Id]" class="table-row table-content-row" *ngFor="let alert of facility[0].Alerts">
+                      <div class="table-cell white-bg">
+                          <p class="table-cell-content font-01 font-size-02 font-weight-400 light-black">{{alert.Id}}</p>
+                      </div>
+                      <div class="table-cell white-bg">
+                          <p class="table-cell-content font-01 font-size-02 font-weight-400 light-black">{{alert.AlertName}}</p>
+                      </div>
+                      <div class="table-cell white-bg">
+                          <p class="table-cell-content font-01 font-size-02 font-weight-400 light-black">{{alert.FacilityName}}</p>
+                          <!-- Hover Block : starts -->
+                          <div class="hover-block-wrap">
+                              <div class="alert-table-hover-block white-bg clearfix">
+                                  <div class="left-block">
+                                      <div class="content">
+                                          <div class="icon-wrap red-bg">
+                                              <img class="svg-convert rat" [src]="alert.ImgUrl" alt="">
+                                          </div>
+                                          <div class="trap-name">
+                                              <h5 class="font-01 font-size-05 font-weight-600 light-black text-uppercase">{{alert.TrapName}}</h5>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="right-block">
+                                      <div class="pos-center-wrap">
+                                          <div class="pos-center">
+                                              <div class="sensor-alert-id">
+                                                  <h5 class="text-uppercase font-01 light-blue font-weight-700">#{{alert.Id}}</h5>
+                                              </div>
+                                              <div class="sensor-alert-message">
+                                                  <p class="light-black font-01 font-size-03 font-weight-400">
+                                                      {{alert.Description}}
+                                                  </p>
+                                              </div>
+                                              <div class="facility-details">
+                                                  <h5 class="title light-grey font-size-02 font-weight-400 font-01 font-01">Sensor Name</h5>
+                                                  <h4 class="name light-black text-uppercase font-01">{{alert.SensorName}}</h4>
+                                              </div>
+                                              <div class="zone-details">
+                                                  <h5 class="title light-grey font-size-02 font-weight-400 font-01 font-01">Zone Name</h5>
+                                                  <h4 class="name light-black text-uppercase font-01 font-size-05">{{alert.ZoneName}}</h4>
+                                              </div>
+                                              <div class="fieldtech-details">
+                                                  <h5 class="title light-grey font-size-02 font-weight-400 font-01">Assigned Fieldtech</h5>
+                                                  <h4 class="name light-black text-uppercase font-size-05 font-weight-400 font-01">{{alert.FiledTech}}</h4>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <!-- Hover Block : ends -->
+                      </div>
+                      <div class="table-cell white-bg">
+                          <p class="table-cell-content font-01 font-size-02 font-weight-400 light-black">{{alert.AlertStatus}}</p>
+                      </div>
+                      <div class="table-cell white-bg">
+                          <p class="table-cell-content font-01 font-size-02 font-weight-400 light-black">{{alert.LatestUpdate}}</p>
+                      </div>
+                  </a> 
+                  </div>
+                  <!-- Alert Table : ends -->
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Alert Table Block : ends -->
+
+          <div class="row">
+            <div class="offset-md-1"></div>
+            <div class="col-md-10">
+              <div class="chart-block-wrap chart-wrapper">
+                <div class="row">
+                  <div class="col-md-12">
+                  <div class="title">
+                  <h4 class="font-01 font-size-05 font-weight-600 text-uppercase"><span class="font-weight-300">Sensor </span>Maintenance</h4>
+                  <div class="switch-facility-button" style="float:right;border: 1px solid #979797;border-radius: 20px;">
+                      <div class="button round-button has-dropdown hover-blue switch-button white-bg">
+                        <a href="#" class="font-02 font-size-01 light-black font-weight-400">Options<span class="direction-icon "></span></a>
+                        <ul class="dropdown">
+                          <li><a href="#" class="font-size-02 font-01">Expand</a></li>
+                          <li><a href="#" class="font-size-02 font-01">Date Range</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+                  </div>
+                </div>
+                
+                <div id="sMaintainance" class="chart-block"></div>
+              </div>
+
+              <div class="chart-block-wrap chart-wrapper">
+
+                <!-- Title -->
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="title">
+                  <h4 class="font-01 font-size-05 font-weight-600 text-uppercase"><span class="font-weight-300">Pest activity</span> over the last 12 months</h4>
+                </div>
+                  <div class="switch-facility-button" style="float:right;border: 1px solid #979797;border-radius: 20px;">
+                      <div class="button round-button has-dropdown hover-blue switch-button white-bg">
+                        <a href="#" class="font-02 font-size-01 light-black font-weight-400">Options<span class="direction-icon "></span></a>
+                        <ul class="dropdown">
+                          <li><a href="#" class="font-size-02 font-01">Expand</a></li>
+                          <li><a href="#" class="font-size-02 font-01">Date Range</a></li>
+                        </ul>
+                      </div>
+                    
+                                </div>
+                  </div>
+                </div>
+                                
+
+                <!-- Pest Vs Time Chart -->
+                <div id="pest-vs-time" class="chart-block"></div>
+                            </div>
+              <!-- Pest Vs Time Block : ends -->
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Content Pane Left : ends -->
+
+    </div>
+    <div class="col-md-5">
+
+      <!-- Content Pane Right : starts -->
+      <div class="content-pane-right white-bg">
+        <div class="inner">
+
+          <!-- Facility Details : starts -->
+          <div class="facility-details text-center" *ngFor="let facilit of facility">
+            <div class="row">
+              <div class="offset-md-1"></div>
+              <div class="col-md-6 no-padding">
+                <div class="facility-details-block text-left">
+                  <div class="title">
+                    <h5 class="light-grey font-01 font-size-05 font-weight-400">Facility Name</h5>
+                  </div>
+                  <div class="facility-name">
+                    <span class="font-01 font-weight600 light-black">{{facilit.FacilityId}}</span>
+                  </div>
+                  <div class="client-location">
+                    <h5 class="font-size-02 font-01 light-black font-weight-400">{{facilit.FacilityName}} </h5>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 no-padding">
+                <div class="client-logo">
+                  <div class="pos-center-wrap">
+                    <div class="pos-center" *ngFor="let c of clients">
+                      <img [src]=[c.ClientLogoUrl] alt="">
+                      <div class="client-location text-right">
+                        <span class="font-01 font-size-06 font-weight400 light-black">JP</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="facility-phone-number">
+                  <span class="text-uppercase light-grey font-size-06 font-01">ICE :</span>
+                  <a class="black font-01 font-weight-600 font-size-06" href="tel:+02 555 35525">+02 555 35525</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Facility Details : ends -->
+
+          <!-- Facility Extra Options : starts -->
+          <div class="extra-options-trigger-wrap text-center">
+            <a href="#" class="mail extra-options-trigger light-black white-bg">
+              <div class="pos-center-wrap">
+                <div class="pos-center">
+                  <span class="icon light-black fa fa-square-o"></span>
+                </div>
+              </div>
+            </a>
+            <a href="#" class="user extra-options-trigger light-black white-bg">
+              <div class="pos-center-wrap">
+                <div class="pos-center">
+                  <span class="icon light-black fa fa-map-marker"></span>
+                </div>
+              </div>
+            </a>
+            <a href="#" class="settings extra-options-trigger light-black white-bg active">
+              <div class="pos-center-wrap">
+                <div class="pos-center">
+                  <span class="icon light-black fa fa-cog"></span>
+                </div>
+              </div>
+            </a>
+            <div class="seperator-line grey-bg"></div>
+          </div>
+          <!-- Facility Extra Options : ends -->
+
+          <!-- Facility Live Weather : starts -->
+          <div class="live-weather-block">
+            <div class="title">
+              <h4 class="text-uppercase font-size-05 medium-black font-weight-600"><span class="font-weight-300">Live </span>Weather</h4>
+            </div>
+            <div class="live-weather">
+              <div class="row">
+                <div class="col-md-8 no-padding text-right">
+                  <div class="weather">
+                    <span class="icon medium-black fa fa-cloud"></span>
+                    <span class="temperature medium-black font-01 font-weight-400">24&deg;</span>
+                    <span class="weather-mode medium-black font-01 font-size-07 font-weight-300">Cloudy</span>
+                    <span class="weather-extra medium-black font-01 font-size-02 font-weight-600">Slight Wind, NE</span>
+                  </div>
+                </div>
+                <div class="col-md-4 no-padding text-left">
+                  <div class="date-time">
+                    <h6 class="date-field font-01 font-size-02 medium-black font-weight-600">20<sup>th</sup> June, 2018</h6>
+                    <h4 class="time-field medium-black font-size-06 font-01 font-weight-700">11.30 AM</h4>
+                    <h6 class="medium-black font-size-02 font-01 font-weight-600">+5.30IST</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Facility Live Weather : ends -->
+          <!-- Facility Live Weather : starts -->
+          <div class="live-weather-block space-top">
+              <div class="title">
+                <h4 class="text-uppercase font-size-05 medium-black font-weight-600"><span class="font-weight-300">Thermal </span>Stat</h4>
+              </div>
+              <div class="live-weather" *ngFor="let facilit of facility">
+                <div class="row">
+                  <div class="col-md-4">
+                      <div class="card card-tile card-xs bg-primary bg-gradient text-center">
+                          <div class="card-body ">      
+                            <div class="tile-right">
+                              <div class="tile-number">{{facilit.Temperature }}&#8451;</div>
+                              <div class="tile-description">Temperature</div>
+                            </div>
+                          </div>
+                        </div>
+                  </div>
+                  <div class="col-md-4">
+                      <div class="card card-tile card-xs bg-primary bg-gradient text-center">
+                          <div class="card-body ">      
+                            <div class="tile-right">
+                              <div class="tile-number">{{facilit.RelativeHumidity}} %</div>
+                              <div class="tile-description">Relative Humidity</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  <div class="col-md-4">
+                      <div class="card card-tile card-xs  bg-gradient text-center" [ngClass]="bg">
+                          <div class="card-body ">      
+                            <div class="tile-right">
+                              <div class="tile-number" >{{facilit.IaqIndex}} %</div>
+                              <div class="tile-description">IAQ Index</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            <!-- Facility Live Weather : ends -->
+
+          <div class="activity-accross-zones">
+            <div class="chart-block-wrap">
+              <div class="row">
+                <div class="col-md-12">		
+                <div class="title">
+                <h4 class="font-01 font-size-05 font-weight-600 text-uppercase"><span class="font-weight-300">Pest activity vs ambient temperature - </span> <pre>Last 6 months</pre></h4>
+                <div class="switch-facility-button" style="float:right;border: 1px solid #979797;border-radius: 20px;">
+                    <div class="button round-button has-dropdown hover-blue switch-button white-bg">
+                      <a href="#" class="font-02 font-size-01 light-black font-weight-400">Options<span class="direction-icon "></span></a>
+                      <ul class="dropdown">
+                        <li><a href="#" class="font-size-02 font-01">Expand</a></li>
+                        <li><a href="#" class="font-size-02 font-01">Date Range</a></li>
+                      </ul>
+                    </div>
+                  </div>
+              </div>
+                </div>
+              </div>
+              
+              <div id="pVsTAmbient" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+            </div>
+            <div class="chart-block-wrap">
+              <div class="row">
+                <div class="col-md-12">
+      <div class="title">
+                <h4 class="font-01 font-size-05 font-weight-600 text-uppercase"><span class="font-weight-300">Pest activity vs </span>Time of day</h4>
+              </div>
+              <div class="switch-facility-button" style="float:right;border: 1px solid #979797;border-radius: 20px;">
+                  <div class="button round-button has-dropdown hover-blue switch-button white-bg">
+                    <a href="#" class="font-02 font-size-01 light-black font-weight-400">Options<span class="direction-icon "></span></a>
+                    <ul class="dropdown">
+                      <li><a href="#" class="font-size-02 font-01">Expand</a></li>
+                      <li><a href="#" class="font-size-02 font-01">Date Range</a></li>
+                    </ul>
+                  </div>
+                
+            </div>
+                </div>
+              </div>
+              
+              <div id="pVSTTime" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+          </div>
+      </section>

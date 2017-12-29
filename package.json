@@ -4,17 +4,23 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build:sass": "node-sass src/assets/stylesheets/custom/ -o src/assets/stylesheets/custom/",
-    "watch:sass": "npm run build:sass && node-sass src/assets/stylesheets/custom/ -wo src/assets/stylesheets/custom/"
+    "watch:sass": "npm run build:sass && node-sass src/assets/stylesheets/custom/ -wo src/assets/stylesheets/custom/",
+    "postinstall": "ng build --aot -prod"
+  },
+  "engines": {
+    "node": "6.11.1",
+    "npm": "3.10.9"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^5.0.0",
+    "@angular/cli": "1.5.4",
     "@angular/common": "^5.0.0",
     "@angular/compiler": "^5.0.0",
     "@angular/core": "^5.0.0",
@@ -25,14 +31,14 @@
     "@angular/router": "^5.0.0",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
+    "express": "^4.16.2",
     "node-sass": "^4.7.2",
     "rxjs": "^5.5.2",
     "sass-loader": "^6.0.6",
-    "zone.js": "^0.8.14"
+    "zone.js": "^0.8.14",
+    "@angular/compiler-cli": "^5.0.0"
   },
   "devDependencies": {
-    "@angular/cli": "1.5.4",
-    "@angular/compiler-cli": "^5.0.0",
     "@angular/language-service": "^5.0.0",
     "@types/jasmine": "~2.5.53",
     "@types/jasminewd2": "~2.0.2",

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ElementRef} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataServiceService } from '../data-service.service';
-import { Client } from '_debugger';
 import {Routes, RouterModule, Router} from "@angular/router";
 declare let jQuery:any;
 

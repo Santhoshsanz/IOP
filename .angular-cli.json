@@ -19,9 +19,36 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "assets/stylesheets/custom/styles.css",
+        "assets/icon-fonts/font-awesome.css",
+        "assets/stylesheets/libs/ammap.css",
+        "assets/stylesheets/libs/jquery.mCustomScrollbar.min.css",
+        "assets/stylesheets/custom/main.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "assets/javascripts/libs/jquery-2.2.3.min.js",
+        "assets/javascripts/libs/library-imports.js",
+        "assets/javascripts/libs/imagesloaded.js",
+        "assets/javascripts/libs/ammap.js",
+        "assets/javascripts/libs/highcharts.js",
+        "assets/javascripts/libs/exporting.js",
+        "assets/javascripts/libs/heatmap.js",
+        "assets/javascripts/libs/xrange.js",
+        "assets/javascripts/libs/highcharts-more.js",
+        "assets/javascripts/libs/solid-gauge.js",
+        "assets/javascripts/libs/preloader.js",
+        "assets/javascripts/libs/svgconvert.js",
+        "assets/javascripts/libs/jquery-easing.js",
+        "assets/javascripts/libs/countTo.js",
+        "assets/javascripts/libs/jquery.mCustomScrollbar.min.js",
+        "assets/javascripts/libs/device.min.js",
+        "assets/javascripts/libs/shuffle.min.js",
+        "assets/javascripts/libs/owl-carousel.min.js",
+        "assets/javascripts/libs/maps/japanLow.js",
+        "assets/javascripts/custom/ammap-init.js",
+        "assets/javascripts/custom/charts-init.js",
+        "assets/javascripts/custom/main.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

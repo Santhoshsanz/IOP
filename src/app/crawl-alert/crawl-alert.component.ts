@@ -35,8 +35,16 @@ export class CrawlAlertComponent implements OnInit {
   }
   ngAfterViewInit(){
     console.log("After Vew Init")
-    jQuery.getScript('./assets/javascripts/custom/alertC-init.js', function(){
+    //jQuery.getScript('./assets/javascripts/custom/alertC-init.js', function(){
+    //});
+   jQuery(this.elRef.nativeElement).find('.svg-convert').svgConvert();
+   jQuery('.pocessing-steps-flow').each(function() {
+    jQuery(this).find('.step-circle').each(function() {
+      jQuery(this).height(jQuery(this).width());
     });
-    jQuery(this.elRef.nativeElement).find('.svg-convert').svgConvert();
+    jQuery(this).find('.steps-seperator-wrap').each(function() {
+      jQuery(this).height(jQuery('.step-circle').height());
+    });
+});
 }
 }

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ElementRef} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataServiceService } from '../data-service.service';
-import { Client } from '_debugger';
 import {Routes, RouterModule, Router} from "@angular/router";
 declare let jQuery:any;
 
@@ -33,7 +32,9 @@ export class FacilityComponent implements OnInit {
  
   this.clients=this.data.getClients(this.clientId);
   this.facility=this.data.getFacilty(this.clientId,this.facilityId);
+  console.log("below")
   console.log(this.clients);
+  console.log("here")
   console.log(this.facility);
   console.log(this.facility[0].IaqIndex)
   switch(this.facility[0].IaqIndex/10){

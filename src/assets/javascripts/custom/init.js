@@ -200,20 +200,20 @@ var alertThresholdThree = Highcharts.chart('task-status-chart-three', Highcharts
 
 }));
 
-var contentOneH = $('.content-pane-left').outerHeight();
-var contentTwoH = $('.content-pane-right').outerHeight();
-if (contentOneH > contentTwoH) {
-    $('.content-pane-left').height(contentTwoH);
-    $('.content-pane-left').addClass('mCustomScrollbar');
-} else {
-    $('.content-pane-right').height(contentOneH);
-    $('.content-pane-right').addClass('mCustomScrollbar');
-}
+// var contentOneH = $('.content-pane-left').outerHeight();
+// var contentTwoH = $('.content-pane-right').outerHeight();
+// if (contentOneH > contentTwoH) {
+//     $('.content-pane-left').height(contentTwoH);
+//     $('.content-pane-left').addClass('mCustomScrollbar');
+// } else {
+//     $('.content-pane-right').height(contentOneH);
+//     $('.content-pane-right').addClass('mCustomScrollbar');
+// }
 
 
-$('.add-scroll').mCustomScrollbar({
-    "autoHideScrollbar": true
-});
+// $('.add-scroll').mCustomScrollbar({
+//     "autoHideScrollbar": true
+// });
 $('.options-button').on('click', function(e) {
     e.preventDefault();
     $(this).closest('.options-button-block').find('.options-button-expand').animate({

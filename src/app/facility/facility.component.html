@@ -116,8 +116,8 @@
                   <div class="info-bubble info-bubble-one text-right">
                     <div class="info-bubble-image">
                       <img class="svg-convert" src="assets/images/info-bubble/icon-01.svg" alt="info-bubble">
-                      <div class="count-to-wrap">
-                        <span class="count-to font-weight-400 font-01" data-from="0" data-to="2"></span>
+                      <div class="count-to-wrap" *ngFor="let f of facility">
+                        <span class="count-to font-weight-400 font-01" data-from="0" attr.data-to="{{f.Alerts.length}}"></span>
                       </div>
                     </div>
                     <div class="info-bubble-text">

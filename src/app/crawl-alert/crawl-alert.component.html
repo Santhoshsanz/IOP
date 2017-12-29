@@ -38,99 +38,96 @@
                   <h4 class="medium-black font-weight-600 font-01 text-uppercase"><span class="font-weight-300">Processing</span> Steps</h4>
                 </div>
                 <div class="pocessing-steps-flow" *ngFor="let a of alert">
-                  <div class="step-circle-wrap text-center" [ngClass]="a.ProccessingSteps.Open?'completed':'no'">
-                    <div class="step-circle completed">
+                    <div class="step-circle-wrap text-center" [ngClass]="a.ProccessingSteps.Open?'completed':'no'">
+                      <div class="step-circle completed">
+                        <div class="pos-center-wrap">
+                          <div class="pos-center">
+                            <img class="svg-convert" [src]="topA.ImgUrl" alt="process-icon">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="description" >
+                        <p class="font-01 medium-black font-weight-600">Alert generated</p>
+                      </div>
+                    </div>
+                    <div class="steps-seperator-wrap" >
                       <div class="pos-center-wrap">
                         <div class="pos-center">
-                          <img class="svg-convert" [src]="topA.ImgUrl" alt="process-icon">
+                          <div class="steps-seperator light-grey-bg"></div>
                         </div>
                       </div>
                     </div>
-                    <div class="description" >
-                      <p class="font-01 medium-black font-weight-600">Alert generated</p>
-                    </div>
-                  </div>
-                  <div class="steps-seperator-wrap" >
-                    <div class="pos-center-wrap">
-                      <div class="pos-center">
-                        <div class="steps-seperator light-grey-bg"></div>
+                    <div class="step-circle-wrap text-center">
+                      <div class="step-circle text-center" [ngClass]="a.ProccessingSteps.Assigned?'completed':'no'">
+                        <div class="pos-center-wrap">
+                          <div class="pos-center">
+                            <img class="svg-convert" src="assets/images/processing-steps/step-02.svg" alt="process-icon">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="description">
+                        <p class="font-01 medium-black font-weight-600">Assigned to fieldtech</p>
                       </div>
                     </div>
-                  </div>
-                  <div class="step-circle-wrap text-center">
-                    <div class="step-circle text-center" [ngClass]="a.ProccessingSteps.Assigned?'completed':'no'">
+                    <div class="steps-seperator-wrap">
                       <div class="pos-center-wrap">
                         <div class="pos-center">
-                          <img class="svg-convert" src="assets/images/processing-steps/step-02.svg" alt="process-icon">
+                          <div class="steps-seperator light-grey-bg"></div>
                         </div>
                       </div>
                     </div>
-                    <div class="description">
-                      <p class="font-01 medium-black font-weight-600">Assigned to fieldtech</p>
-                    </div>
-                  </div>
-                  <div class="steps-seperator-wrap">
-                    <div class="pos-center-wrap">
-                      <div class="pos-center">
-                        <div class="steps-seperator light-grey-bg"></div>
+                    <div class="step-circle-wrap text-center">
+                      <div class="step-circle text-center"[ngClass]="a.ProccessingSteps.Service?'completed':'no'">
+                        <div class="pos-center-wrap">
+                          <div class="pos-center">
+                            <img class="svg-convert" src="assets/images/processing-steps/step-03.svg" alt="process-icon">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="description">
+                        <p class="font-01 medium-black font-weight-600">Service Procedure</p>
                       </div>
                     </div>
-                  </div>
-                  <div class="step-circle-wrap text-center">
-                    <div class="step-circle text-center"[ngClass]="a.ProccessingSteps.Service?'completed':'no'">
+                    <div class="steps-seperator-wrap">
                       <div class="pos-center-wrap">
                         <div class="pos-center">
-                          <img class="svg-convert" src="assets/images/processing-steps/step-03.svg" alt="process-icon">
+                          <div class="steps-seperator light-grey-bg"></div>
                         </div>
                       </div>
                     </div>
-                    <div class="description">
-                      <p class="font-01 medium-black font-weight-600">Service Procedure</p>
-                    </div>
-                  </div>
-                  <div class="steps-seperator-wrap">
-                    <div class="pos-center-wrap">
-                      <div class="pos-center">
-                        <div class="steps-seperator light-grey-bg"></div>
+                    <div class="step-circle-wrap text-center">
+                      <div class="step-circle text-center" [ngClass]="a.ProccessingSteps.FurtherAction?'completed':'no'">
+                        <div class="pos-center-wrap">
+                          <div class="pos-center">
+                            <img class="svg-convert" src="assets/images/processing-steps/step-04.svg" alt="process-icon">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="description">
+                        <p class="font-01 medium-black font-weight-600">Furthur Action Required</p>
                       </div>
                     </div>
-                  </div>
-                  <div class="step-circle-wrap text-center">
-                    <div class="step-circle text-center" [ngClass]="a.ProccessingSteps.FurtherAction?'completed':'no'">
+                    <div class="steps-seperator-wrap">
                       <div class="pos-center-wrap">
                         <div class="pos-center">
-                          <img class="svg-convert" src="assets/images/processing-steps/step-04.svg" alt="process-icon">
+                          <div class="steps-seperator light-grey-bg"></div>
                         </div>
                       </div>
                     </div>
-                    <div class="description">
-                      <p class="font-01 medium-black font-weight-600">Furthur Action Required</p>
-                    </div>
-                  </div>
-                  <div class="steps-seperator-wrap">
-                    <div class="pos-center-wrap">
-                      <div class="pos-center">
-                        <div class="steps-seperator light-grey-bg"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="step-circle-wrap text-center">
-                    <div class="step-circle text-center"  [ngClass]="a.ProccessingSteps.Closed?'completed':'no'">
-                      <div class="pos-center-wrap">
-                        <div class="pos-center">
-                          <img class="svg-convert" src="assets/images/processing-steps/step-05.svg" alt="process-icon">
+                    <div class="step-circle-wrap text-center">
+                      <div class="step-circle text-center"  [ngClass]="a.ProccessingSteps.Closed?'completed':'no'">
+                        <div class="pos-center-wrap">
+                          <div class="pos-center">
+                            <img class="svg-convert" src="assets/images/processing-steps/step-05.svg" alt="process-icon">
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="description">
-                      <p class="font-01 medium-black font-weight-600">Alert Closed</p>
-                      <!-- [ngClass]="a.ProccessingSteps.Open?'completed':'no'" -->
+                      <div class="description">
+                        <p class="font-01 medium-black font-weight-600">Alert Closed</p>
+                        <!-- [ngClass]="a.ProccessingSteps.Open?'completed':'no'" -->
+                      </div>
                     </div>
                   </div>
-                </div>
-
-
-
               </div>
               <div class="chart-block-wrap chart-wrapper">
                 <div class="row">

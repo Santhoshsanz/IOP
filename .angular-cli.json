@@ -23,7 +23,8 @@
         "assets/icon-fonts/font-awesome.css",
         "assets/stylesheets/libs/ammap.css",
         "assets/stylesheets/libs/jquery.mCustomScrollbar.min.css",
-        "assets/stylesheets/custom/main.css"
+        "assets/stylesheets/custom/main.css",
+        "../node_modules/angular2-toaster/toaster.css"
       ],
       "scripts": [
         "assets/javascripts/libs/jquery-2.2.3.min.js",

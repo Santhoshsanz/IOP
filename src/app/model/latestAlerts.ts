@@ -1,6 +1,10 @@
 import {Data} from "../model/alerts";
 
+<<<<<<< HEAD
 export const LatestAlerts:any=[{
+=======
+export const LatestAlerts:any[]=[{
+>>>>>>> beb0cd39637e764b075266192981500f3b2758cb
 	"ClientID": "1",
 	"ClientName": "Nestle Japan",
 	"ClientLogoUrl":"assets/images/clients/nestle.jpg",

@@ -4,18 +4,25 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build:sass": "node-sass src/assets/stylesheets/custom/ -o src/assets/stylesheets/custom/",
-    "watch:sass": "npm run build:sass && node-sass src/assets/stylesheets/custom/ -wo src/assets/stylesheets/custom/"
+    "watch:sass": "npm run build:sass && node-sass src/assets/stylesheets/custom/ -wo src/assets/stylesheets/custom/",
+    "postinstall": "ng build --aot -prod",
+    "deploy": "git push origin master && git push heroku master"
+  },
+  "engines": {
+    "node": "6.11.1",
+    "npm": "3.10.9"
   },
   "private": true,
   "dependencies": {
     "@amcharts/amcharts3-angular": "github:amcharts/amcharts3-angular2",
     "@angular/animations": "^5.0.0",
+    "@angular/cli": "1.5.4",
     "@angular/common": "^5.0.0",
     "@angular/compiler": "^5.0.0",
     "@angular/core": "^5.0.0",
@@ -29,6 +36,7 @@
     "angular2-toaster": "^4.0.1",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
+<<<<<<< HEAD
     "highcharts": "^6.0.4",
     "jquery": "^3.2.1",
     "ng-validators": "^0.2.1",
@@ -43,6 +51,16 @@
     "@agm/core": "^1.0.0-beta.2",
     "@angular/cli": "^1.6.3",
     "@angular/compiler-cli": "^5.0.0",
+=======
+    "express": "^4.16.2",
+    "node-sass": "^4.7.2",
+    "rxjs": "^5.5.2",
+    "sass-loader": "^6.0.6",
+    "zone.js": "^0.8.14",
+    "@angular/compiler-cli": "^5.0.0"
+  },
+  "devDependencies": {
+>>>>>>> beb0cd39637e764b075266192981500f3b2758cb
     "@angular/language-service": "^5.0.0",
     "@types/googlemaps": "^3.30.4",
     "@types/highcharts": "^5.0.13",

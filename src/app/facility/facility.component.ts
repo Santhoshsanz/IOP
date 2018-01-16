@@ -3,6 +3,7 @@ import {ElementRef} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataServiceService } from '../data-service.service';
 import {Routes, RouterModule, Router} from "@angular/router";
+import { LatestAlerts } from '../model/latestAlerts'
 declare let jQuery:any;
 
 @Component({
@@ -16,7 +17,7 @@ export class FacilityComponent implements OnInit {
   private sub: any;
   clients:any;
   facility:any;
-  alert:any;
+  alerts:any;
   bg:any;
   constructor(private elRef:ElementRef,
     private route: ActivatedRoute,
@@ -36,6 +37,7 @@ export class FacilityComponent implements OnInit {
   console.log(this.clients);
   console.log("here")
   console.log(this.facility);
+  this.alerts=this.facility[0].Alerts
   console.log(this.facility[0].IaqIndex)
   switch(this.facility[0].IaqIndex/10){
     case 1:{

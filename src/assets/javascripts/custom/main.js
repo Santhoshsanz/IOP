@@ -17,7 +17,7 @@
 
     // SHUFFLE INITIALIZATION
 
-    //-----------------------------------------------------------------
+    // //-----------------------------------------------------------------
     window.shuff = function() {
         var Shuffle = window.Shuffle,
             shuffleInstance = [], //Define shuffleInstance Array
@@ -178,7 +178,7 @@
 
     });
 
-    // Shuffle Grid Setting
+    // // Shuffle Grid Setting
     var gridWidth,
         setFlag = 0;
 
@@ -431,21 +431,21 @@
 
         //-----------------------------------------------------------------
 
-        var contentOneH = $('.content-pane-left').outerHeight();
-        var contentTwoH = $('.content-pane-right').outerHeight();
+        // var contentOneH = $('.content-pane-left').outerHeight();
+        // var contentTwoH = $('.content-pane-right').outerHeight();
 
-        if (contentOneH > contentTwoH) {
-            $('.content-pane-left').height(contentTwoH);
-            $('.content-pane-left').addClass('mCustomScrollbar');
-        } else {
-            $('.content-pane-right').height(contentOneH);
-            $('.content-pane-right').addClass('mCustomScrollbar');
-        }
+        // if (contentOneH > contentTwoH) {
+        //     $('.content-pane-left').height(contentTwoH);
+        //     $('.content-pane-left').addClass('mCustomScrollbar');
+        // } else {
+        //     $('.content-pane-right').height(contentOneH);
+        //     $('.content-pane-right').addClass('mCustomScrollbar');
+        // }
 
 
-        $('.add-scroll').mCustomScrollbar({
-            "autoHideScrollbar": true
-        });
+        // $('.add-scroll').mCustomScrollbar({
+        //     "autoHideScrollbar": true
+        // });
         $('.options-button').on('click', function(e) {
             e.preventDefault();
             $(this).closest('.options-button-block').find('.options-button-expand').animate({

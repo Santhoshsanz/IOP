@@ -119,3 +119,170 @@ div#preloader {
 .title{
     padding-bottom:15px;
 }
+
+
+
+
+/* Text Box Input */
+
+/* form starting stylings ------------------------------- */
+.group 			  { 
+  position:relative; 
+  margin-bottom:25px; 
+}
+input 				{
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:100%;
+  border:none;
+  border-bottom:1px solid #2b60f6;
+  background-color: transparent;
+}
+input:focus 		{ outline:none; }
+
+/* LABEL ======================================= */
+label 				 {
+  color:#999; 
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label 		{
+  top:-20px;
+  font-size:14px;
+  color:#5264AE;
+}
+.group input,.group *,.custom-select option{
+    font-family: "Assistant", sans-serif;
+    font-size: 16px;
+    line-height: 23px;
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:100%; }
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#2b60f6; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:100px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+
+
+/* Custom Styles */
+@media only screen and (max-width: 770px) {
+    .content-pane-right {
+       margin-left:64px;
+       padding: 0px 20px 0px 20px
+    }
+    .content-pane-left{
+        padding: 0px 20px 0px 20px
+    }
+    .right-area{
+        float: none!important;
+    }
+    .top-bar .quick-picks-block .inner, .top-bar .language-switcher-block .inner {
+        padding-left: 15px;
+        padding-right: 0px !important;
+    }
+    .top-bar{
+        padding-right: 10px !important;
+    }
+    .top-bar .user-name-block {
+        padding-right: 0px !important;
+    }
+    .top-bar .user-name-block, .top-bar .date-block {
+        min-width: 0px !important;
+    }
+}
+@media only screen and (max-width: 1020px)  {
+    .pos-center span.title{
+        display: none;
+    }
+    .pos-center .direction-icon{
+        display: none;
+    }
+     .customDate{
+        display: none  !important;
+    }
+}
+@media only screen and (max-width: 1110px)  {
+     .customDate{
+        display: none  !important;
+    }
+}
+.light-white-bg,body{
+    background: white !important;
+}
+.modal-header{
+    margin-bottom: 40px
+}
+.header-gradient {
+    color: #FFFFFF !important;
+    background: #07a7e3;
+    background: linear-gradient(135deg, #07a7e3 0%, #17307b 100%);
+    transition: opacity 0.2s ease-out;
+    padding: 0px 20px;
+}
+
+
+
+.formError:after,.formError:before{
+background-color: red!important;
+}

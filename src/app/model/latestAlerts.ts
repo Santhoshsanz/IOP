@@ -1,6 +1,6 @@
 import {Data} from "../model/alerts";
 
-export const LatestAlerts:Data[]=[{
+export const LatestAlerts:any=[{
 	"ClientID": "1",
 	"ClientName": "Nestle Japan",
 	"ClientLogoUrl":"assets/images/clients/nestle.jpg",

@@ -43,7 +43,7 @@
                          <a routerLink="Client" class="font-size-02 font-02 font-weight-500">Client Stack</a>
                       </li>
                       <li>
-                         <a href="#" class="font-size-02 font-02 font-weight-500">Add New Client</a>
+                         <a [routerLink]="['AddClient']" class="font-size-02 font-02 font-weight-500">Add New Client</a>
                       </li>
                       <li>
                          <a href="#" class="font-size-02 font-02 font-weight-500">Add New Facility</a>
@@ -54,6 +54,32 @@
                    </ul>
                 </li>
                 <!-- Nav Item 03 -->
+                          <!-- Nav Item 02 -->
+                          <li class="has-dropdown">
+                                <a href="#" title="Clients" class="font-size-03 font-02 font-weight-500 light-black">
+                                <span class="nav-menu-icon">
+                                <img class="svg-convert" src="assets/images/header/nav-menu-icon-02.svg" alt="menu-icon">
+                                </span>
+                                <span class="nav-menu-text">
+                               Configuration
+                                </span>
+                                </a>
+                                <!-- Dropdown -->
+                                <ul class="dropdown light-blue">
+                                   <li>
+                                      <a [routerLink]="['../AddClient']" class="font-size-02 font-02 font-weight-500">Clients</a>
+                                   </li>
+                                   <li>
+                                      <a [routerLink]="['../AddFacility']"class="font-size-02 font-02 font-weight-500">Facilities</a>
+                                   </li>
+                                   <li>
+                                      <a [routerLink]="['../AddZone']" class="font-size-02 font-02 font-weight-500">Zones</a>
+                                   </li>
+                                   <li>
+                                      <a [routerLink]="['../AddSensor']" class="font-size-02 font-02 font-weight-500">Sensors</a>
+                                   </li>
+                                </ul>
+                             </li>
                 <li class="has-dropdown">
                    <a href="#" title="Field Agents" class="font-size-03 font-02 font-weight-500 light-black">
                    <span class="nav-menu-icon">
@@ -117,6 +143,16 @@
                    </span>
                    </a>
                 </li>
+                <!-- <li>
+                        <a routerLink="UserConfig" title="User Config" class="font-size-03 font-02 font-weight-500 light-black">
+                        <span class="nav-menu-icon">
+                        <img class="svg-convert" src="assets/images/header/nav-menu-icon-06.svg" alt="menu-icon">
+                        </span>
+                        <span class="nav-menu-text">
+                       Use Config   
+                        </span>
+                        </a>
+                     </li> -->
              </ul>
           </nav>
           <!-- Nav : ends -->
@@ -200,46 +236,51 @@
                 <li><a href="index-jp.html" class="font-size-02 font-02 font-weight-500 light-black">Japanese</a></li>
              </ul>
           </div>
-       </div>
+    </div>
        <!-- Left Area : ends -->
        <!-- Right Area : starts -->
        <div class="right-area">
-          <!-- Block 04 -->
-          <div class="date-block">
-             <div class="pos-center-wrap">
-                <div class="pos-center">
-                   <p class="inner font-02 font-size-03 font-weight-600 white" style="margin-top:0px">
-                      <span class="icon"><img src="assets/images/header/icon-date-time.svg" alt="icon"></span>
-                      <span class="title">15<sup>th</sup> November, 2017</span>
-                   </p>
-                </div>
-             </div>
-          </div>
-          <!-- Block 05 -->
-          <div class="events-block">
-             <div class="pos-center-wrap">
-                <div class="pos-center">
-                   <a href="#" class="inner font-02 font-size-03 font-weight-600 white">
-                   <span class="icon"><img src="assets/images/header/icon-events.svg" alt="icon"></span>
-                   <span class="title font-size-03">Events</span>
-                   <span class="count font-size-01 red-bg">5</span>
-                   </a>
-                </div>
-             </div>
-          </div>
-          <!-- Block 06 -->
-          <div class="notification-block">
-             <div class="pos-center-wrap">
-                <div class="pos-center">
-                   <a href="#" class="inner font-02 font-size-03 font-weight-600 white">
-                   <span class="icon"><img src="assets/images/header/icon-notifications.svg" alt="icon"></span>
-                   <span class="title font-size-03">Notification</span>
-                   <span class="count font-size-01 green-bg">15</span>
-                   </a>
-                </div>
-             </div>
-          </div>
-       </div>
+        <!-- Block 04 -->
+        <div class="date-block customDate">
+         <div class="pos-center-wrap">
+            <div class="pos-center ">
+               <p class="inner font-02 font-size-03 font-weight-600 white" style="margin-top:0px">
+                  <span class="icon"><img src="assets/images/header/icon-date-time.svg" alt="icon"></span>
+                  <span class="title">15<sup>th</sup> November, 2017</span>
+               </p>
+            </div>
+         </div>
+      </div>
+      <!-- Block 05 -->
+      <div class="events-block">
+         <div class="pos-center-wrap">
+            <div class="pos-center">
+               <a href="#" class="inner font-02 font-size-03 font-weight-600 white">
+               <span class="title font-size-03">Events</span>
+               <span class="icon" style="position:relative"><img src="assets/images/header/icon-events.svg" alt="icon"> 
+                 <span class="count font-size-01 red-bg" style="position:absolute;top:-5px;left:15px;" *ngFor="let event of events">{{events.length}}</span>
+             </span>
+              
+               </a>
+            </div>
+         </div>
+      </div>
+      <!-- Block 06 -->
+      <div class="notification-block">
+         <div class="pos-center-wrap">
+            <div class="pos-center">
+               <a href="#" class="inner font-02 font-size-03 font-weight-600 white">
+               <span class="title font-size-03">Notification</span>
+               <span class="icon" style="position:relative"><img src="assets/images/header/icon-notifications.svg" alt="icon" style="position:relative">
+                 <span class="count font-size-01 green-bg" style="position:absolute;top:-5px;left:15px;">15</span>
+             </span>
+              
+               </a>
+            </div>
+         </div>
+      </div>
+    </div>
+       
     </section>
     <!-- Right Area : ends -->
     <!-- </section>-->
@@ -494,6 +535,265 @@
             </section>
             <!-- Notification Page : ends -->
              <!-- Sensor Event Page :starts -->
-            
+             <section class="sensor-alerts-page full-width">
+                <div class="row no-gutters">
+                    <div class="col-md-6">
+
+						<!-- Sensor Alerts Left Pane : starts -->
+                        <div class="sensor-alerts-count-block full-height text-center">
+                            <div class="pos-center-wrap">
+                                <div class="pos-center">
+                                    <div class="icon-wrap red-bg">
+                                        <div class="pos-center-wrap">
+                                            <div class="pos-center">
+                                                <div class="icon">
+                                                    <img src="assets/images/icon-events.svg" alt="icon">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+									<!-- Sensor Alerts Counts : starts -->
+                                    <div class="sensor-alerts-count">
+                                        <ul>
+                                            <li>
+                                                <span class="title font-size-06 font-01 white font-weight-600">Unassigned</span>
+                                                <span class="count font-size-07 font-01 white font-weight-300">{{unAssigned}}</span>
+                                            </li>
+                                            <li>
+                                                <span class="title font-size-06 font-01 white font-weight-600">In Progress</span>
+                                                <span class="count font-size-07 font-01 white font-weight-300">{{inProgress}}</span>
+                                            </li>
+                                            <li>
+                                                <span class="title font-size-06 font-01 white font-weight-600"> Action required</span>
+                                                <span class="count font-size-07 font-01 white font-weight-300">{{actionRequired}}</span>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+									<!-- Sensor Alerts Counts : ends -->
+
+									<!-- Button Block : starts -->
+									<!-- <div class="buttons-block">
+										<div class="button round-button hover-red">
+											<a href="#" class="font-01 font-size-01 grey font-weight-600">Clear</a>
+										</div>
+										<div class="button round-button hover-red">
+											<a href="#" class="font-01 font-size-01 grey font-weight-600">View All Alerts</a>
+										</div>
+									</div> -->
+									<!-- Button Block : ends -->
+
+								</div>
+                            </div>
+                        </div>
+						<!-- Sensor Alerts Left Pane : ends -->
+
+					</div>
+                    <div class="col-md-6">
+
+						<!-- Sensor Alerts List Block : starts -->
+                        <div class="sensor-alerts-list-block full-height" style="overflow:auto">
+
+							<!-- Page Title -->
+                            <div class="page-title red-bg">
+                                <h1 class="font-01 white font-size-07 font-weight-600"><span class="font-weight-300">Sensor</span> Events</h1>
+                            </div>
+                            <div>
+                                <a class="page-close" href="#">
+                                    <img src="assets/images/close-button.svg" alt="">
+                                </a>
+                            </div>
+
+                            <!-- Grid Container Wrap : starts -->
+                            <div class="grid-container-wrap">
+
+                                <!--  Filter Options : starts -->
+                                <div class="text-center">
+                                    <div class="filter-options light-black-bg">
+                                         <button class="filter active light-grey font-02 font-size-03 font-weight-600" data-group="all">All</button>
+                                        <!-- <button class="filter light-grey font-02 font-size-03 font-weight-600" data-group="category-1">Assigned</button> -->
+                                        <!-- <button class="filter light-grey font-02 font-size-03 font-weight-600" data-group="category-2">Unassigned</button> -->
+                                        <button class="filter light-grey font-02 font-size-03 font-weight-600" data-group="UnAssigned">UnAssigned</button>
+                                        <button class="filter light-grey font-02 font-size-03 font-weight-600" data-group="In Progress">In Progress</button>
+										<button class="filter light-grey font-02 font-size-03 font-weight-600" data-group="Action Required">Action Required</button>
+                                    </div>
+                                </div>
+                                <!-- Filter Options : ends -->
+
+                                <!-- Grid Container : starts -->
+                                <div class="grid-container add-scroll">
+
+                                    <!-- Grid : starts -->
+                                    <div id="sensor-alert-grid" class="grid shuffle-grid text-center white-bg senor-alert-grid" data-col-no="1" data-gutter="">
+
+                                        <!-- Alert-01 -->
+                                        <div class="shuf-item sizer" attr.data-groups='["all","{{event.activity}}"]' *ngFor="let event of events">
+                                            <a href="#" class="sensor-alert clearfix">
+                                                <div class="left-block text-right">
+													<div class="inner">
+	                                                    <div class="icon-wrap red-bg">
+	                                                        <div class="pos-center-wrap">
+	                                                            <div class="pos-center">
+	                                                                <div class="icon rat">
+                                                                        <img class="svg-convert" [src]="event.sensor[0].type" alt="icon">
+	                                                                </div>
+	                                                            </div>
+	                                                        </div>
+	                                                    </div>
+	                                                    <span class="id red font-01 font-weight-400 text-uppercase">{{event.id.slice(0,8)}}</span>
+													</div>
+                                                </div>
+                                                <div class="right-block text-left">
+                                                    <div class="alert-message">
+														<p class="light-black">
+	                                                        <span class="message font-01 font-weight-400 font-size-04">
+	                                                           {{event.notes}}
+	                                                        </span>
+															detected on
+	                                                        <span class="facility-name dark-red font-01 font-weight-700">
+	                                                            {{event.facilityName}}
+	                                                        </span>
+														</p>
+                                                    </div>
+                                                    <div class="time">
+                                                        <p class="font-01 font-weight-400 light-grey font-size-03">
+                                                            {{event.LastUpdated}}
+                                                        </p>
+                                                    </div>	
+                                                </div>
+                                            </a>
+                                        </div>
+
+									
+
+										<!-- Alert-03 -->
+										<!-- <div class="shuf-item sizer" data-groups='["all","category-2"]'>
+											<a href="#" class="sensor-alert clearfix">
+												<div class="left-block text-right">
+													<div class="inner">
+														<div class="icon-wrap red-bg">
+															<div class="pos-center-wrap">
+																<div class="pos-center">
+																	<div class="icon">
+																		<img class="svg-convert" src="assets/images/bugs-pests/icon-housefly.svg" alt="icon">
+																	</div>
+																</div>
+															</div>
+														</div>
+														<span class="id red font-01 font-weight-400 text-uppercase">#S12620</span>
+													</div>
+												</div>
+												<div class="right-block text-left">
+													<div class="alert-message">
+														<p class="light-black">
+															<span class="message font-01 font-weight-400 light-black font-size-04">
+																20 BOTTLE FLIES
+															</span>
+															detected on
+															<span class="facility-name dark-red font-01 font-weight-700">
+																Nestle flower Gate
+															</span>
+														</p>
+													</div>
+													<div class="time">
+														<p class="font-01 font-weight-400 light-grey font-size-03">
+															3.45Pm  +5.30GMT , 22 Nov,17
+														</p>
+													</div>
+												</div>
+											</a>
+										</div> -->
+										<!-- Alert-01 -->
+                                        <!-- <div class="shuf-item sizer" data-groups='["all","category-3"]'>
+                                            <a href="#" class="sensor-alert clearfix">
+                                                <div class="left-block text-right">
+													<div class="inner">
+	                                                    <div class="icon-wrap red-bg">
+	                                                        <div class="pos-center-wrap">
+	                                                            <div class="pos-center">
+	                                                                <div class="icon rat">
+	                                                                    <img class="svg-convert" src="assets/images/bugs-pests/icon-rat.svg" alt="icon">
+	                                                                </div>
+	                                                            </div>
+	                                                        </div>
+
+	                                                    </div>
+	                                                    <span class="id red font-01 font-weight-400 text-uppercase">#S12000</span>
+													</div>
+                                                </div>
+                                                <div class="right-block text-left">
+                                                    <div class="alert-message">
+														<p class="light-black">
+	                                                        <span class="message font-01 font-weight-400 font-size-04">
+	                                                            RAT movement RAT movement
+	                                                        </span>
+															detected on
+	                                                        <span class="facility-name dark-red font-01 font-weight-700">
+	                                                            Nestle Flower Gate
+	                                                        </span>
+														</p>
+                                                    </div>
+                                                    <div class="time">
+                                                        <p class="font-01 font-weight-400 light-grey font-size-03">
+                                                            9.28Am  +5.30GMT , 20 Nov,17
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div> -->
+
+										<!-- Alert-02 -->
+                                        <!-- <div class="shuf-item sizer" data-groups='["all","category-1"]'>
+                                            <a href="#" class="sensor-alert clearfix">
+                                                <div class="left-block text-right">
+													<div class="inner">
+	                                                    <div class="icon-wrap red-bg">
+	                                                        <div class="pos-center-wrap">
+	                                                            <div class="pos-center">
+	                                                                <div class="icon">
+	                                                                    <img class="svg-convert" src="assets/images/bugs-pests/icon-adult-bed-bug.svg" alt="icon">
+	                                                                </div>
+	                                                            </div>
+	                                                        </div>
+	                                                    </div>
+														<span class="id red font-01 font-weight-400 text-uppercase">#S12790</span>
+													</div>
+                                                </div>
+                                                <div class="right-block text-left">
+                                                    <div class="alert-message">
+														<p class="light-black">
+	                                                        <span class="message font-01 font-weight-400 light-black font-size-04">
+	                                                            ADULT BED BUG
+	                                                        </span>
+															 detected on
+	                                                        <span class="facility-name dark-red font-01 font-weight-700">
+	                                                            Hilton Tokyo
+	                                                        </span>
+														</p>
+                                                    </div>
+                                                    <div class="time">
+                                                        <p class="font-01 font-weight-400 light-grey font-size-03">
+                                                            3.55Pm  +5.30GMT , 22 Nov,17
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div> -->
+									</div> 
+									<!-- Grid : ends -->
+
+                                </div>
+								<!-- Grid Container : ends -->
+
+                            </div>
+							<!-- Grid Container Wrap : ends -->
+
+                        </div>
+						<!-- Sensor Alerts List Block : ends -->
+
+					</div>
+                </div>
+            </section>
 			<!-- Sensor Event Page :ends -->
  </section>

@@ -1,0 +1,120 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="chart-wrapper">
+        <div class="title" style="margin-bottom:20px;">
+          <h4 class="font-01 font-size-05 font-weight-600 text-uppercase" style="display:-webkit-inline-box">
+            <span class="font-weight-300">Add</span> Client</h4>
+          <div style="float:right">
+            <app-back></app-back>
+            <toast [config]="config"></toast>
+            <button class="btn btn-primary" (click)="popToast()">Pop</button>
+          </div>
+        </div>
+        <form novalidate [formGroup]="client" (ngSubmit)="onSubmit(client)">
+          <div class="form-group row">
+            <div class="col-sm-4">
+              <div class="group ">
+                <input type="text" required formControlName="name">
+                <span class="highlight"></span>
+                <span class="bar" [ngClass]="{formError: (!client.controls.name.valid &&
+                !client.controls.name.pristine)}" ></span>
+                <label>Client Name</label>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="group">
+                <input type="input" formControlName="logoUrl" hidden>
+                <input type="input" formControlName="id" hidden>
+                <input type="file" required (change)="getFiles($event)" #fileLogo>
+                <span class="highlight"></span>
+                <span class="bar"></span>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="group">
+                <!-- Stupid -->
+                <span class="bar"></span>
+              </div>
+            </div>
+          </div>
+          <div formGroupName="address">
+            <h4 style="margin-bottom:30px">Address</h4>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <div class="group">
+                  <input type="text" required formControlName="address1" autocorrect="off" autocapitalize="off" spellcheck="off" #search>
+                  <!-- <input type="text" required formControlName="address1" hidden> -->
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <!-- <label class="font-01 font-size-03 font-weight-600 text-uppercase">Address Line 1</label> -->
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-4">
+                <div class="group">
+                  <input type="text" required formControlName="street">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>Street</label>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="group">
+                  <input type="text" required formControlName="address2">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>Address Line 1</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-4">
+                <div class="group">
+                  <input type="text" required formControlName="country">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>Country</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-4">
+                <div class="group">
+                  <input type="text" required formControlName="state">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>State</label>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="group">
+                  <input type="text" required formControlName="city">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>City</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-4">
+                <div class="group">
+                  <input type="text" required formControlName="pinCode">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>PinCode</label>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <button type="submit" class="btn btn-success font-01 font-02" [disabled]="!client.valid">Submit</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+    <!-- <p>Form value: {{ client.value | json }}</p> -->
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-wrapper">
+                <div class="title" style="margin-bottom:20px;">
+                    <h4 class="font-01 font-size-05 font-weight-600 text-uppercase" style="display:-webkit-inline-box">
+                        <span class="font-weight-300">Add</span> Zone</h4>
+                    <div style="float:right">
+                        <app-back></app-back>
+                    </div>
+                </div>
+                <form novalidate [formGroup]="zone" (ngSubmit)="onSubmit(zone)">
+                    <div class="form-group row">
+                        <div class="col-sm-4">
+                            <div class="group ">
+                                <input type="text" required formControlName="name">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label>Zone Name</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="group">
+                                <input type="input" formControlName="image" hidden>
+                                <input type="input" formControlName="id" hidden>
+                                <input type="file" required (change)="getFiles($event)" #fileLogo>
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-success" [disabled]="!zone.valid">Submit</button>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-4">
+                                <label for="example-text-input" class="col-4 col-form-label">Client</label>
+                                <input type="input" formControlName="image" hidden>
+                                <input type="input" formControlName="id" hidden>
+                                <div class="col-8">
+                                    <select class="custom-select" (change)="onClientChange($event)" >
+                                        <option *ngFor="let client of clients" [value]="client.id" [selected]="client.id===clientSelectedVal">{{client.name}}</option>
+                                    </select>
+                                </div>
+                        </div>
+                        <div class="col-sm-4">
+                                <label for="example-text-input" class="col-4 col-form-label">Facilities</label>
+                                <input type="input" formControlName="image" hidden>
+                                <input type="input" formControlName="id" hidden>
+                                <div class="col-8">
+                                    <select class="custom-select" (change)="onFacilityChange($event)" [value]="facilitySelectedVal">
+                                        <option *ngFor="let facility of facilities" [value]="facility.id" [selected]="facility.id===facilitySelectedVal">{{facility.name}}</option>
+                                    </select>
+                                </div>
+                        </div>
+                        <div formGroupName="client">
+                                <input required formControlName="name" hidden>
+                                <input required formControlName="id" hidden>
+                            </div>
+                            <div formGroupName="facility">
+                                    <input required formControlName="name" hidden>
+                                    <input required formControlName="id" hidden>
+                                </div>
+                    </div>
+                    <p>Form value: {{ zone.value | json }}</p>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

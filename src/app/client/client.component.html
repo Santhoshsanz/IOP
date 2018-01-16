@@ -2,14 +2,12 @@
 <section class="container-fluid customer-pool">
     <div class="row no-gutters">
         <div class="col-md-12">
-            
                       <!-- Content Pane : start -->
                       <section class="content-pane-left">
                         <div class="inner">
                           <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-11">
-            
                               <!-- Block Title -->
                               <div class="block-title">
                                 <h4 class="font-01 font-weight-600 font-size-05 text-uppercase"><span class="font-weight-300">Client</span> Stack</h4>
@@ -69,132 +67,48 @@
                             <!-- Options Button : ends -->
             
                             <!-- Grid Container : starts -->
-                            <div class="grid-container">
+                            <div class="grid-container container">
             
                               <!-- Grid : starts -->
-                              <div id="customer-pool-grid" class="grid shuffle-grid text-center customer-pool-grid" data-col-no="3" data-gutter="">
+                              <div id="customer-pool-grid" class="grid shuffle-grid text-center customer-pool-grid row" data-col-no="3" data-gutter="">
             
                                 <!-- Item-01 -->
-                                <div class="shuf-item sizer" data-sort-order="2">
+                                <div class="shuf-item sizer col-md-6 col-sm-12 col-12 col-lg-4" data-sort-order="2"  *ngFor="let Client of ClientsData">
                                   <div class="customer-details-wrap">
-                                    <a [routerLink]="['./1']" class="customer-details-wrap-st2 dark-blue-bg">
+                                    <a [routerLink]="['./'+Client.ClientId]" class="customer-details-wrap-st2 dark-blue-bg">
                                       <div class="d-flex h-100">
                                         <div class="row justify-content-center align-self-center">
-                                          <h3 class="hover-content font-size-06 font-weight-200 white">20% of the properties have active alerts now.<br/><br/>Recorded 87% decrease in alerts over last 1 month.</h3>
+                                          <h3 class="hover-content font-size-06 font-weight-200 white">{{Client.InfoAlerts}}<br/><br/>{{Client.InfoReview}}</h3>
                                         </div>
                                       </div>
                                     </a>
                                     <div class="row">
                                       <div class="col-md-12 text-center pool-pad-top">
                                         <div class="client-image">
-                                          <img src="assets/images/clients/nestle.jpg" alt="image" />
+                                          <img [src]="Client.ClientLogoUrl" alt="image" />
                                         </div>
                                       </div>
                                     </div>
                                     <div class="row">
                                       <div class="col-md-12 text-center">
                                         <div class="top-block">
-                                          <h2 class="font-01 black">Nestle Japan</h2>
-                                          <h4 class="font-01 font-size-06 light-grey properties">5 Properties</h4>
+                                          <h2 class="font-01 black">{{Client.ClientName}}</h2>
+                                          <h4 class="font-01 font-size-06 light-grey properties">{{Client.PropertiesCount}} Properties</h4>
                                         </div>
                                       </div>
                                     </div>
                                     <div class="row justify-content-md-center pool-pad-top-secondary">
-                                      <div class="col-md-5 text-center info-heads">
+                                      <div class="col-md-5 col-6 text-center info-heads">
                                         <h4 class="font-01 font-size-01 font-weight-400 light-grey text-center">Active Alerts</h4>
-                                        <h3 class="font-01 font-weight-200 font-size-07 light-black">5</h3>
+                                        <h3 class="font-01 font-weight-200 font-size-07 light-black">{{Client.ActiveAlerts}}</h3>
                                       </div>
-                                      <div class="col-md-4 text-center info-heads">
+                                      <div class="col-md-4  col-6 text-center info-heads">
                                         <h4 class="font-01 font-size-01 font-weight-400 light-grey text-center">No Of Properties</h4>
-                                        <h3 class="font-01 font-weight-200 font-size-07 light-black">5</h3>
+                                        <h3 class="font-01 font-weight-200 font-size-07 light-black">{{Client.PropertiesCount}}</h3>
                                       </div>
                                     </div>
                                     <p class="font-01 font-size-01 font-weight-400 light-grey text-center" style="margin-top: 33px;">Customer Satisfaction</p>
-                                    <div class="re-active-sensor-tab" data-active-value="77"></div>
-                                  </div>
-                                </div>
-            
-                                <!-- Item-02 -->
-                                <div class="shuf-item sizer" data-sort-order="0">
-                                  <div class="customer-details-wrap">
-                                    <a [routerLink]= '["./2"]' class="customer-details-wrap-st2 dark-blue-bg">
-                                      <div class="container d-flex h-100">
-                                        <div class="row justify-content-center align-self-center">
-                                          <h3 class="hover-content font-size-06 font-weight-200 white">10% of the properties have active alerts now.<br/><br/>
-                                                Recorderd 99% decrease in alerts over last 1 month.
-                                              </h3>
-                                        </div>
-                                      </div>
-                                    </a>
-                                    <div class="row">
-                                      <div class="col-md-12 text-center pool-pad-top">
-                                        <div class="client-image">
-                                          <img src="assets/images/clients/Yoshinoya.jpg" alt="image"/>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                      <div class="col-md-12 text-center">
-                                        <div class="top-block">
-                                          <h2 class="font-01">Yoshinoya</h2>
-                                          <h4 class="light-grey properties">5 Properties</h4>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row justify-content-md-center pool-pad-top-secondary">
-                                      <div class="col-md-5 text-center info-heads">
-                                        <h4 class="font-01 font-size-01 font-weight-400 light-grey text-center">Active Alerts</h4>
-                                        <h3 class="font-01 font-weight-200 font-size-07 light-black">5</h3>
-                                      </div>
-                                      <div class="col-md-4 text-center info-heads">
-                                        <h4 class="font-01 font-size-01 font-weight-400 light-grey text-center">No Of properties</h4>
-                                        <h3 class="font-01 font-weight-200 font-size-07 light-black">5</h3>
-                                      </div>
-                                    </div>
-                                    <p class="font-01 font-size-01 font-weight-400 light-grey text-center" style="margin-top: 33px;">Customer Satisfaction</p>
-                                    <div class="re-active-sensor-tab" data-active-value="95"></div>
-                                  </div>
-                                </div>
-            
-                                <!-- Item-03 -->
-                                <div class="shuf-item sizer" data-sort-order="1">
-                                  <div class="customer-details-wrap">
-                                    <a [routerLink]="['./3']" class="customer-details-wrap-st2 dark-blue-bg">
-                                      <div class="container d-flex h-100">
-                                        <div class="row justify-content-center align-self-center">
-                                          <h3 class="hover-content font-size-06 font-weight-200 white">20% of the properties have active alerts now.<br/><br/>
-                                            Recorded 73% hike in alerts over last 1 month.
-                                          </h3>
-                                        </div>
-                                      </div>
-                                    </a>
-                                    <div class="row">
-                                      <div class="col-md-12 text-center pool-pad-top">
-                                        <div class="client-image">
-                                          <img src="assets/images/clients/hilton.png" alt="image"/>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                      <div class="col-md-12 text-center">
-                                        <div class="top-block">
-                                          <h2 class="font-01">Hilton Group</h2>
-                                          <h4 class="light-grey properties">5 Properties</h4>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row  justify-content-md-center pool-pad-top-secondary">
-                                      <div class="col-md-5 text-center info-heads">
-                                        <h4 class="font-01 font-size-01 font-weight-400 light-grey text-center">Active Alerts</h4>
-                                        <h3 class="font-01 font-weight-200 font-size-07 light-black">5</h3>
-                                      </div>
-                                      <div class="col-md-4 text-center info-heads">
-                                        <h4 class="font-01 font-size-01 font-weight-400 light-grey text-center">No Of Properties</h4>
-                                        <h3 class="font-01 font-weight-200 font-size-07 light-black">5</h3>
-                                      </div>
-                                    </div>
-                                    <p class="font-01 font-size-01 font-weight-400 light-grey text-center" style="margin-top: 33px;">Customer Satisfaction</p>
-                                    <div class="re-active-sensor-tab" data-active-value="85"></div>
+                                    <div class="re-active-sensor-tab" attr.data-active-value={{Client.CustomerSatisfaction}}></div>
                                   </div>
                                 </div>
             
@@ -203,7 +117,8 @@
                                   <div class="customer-details-wrap dotted-details" style="cursor:pointer;">
                                     <div class="content-wrap">
                                       <div class="icon">
-                                        <i class="fa fa-plus" aria-hidden="true"></i>
+                                        <a [routerLink]="['../AddClient']"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                                        
                                       </div>
                                       <div class="text">
                                         <h4>Add Customer</h4>
@@ -219,7 +134,6 @@
             
                           </div>
                           <!-- Grid Container Wrap : ends -->
-            
                         </div>
                       </section>
                       <!-- Content Pane : ends -->

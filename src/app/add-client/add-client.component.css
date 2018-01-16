@@ -1,0 +1,15 @@
+.panel-wrapper{
+    box-shadow:0 1px 5px rgba(0,0,0,0.30), 0 3px 12px rgba(0,0,0,0.22);
+    padding: 15px;
+    background-color: white;
+}
+.modal-header{
+    margin-bottom: 40px
+}
+.header-gradient {
+    color: #FFFFFF !important;
+    background: #07a7e3;
+    background: linear-gradient(135deg, #07a7e3 0%, #17307b 100%);
+    transition: opacity 0.2s ease-out;
+    padding: 0px 20px;
+}

@@ -1272,12 +1272,12 @@ ul {
   position: relative;
   width: 375px;
   height: 375px;
-  background: white;
+  background: whitesmoke;
   border-radius: 50%;
   border: 15px solid #fff;
   margin: 0 auto;
   padding-bottom: 20px;
-  box-shadow: 0 2px 11px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 11px 0 rgb(168, 172, 181);
   overflow: hidden; }
   .customer-pool .customer-details-wrap .pool-pad-top {
     padding-top: 30px; }

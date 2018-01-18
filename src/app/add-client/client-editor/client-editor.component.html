@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <div class="chart-wrapper">
+      <div class="chart-wrapper pad50">
         <div class="title" style="margin-bottom:20px;">
           <h4 class="font-01 font-size-05 font-weight-600 text-uppercase" style="display:-webkit-inline-box">
             <span class="font-weight-300">Add</span> Client</h4>
           <div style="float:right">
             <app-back></app-back>
             <toast [config]="config"></toast>
-            <button class="btn btn-primary" (click)="popToast()">Pop</button>
+            <!-- <button class="btn btn-primary" (click)="popToast()">Pop</button> -->
           </div>
         </div>
         <form novalidate [formGroup]="client" (ngSubmit)="onSubmit(client)">
@@ -19,6 +19,7 @@
                 <span class="highlight"></span>
                 <span class="bar" [ngClass]="{formError: (!client.controls.name.valid &&
                 !client.controls.name.pristine)}" ></span>
+                <p>Please Enter a Valid Name</p>
                 <label>Client Name</label>
               </div>
             </div>
@@ -28,7 +29,8 @@
                 <input type="input" formControlName="id" hidden>
                 <input type="file" required (change)="getFiles($event)" #fileLogo>
                 <span class="highlight"></span>
-                <span class="bar"></span>
+                <span class="bar" [ngClass]="{formError: (!client.controls.logoUrl.valid &&
+                  !client.controls.logoUrl.pristine)}"></span>
               </div>
             </div>
             <div class="col-sm-4">
@@ -46,7 +48,7 @@
                   <input type="text" required formControlName="address1" autocorrect="off" autocapitalize="off" spellcheck="off" #search>
                   <!-- <input type="text" required formControlName="address1" hidden> -->
                   <span class="highlight"></span>
-                  <span class="bar"></span>
+                  <span class="bar" [ngClass]="{formError: (!client.controls.logoUrl.valid && client.controls.logoUrl.touched)}"></span>
                   <!-- <label class="font-01 font-size-03 font-weight-600 text-uppercase">Address Line 1</label> -->
                 </div>
               </div>
@@ -56,7 +58,9 @@
                 <div class="group">
                   <input type="text" required formControlName="street">
                   <span class="highlight"></span>
-                  <span class="bar"></span>
+                  <span class="bar" [ngClass]="{formError: (!client.controls.address.controls.street.valid &&
+                    !client.controls.address.controls.street.pristine)}" ></span>
+                    <p>Please Enter a Valid Street Name</p>
                   <label>Street</label>
                 </div>
               </div>
@@ -64,7 +68,9 @@
                 <div class="group">
                   <input type="text" required formControlName="address2">
                   <span class="highlight"></span>
-                  <span class="bar"></span>
+                  <span class="bar" [ngClass]="{formError: (!client.controls.address.controls.address2.valid &&
+                    !client.controls.address.controls.address2.pristine)}"></span>
+                    <p>Please Enter a Valid Address</p>
                   <label>Address Line 1</label>
                 </div>
               </div>
@@ -74,7 +80,9 @@
                 <div class="group">
                   <input type="text" required formControlName="country">
                   <span class="highlight"></span>
-                  <span class="bar"></span>
+                  <span class="bar" [ngClass]="{formError: (!client.controls.address.controls.country.valid &&
+                    !client.controls.address.controls.country.pristine)}"></span>
+                    <p>Please Enter a Valid Country Name</p>
                   <label>Country</label>
                 </div>
               </div>
@@ -84,7 +92,9 @@
                 <div class="group">
                   <input type="text" required formControlName="state">
                   <span class="highlight"></span>
-                  <span class="bar"></span>
+                  <span class="bar" [ngClass]="{formError: (!client.controls.address.controls.state.valid &&
+                    !client.controls.address.controls.state.pristine)}"></span>
+                    <p>Please Enter a Valid State Name</p>
                   <label>State</label>
                 </div>
               </div>
@@ -92,7 +102,9 @@
                 <div class="group">
                   <input type="text" required formControlName="city">
                   <span class="highlight"></span>
-                  <span class="bar"></span>
+                  <span class="bar" [ngClass]="{formError: (!client.controls.address.controls.city.valid &&
+                    !client.controls.address.controls.city.pristine)}"></span>
+                    <p>Please Enter a Valid City Name</p>
                   <label>City</label>
                 </div>
               </div>
@@ -102,7 +114,9 @@
                 <div class="group">
                   <input type="text" required formControlName="pinCode">
                   <span class="highlight"></span>
-                  <span class="bar"></span>
+                  <span class="bar" [ngClass]="{formError: (!client.controls.address.controls.pinCode.valid &&
+                    !client.controls.address.controls.pinCode.pristine)}" ></span>
+                    <p>Please Enter a Valid PinCode</p>
                   <label>PinCode</label>
                 </div>
               </div>
@@ -115,6 +129,6 @@
       </div>
 
     </div>
-    <!-- <p>Form value: {{ client.value | json }}</p> -->
+     <p>Form value: {{ client.value | json }}</p> 
   </div>
 </div>

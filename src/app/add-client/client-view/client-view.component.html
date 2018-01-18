@@ -6,7 +6,7 @@
                 <span class="font-weight-300">All </span>Clients</h4>
         </div>
         <div style="float:right">
-            <button class="btn btn-success" (click)="addClient()">Add</button>
+                <button mat-icon-button mat-raised-button (click)=addClient()><mat-icon>add</mat-icon></button>
         </div>
         <!-- Alert Table : starts -->
         <div class="table">
@@ -45,8 +45,8 @@
                 </div>
                 <div class="table-cell white-bg">
                     <p class="table-cell-content font-01 font-size-02 font-weight-400 light-black">
-                        <button class="btn btn-warning font-01 font-02" (click)=deleteClient(m.id)>Delete</button>
-                        <button class="btn btn-danger font-01 font-02" (click)=editClient(m.id)>Edit</button>
+                            <button mat-icon-button (click)=deleteClient(m.id)><mat-icon>delete</mat-icon></button>
+                            <button mat-icon-button (click)=editClient(m.id)><mat-icon>edit</mat-icon></button>                               
                     </p>
                 </div>
             </a>

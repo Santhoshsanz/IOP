@@ -6,7 +6,7 @@ import { Ng2HighchartsModule } from 'ng2-highcharts';
 import { Events } from '../../app/model/alertsEvents';
 import {CommonDataService} from '../common-data.service'
 import {HttpHeaders } from '@angular/common/http';
-import{apiData,images} from '../common';
+import{apiData,images, pestType} from '../common';
 declare let jQuery: any;
 import { LatestAlerts } from '../model/latestAlerts'
 @Component({
@@ -17,6 +17,7 @@ import { LatestAlerts } from '../model/latestAlerts'
 export class MissionControlComponent implements OnInit {
   alerts: any;
   image=images;
+  pest=pestType;
   optionsPest12: object;
   optionsPest30: object;
   optionsGuage1: object;
@@ -62,22 +63,40 @@ export class MissionControlComponent implements OnInit {
     let self=this;
     let headers= new HttpHeaders();
     this._commonDataService.getData(apiData.url+apiData.facility,headers).subscribe((res:any)=>{
-      let data=[];
-      this.initChart(res)
-      res.facilitiesInfo.map(function(i,j){
-              let self=i;
-              return i.eventActivities.map(function(t,y){
-              if(t.activity!="Closed"){ 
-                  t.facilityName=self.name;
-                  data.push(t)
-              }
-            })
-      })
-      data.map(function(e,j){
-       e.sensor[0].type=self.image[parseInt(e.sensor[0].type==null?"1":e.sensor[0].type)]
-       })
-      console.log(data)
-      this.alerts= data;
+        if(res.status=="ok"){
+          let data=[];
+          this.initChart(res)
+         
+          res.facilitiesInfo.map(function(i,j){
+                  let self=i;
+                  if (i.eventActivities != null) {
+                    if (i.eventActivities.length > 0) {
+                      return i.eventActivities.map(function(t,y){
+                        console.log(t.activity)
+                        //if(t.activity!="Closed"){ 
+                            t.facilityName=self.name;
+                            data.push(t)
+                        //}
+                      })
+                    }
+                  }
+          })
+          data.map(function(e,j){
+            var x=new Date(e.lastUpdated)
+            e.lastUpdated=x.toLocaleDateString()+" "+ x.toLocaleTimeString();
+            switch(e.sensor[0].type){
+              case "Rodent":
+              e.sensor[0].customImage=self.pest.Rodent;
+              break;
+            }
+           })
+          // console.log("Alert Data")
+         // console.log(data)
+          this.alerts= data;
+        }
+        else{
+          this.initChart([]);
+        }
     })  
   }
   ngAfterViewInit() {
@@ -88,12 +107,15 @@ export class MissionControlComponent implements OnInit {
     console.log("Inside")
     let intermediate = [];
     let pushData: any = {};
+    if(facilityData.facilitiesInfo.length>0){
       facilityData.facilitiesInfo.map(function (e, o) {
-        if (e.eventActivities.length > 0) {
-          pushData.imageURL = "assets/images/facility-active.png";
-        }
-        else {
-          pushData.imageURL = "assets/images/facility-inactive.png";
+        if (e.eventActivities != null) {
+          if (e.eventActivities.length > 0) {
+                pushData.imageURL = "assets/images/facility-active.png";
+          }
+          else {
+            pushData.imageURL = "assets/images/facility-inactive.png";
+          }
         }
         pushData.zoomLevel = 5,
           pushData.title = e.name,
@@ -104,6 +126,7 @@ export class MissionControlComponent implements OnInit {
         intermediate.push(pushData)
         pushData = {};
       })
+    }
     let data = {
       "type": "map",
       "dragMap": true,

@@ -11,6 +11,5 @@ export class UserConfigComponent implements OnInit {
   ngOnInit() {
   }
 edit(){
-  debugger;
 }
 }

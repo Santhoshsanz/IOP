@@ -7,9 +7,10 @@ import { Location } from '@angular/common';
 import { ElementRef, NgZone } from '@angular/core';
 import { BackComponent } from '../../shared/back.component';
 import { } from '@types/googlemaps';
-import { ToasterModule, ToasterService, ToasterConfig,Toast } from 'angular2-toaster';
-import {BodyOutputType} from 'angular2-toaster';
-import {ToastComponent} from '../../shared/Toast/toast.component'
+import { ToasterModule, ToasterService, ToasterConfig, Toast } from 'angular2-toaster';
+import { BodyOutputType } from 'angular2-toaster';
+import { ToastComponent } from '../../shared/Toast/toast.component';
+import { PasswordValidators } from 'ngx-validators';
 @Component({
   selector: 'app-add-facility',
   templateUrl: './client-editor.component.html'
@@ -22,7 +23,7 @@ export class ClientEditorComponent implements OnInit {
   lat: any;
   lng: any;
   @ViewChild('search') public searchElement: ElementRef;
-  config:ToasterConfig;
+  config: ToasterConfig;
   constructor(private formBuilder: FormBuilder,
     private clientService: ClientServiceService, private route: ActivatedRoute, private _location: Location,
     private mapsAPILoader: MapsAPILoader, private ngZone: NgZone,
@@ -31,25 +32,25 @@ export class ClientEditorComponent implements OnInit {
     console.log("Add Client Init")
     this.client = new FormGroup({
       id: new FormControl(""),
-      name: new FormControl("",[Validators.required,Validators.minLength(2)]),
-      logoUrl: new FormControl("",[Validators.required,Validators.minLength(2)]),
-      imgType: new FormControl("",[Validators.required,Validators.minLength(2)]),
+      name: new FormControl("", [Validators.required,Validators.pattern("^[A-Za-z 0-9'.]{2,30}$")]),
+      logoUrl: new FormControl("", [Validators.required]),
+      imgType: new FormControl("", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-z0-9'./]{2,30}$")]),
       address: this.formBuilder.group({
-        street: ["",[Validators.required,Validators.minLength(2)]],
-        address1:["",[Validators.required,Validators.minLength(2)]],
-        address2: ["",[Validators.required,Validators.minLength(2)]],
-        country: ["",[Validators.required,Validators.minLength(2)]],
-        state: ["",[Validators.required,Validators.minLength(2)]],
-        city: ["",[Validators.required,Validators.minLength(2)]],
-        pinCode: ["",[Validators.required,Validators.minLength(2)]],
-        latitude: ["",[Validators.required,Validators.minLength(2)]],
-        longitude: ["",[Validators.required,Validators.minLength(2)]]
+        street: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-z0-9A-Z.]{2,30}$")]],
+        address1: ["", [Validators.required, Validators.minLength(2)]],
+        address2: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-z0-9A-Z'.]{2,30}$")]],
+        country: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-zA-Z'.]{2,30}$")]],
+        state: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-zA-Z'.]{2,30}$")]],
+        city: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-zA-Z'.]{2,30}$")]],
+        pinCode: ["", [Validators.required, Validators.minLength(6),Validators.pattern("^[0-9]{2,30}$")]],
+        latitude: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[0-9-.]{2,100}$")]],
+        longitude: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[0-9-.]{2,100}$")]]
       })
     })
+
     //Location API
     this.mapsAPILoader.load().then(
       () => {
-        debugger;
         let autocomplete = new google.maps.places.Autocomplete(this.searchElement.nativeElement, { types: ["address"] });
         autocomplete.addListener("place_changed", () => {
           this.ngZone.run(() => {
@@ -81,7 +82,6 @@ export class ClientEditorComponent implements OnInit {
     var self = this;
     let temp: any;
     let type = event.target.files[0].type;
-    debugger;
     var file: File = event.target.files[0];
     var myReader: FileReader = new FileReader();
     myReader.readAsDataURL(file);
@@ -123,23 +123,22 @@ export class ClientEditorComponent implements OnInit {
   popToast() {
     this.config = new ToasterConfig({
       positionClass: 'toast-bottom-right',
-      timeout:50000000
+      timeout: 50000000
     });
     var toast: Toast = {
-        type: 'error',
-        title: 'Here is a Toast Title',
-        body: '<button class"btn btn-warning">Click Me</button>',
-        showCloseButton: true,
-        bodyOutputType: BodyOutputType.TrustedHtml,
-        onHideCallback:()=>{
-          this.customfunction();
-        }
-        
+      type: 'error',
+      title: 'Here is a Toast Title',
+      body: '<button class"btn btn-warning">Click Me</button>',
+      showCloseButton: true,
+      bodyOutputType: BodyOutputType.TrustedHtml,
+      onHideCallback: () => {
+        this.customfunction();
+      }
+
     };
 
     this.toasterService.pop(toast);
   }
-  customfunction(){
-    debugger;
+  customfunction() {
   }
 }

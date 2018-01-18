@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormsModule, FormControl, FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { FormsModule, FormControl, FormGroup, FormBuilder, FormArray,Validators } from '@angular/forms';
 import { FacilityService } from '../../facility.service';
 import { ActivatedRoute } from '@angular/router';
 import { MapsAPILoader, AgmMap } from '@agm/core';
@@ -29,21 +29,21 @@ export class FacilityEditorComponent implements OnInit {
     console.log("Add Client Init")
     this.facility = new FormGroup({
       id: new FormControl(),
-      name: new FormControl(),
-      image: new FormControl(),
-      imgType: new FormControl(),
+      name: new FormControl("",[Validators.required,Validators.pattern("^[A-Za-z 0-9'.]{2,30}$")]),
+      image: new FormControl(""),
+      imgType: new FormControl("",[Validators.required, Validators.minLength(2),Validators.pattern("^[a-z0-9'./]{2,30}$")]),
       geoX: new FormControl(),
       geoY: new FormControl(),
       address: this.formBuilder.group({
-        street: "",
-        address1: "",
-        address2: "",
-        country: "",
-        state: "",
-        city: "",
-        pinCode: "",
-        latitude: "",
-        longitude: ""
+        street: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-z0-9A-Z.]{2,30}$")]],
+        address1: ["", [Validators.required, Validators.minLength(2)]],
+        address2: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-z0-9A-Z'.]{2,30}$")]],
+        country: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-zA-Z'.]{2,30}$")]],
+        state: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-zA-Z'.]{2,30}$")]],
+        city: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-zA-Z'.]{2,30}$")]],
+        pinCode: ["", [Validators.required, Validators.minLength(6),Validators.pattern("^[0-9]{2,30}$")]],
+        latitude: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[0-9-.]{2,100}$")]],
+        longitude: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[0-9-.]{2,100}$")]]
       }),
       client:this.formBuilder.group({
         id:"",
@@ -85,7 +85,6 @@ export class FacilityEditorComponent implements OnInit {
     var self = this;
     let temp: any;
     let type = event.target.files[0].type;
-    debugger;
     var file: File = event.target.files[0];
     var myReader: FileReader = new FileReader();
     myReader.readAsDataURL(file);
@@ -118,7 +117,6 @@ export class FacilityEditorComponent implements OnInit {
       temp.image = res.facilityInfo.image;
       temp.client.id=res.facilityInfo.client.id;
       temp.client.name=res.facilityInfo.client.name;
-      debugger;
       temp.address.address1 = res.facilityInfo.address.address1
       temp.address.address2 = res.facilityInfo.address.address2;
       temp.address.street = res.facilityInfo.address.street;
@@ -143,8 +141,8 @@ export class FacilityEditorComponent implements OnInit {
   }
   onClientChange(event){
     let temp=this.facility.getRawValue();
-    temp.client.name=event.target.selectedOptions[0].innerText;
-    temp.client.id=event.target.value;
+    temp.client.name=event.source.triggerValue;
+    temp.client.id=event.value;
     this.facility.setValue(temp);
     this.selectedVal=event.target.value;
   }

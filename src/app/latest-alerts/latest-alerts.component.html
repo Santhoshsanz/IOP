@@ -29,10 +29,10 @@
         <a [routerLink]="'../'+[alert.AlertType=='Crawl'?'Client/AlertC/'+alert.ClientId+'/'+alert.FacilityId+'/'+alert.Id:'Client/AlertF/'+alert.ClientId+'/'+alert.FacilityId+'/'+alert.Id]"
             class="table-row table-content-row" *ngFor="let alert of alerts">
             <div class="table-cell white-bg">
-                <p class="table-cell-content font-01 font-size-02 font-weight-400 light-black">{{alert.id}}</p>
+                <p class="table-cell-content font-01 font-size-02 font-weight-400 light-black">{{alert.sensorId}}</p>
             </div>
             <div class="table-cell white-bg">
-                <p class="table-cell-content font-01 font-size-02 font-weight-400 light-black">{{alert.notes}}</p>
+                <p class="table-cell-content font-01 font-size-02 font-weight-400 light-black">{{alert.sensor[0].type}}</p>
             </div>
             <div class="table-cell white-bg">
                 <p class="table-cell-content font-01 font-size-02 font-weight-400 light-black">{{alert.facilityName}}</p>
@@ -42,7 +42,7 @@
                         <div class="left-block">
                             <div class="content">
                                 <div class="icon-wrap red-bg">
-                                    <img class="svg-convert rat" [src]="alert.sensor[0].type"  alt="">
+                                    <img class="svg-convert rat" [src]="alert.sensor[0].customImage"  alt="">
                                 </div>
                                 <div class="trap-name">
                                     <h5 class="font-01 font-size-05 font-weight-600 light-black text-uppercase">{{alert.notes}}</h5>
@@ -53,7 +53,7 @@
                             <div class="pos-center-wrap">
                                 <div class="pos-center">
                                     <div class="sensor-alert-id">
-                                        <h5 class="text-uppercase font-01 light-blue font-weight-700">#{{alert.id}}</h5>
+                                        <h5 class="text-uppercase font-01 light-blue font-weight-700">#{{alert.sensorId}}</h5>
                                     </div>
                                     <div class="sensor-alert-message">
                                         <p class="light-black font-01 font-size-03 font-weight-400">

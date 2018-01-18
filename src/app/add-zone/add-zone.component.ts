@@ -44,7 +44,6 @@ showModal:boolean
     var self=this;
     let temp:any;
     let type=event.target.files[0].type;
-    debugger;
     var file: File = event.target.files[0];
     var myReader: FileReader = new FileReader();
     myReader.readAsDataURL(file);

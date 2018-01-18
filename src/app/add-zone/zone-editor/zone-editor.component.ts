@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormsModule, FormControl, FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { FormsModule, FormControl, FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { CommonDataService } from '../../common-data.service';
 import { apiData } from '../../common';
 import { HttpHeaders } from '@angular/common/http'
@@ -22,9 +22,9 @@ export class ZoneEditorComponent implements OnInit {
   ngOnInit() {
     this.zone = new FormGroup({
       id: new FormControl(),
-      name: new FormControl(),
-      image: new FormControl(),
-      imgType: new FormControl(),
+      name: new FormControl("", [Validators.required, Validators.pattern("^[A-Za-z 0-9'.]{2,30}$")]),
+      image: new FormControl(""),
+      imgType: new FormControl("", [Validators.required, Validators.minLength(2), Validators.pattern("^[a-z0-9'./]{2,30}$")]),
       client: this.formBuilder.group({
         id: "",
         name: ""
@@ -85,6 +85,9 @@ export class ZoneEditorComponent implements OnInit {
       this.clientSelectedVal = res.zoneInfo.client.id;
       this.facilitySelectedVal = res.zoneInfo.facility.id;
       this.zone.setValue(temp);
+      this._commonDataService.getData(apiData.url + "/" + apiData.client + "/" + temp.client.id, header).subscribe((res: any) => {
+        this.facilities = res.clientInfo.facilities;
+      })
     });
   }
   getClients() {
@@ -107,10 +110,15 @@ export class ZoneEditorComponent implements OnInit {
 
   }
   onClientChange(event) {
+    let self = this;
     let temp = this.zone.getRawValue();
-    temp.client.name = event.target.selectedOptions[0].innerText;
-    temp.client.id = event.target.value;
-    this.facilities = this.clients[event.target.selectedIndex].facilities;
+    temp.client.name = event.source.triggerValue;
+    temp.client.id = event.value;
+    this.clients.filter(function (e, f) {
+      if (e.id == event.value) {
+        self.facilities = e.facilities;
+      }
+    })
     if (this.facilities) {
       temp.facility.name = this.facilities[0].name;
       temp.facility.id = this.facilities[0].id;
@@ -123,8 +131,8 @@ export class ZoneEditorComponent implements OnInit {
   }
   onFacilityChange(event) {
     let temp = this.zone.getRawValue();
-    temp.facility.name = event.target.selectedOptions[0].innerText;
-    temp.facility.id = event.target.value;
+    temp.facility.name = event.source.triggerValue;
+    temp.facility.id = event.value;
     this.zone.setValue(temp);
   }
 }

@@ -1,3 +1,4 @@
+@import "../../../../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 /* You can add global styles to this file, and also import other style files */
 body.preloader-running{
     overflow: hidden;
@@ -191,7 +192,15 @@ input:focus ~ label, input:valid ~ label 		{
 input:focus ~ .bar:before, input:focus ~ .bar:after {
   width:50%;
 }
-
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width:50%;
+  }
+   .formError:before, .formError:after {
+    width:50%;
+  }
+  .formError:before, .formError:after {
+      width:50%;
+    }
 /* HIGHLIGHTER ================================== */
 .highlight {
   position:absolute;
@@ -285,4 +294,22 @@ input:focus ~ .highlight {
 
 .formError:after,.formError:before{
 background-color: red!important;
+}
+.formError{
+    display: block!important;
+}
+
+
+.pad50{
+    padding:50px !important;
+}
+.formError+p{
+    display:block!important;
+}
+.bar +p{
+    display:none;
+}
+
+.alert-table-block .alert-table .table .table-content-row .table-cell {
+    max-width: 230px;
 }

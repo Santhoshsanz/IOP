@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="chart-wrapper">
+            <div class="chart-wrapper pad50">
                 <div class="title" style="margin-bottom:20px;">
                     <h4 class="font-01 font-size-05 font-weight-600 text-uppercase" style="display:-webkit-inline-box">
                         <span class="font-weight-300">Add</span> Zone</h4>
@@ -15,7 +15,9 @@
                             <div class="group ">
                                 <input type="text" required formControlName="name">
                                 <span class="highlight"></span>
-                                <span class="bar"></span>
+                                <span class="bar" [ngClass]="{formError: (!zone.controls.name.valid &&
+                                    !zone.controls.name.pristine)}"></span>
+                                <p>Please Enter a Valid Zone</p>
                                 <label>Zone Name</label>
                             </div>
                         </div>
@@ -28,39 +30,43 @@
                                 <span class="bar"></span>
                             </div>
                         </div>
+                    </div>
+                    <div class="form-group row">
                         <div class="col-sm-4">
-                            <button type="submit" class="btn btn-success" [disabled]="!zone.valid">Submit</button>
+                            <div formGroupName="client">
+                                <input required formControlName="name" hidden>
+                                <!-- <input required  hidden> -->
+                                <div class=" basic-container">
+                                    <mat-form-field>
+                                        <mat-select formControlName="id" placeholder="Select Client" (change)="onClientChange($event)">
+                                            <mat-option *ngFor="let client of clients" [value]="client.id">
+                                                {{ client.name }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div formGroupName="facility">
+                                <input required formControlName="name" hidden>
+                                <!-- <input required  hidden> -->
+                                <div class=" basic-container">
+                                    <mat-form-field>
+                                        <mat-select formControlName="id" placeholder="Select Facility" (change)="onFacilityChange($event)">
+                                            <mat-option *ngFor="let facility of facilities" [value]="facility.id">
+                                                {{ facility.name }}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-4">
-                                <label for="example-text-input" class="col-4 col-form-label">Client</label>
-                                <input type="input" formControlName="image" hidden>
-                                <input type="input" formControlName="id" hidden>
-                                <div class="col-8">
-                                    <select class="custom-select" (change)="onClientChange($event)" >
-                                        <option *ngFor="let client of clients" [value]="client.id" [selected]="client.id===clientSelectedVal">{{client.name}}</option>
-                                    </select>
-                                </div>
+                            <button type="submit" class="btn btn-success" [disabled]="!zone.valid">Submit</button>
                         </div>
-                        <div class="col-sm-4">
-                                <label for="example-text-input" class="col-4 col-form-label">Facilities</label>
-                                <input type="input" formControlName="image" hidden>
-                                <input type="input" formControlName="id" hidden>
-                                <div class="col-8">
-                                    <select class="custom-select" (change)="onFacilityChange($event)" [value]="facilitySelectedVal">
-                                        <option *ngFor="let facility of facilities" [value]="facility.id" [selected]="facility.id===facilitySelectedVal">{{facility.name}}</option>
-                                    </select>
-                                </div>
-                        </div>
-                        <div formGroupName="client">
-                                <input required formControlName="name" hidden>
-                                <input required formControlName="id" hidden>
-                            </div>
-                            <div formGroupName="facility">
-                                    <input required formControlName="name" hidden>
-                                    <input required formControlName="id" hidden>
-                                </div>
                     </div>
                     <p>Form value: {{ zone.value | json }}</p>
                 </form>

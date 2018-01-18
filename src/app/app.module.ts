@@ -28,17 +28,29 @@ import {ClientServiceService} from './client-service.service';
 import {FacilityService} from './facility.service';
 import { HttpClientModule,HttpClient,HttpRequest,HttpHeaders } from '@angular/common/http';
 import{SafeUrlPipe} from './safe-pipe';
-import {MapContentComponent} from '../app/add-facility/mapWrapper.component';
-import {FacilityEditorComponent} from '../app/add-facility/facility-editor/facility-editor.component';
-import {FacilityViewComponent} from '../app/add-facility/facilityView/facility-view.component';
-import {ClientEditorComponent} from '../app/add-client/client-editor/client-editor.component';
-import {ClientViewComponent} from '../app//add-client/client-view/client-view.component';
+import {MapContentComponent} from './add-facility/mapWrapper.component';
+import {FacilityEditorComponent} from './add-facility/facility-editor/facility-editor.component';
+import {FacilityViewComponent} from './add-facility/facilityView/facility-view.component';
+import {ClientEditorComponent} from './add-client/client-editor/client-editor.component';
+import {ClientViewComponent} from './add-client/client-view/client-view.component';
 import {BackComponent} from './shared/back.component';
-import {ZoneViewComponent} from '../app/add-zone/zone-view/zone-view.component';
-import {ZoneEditorComponent} from '../app/add-zone/zone-editor/zone-editor.component';
-import {CommonDataService} from '../app/common-data.service';
+import {ZoneViewComponent} from './add-zone/zone-view/zone-view.component';
+import {ZoneEditorComponent} from './add-zone/zone-editor/zone-editor.component';
+import {CommonDataService} from './common-data.service';
 import {ToasterModule, ToasterService, ToasterConfig} from 'angular2-toaster';
-import {ToastComponent} from '../app/shared/Toast/toast.component'
+import {ToastComponent} from './shared/Toast/toast.component';
+import { AddGatewayComponent } from './add-gateway/add-gateway.component';
+import {GatewayEditorComponent } from './add-gateway/edit-gateway/gateway-editor.component';
+import {GatewayViewComponent} from './add-gateway/view-gateway/gateway-view.component';
+import {SensorViewComponent } from './add-sensor/view-sensor/view-sensor.component';
+import {SensorEditorComponent} from "./add-sensor/edit-sensor/sensor-editor.component";
+
+
+//Material
+import {MatSelectModule} from '@angular/material';
+import {MatButtonModule} from '@angular/material'
+import {MatIconModule} from '@angular/material';
+
 const appRoutes: Routes = [
   { path: "", component: MissionControlComponent },
   {
@@ -105,8 +117,39 @@ const appRoutes: Routes = [
       }
     ]
   },{
+    path: 'AddGateway',
+    component: AddGatewayComponent,
+    children: [
+      {
+        path: '',
+        component:GatewayViewComponent 
+      },
+      {
+        path: 'Edit/:id',
+        component: GatewayEditorComponent
+      },
+      {
+        path: 'Add',
+        component: GatewayEditorComponent
+      }
+    ]
+  },{
     path: 'AddSensor',
-    component: AddSensorComponent
+    component: AddSensorComponent,
+    children: [
+      {
+        path: '',
+        component:SensorViewComponent 
+      },
+      {
+        path: 'Edit/:id',
+        component: SensorEditorComponent
+      },
+      {
+        path: 'Add',
+        component: SensorEditorComponent
+      }
+    ]
   },
   {
     path: 'FieldAgent',
@@ -158,7 +201,13 @@ const appRoutes: Routes = [
     ClientViewComponent,
     ZoneViewComponent,
     ZoneEditorComponent,
-    ToastComponent
+    ToastComponent,
+    AddGatewayComponent,
+    GatewayEditorComponent,
+    GatewayViewComponent,
+    AddGatewayComponent,
+    SensorViewComponent,
+    SensorEditorComponent
   ],
   imports: [
     BrowserModule,
@@ -168,6 +217,9 @@ const appRoutes: Routes = [
     HttpClientModule,
     ToasterModule,
     BrowserAnimationsModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatIconModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCzJqL_gU_zg7TLJoCqOEfF74jrsHxvIGQ',
       libraries: ["places"]

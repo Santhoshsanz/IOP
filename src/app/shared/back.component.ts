@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Location} from '@angular/common';
 @Component({
   selector: 'app-back',
-  template: `<button type="button" class="btn btn-success" (click)="back()">Back</button>`,
+  template: ` <div class="button-row">
+  <button mat-icon-button mat-raised-button (click)=back()><mat-icon><i class="material-icons">flip_to_back</i></mat-icon></button>
+  </div>`,
 })
 export class BackComponent implements OnInit {
   constructor(private _location:Location) { }

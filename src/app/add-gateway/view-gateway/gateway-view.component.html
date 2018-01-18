@@ -1,0 +1,63 @@
+<div class="alert-table-block">
+    <div class="alert-table">
+        <!-- Title -->
+        <div class="title" style="float:left">
+            <h4 class="font-01 font-size-05 font-weight-600 text-uppercase">
+                <span class="font-weight-300">All </span>Gateways</h4>
+        </div>
+        <div style="float:right">
+            <button class="btn btn-success" (click)="addGateway()">Add</button>
+        </div>
+        <!-- Alert Table : starts -->
+        <div class="table">
+            <!-- Table Head Row : starts -->
+            <div class="table-row table-head-row">
+                <div class="table-cell">
+                    <h4 class="table-head font-01 font-size-02 light-grey font-weight-400">IP</h4>
+                </div>
+                <div class="table-cell">
+                        <h4 class="table-head font-01 font-size-02 light-grey font-weight-400">Client Name</h4>
+                    </div>
+                <div class="table-cell">
+                    <h4 class="table-head font-01 font-size-02 light-grey font-weight-400">Facility Name</h4>
+                </div>
+                <div class="table-cell">
+                    <h4 class="table-head font-01 font-size-02 light-grey font-weight-400">Zone Name</h4>
+                </div>
+                <div class="table-cell">
+                    <h4 class="table-head font-01 font-size-02 light-grey font-weight-400">Gateway Name</h4>
+                </div>
+                <div class="table-cell">
+                    <h4 class="table-head font-01 font-size-02 light-grey font-weight-400">Actions</h4>
+                </div>
+            </div>
+            <!-- Table Head Row : ends -->
+            <!-- Table Content Row One : starts -->
+            <a class="table-row table-content-row" *ngFor="let m of model">
+                <div class="table-cell white-bg">
+                    <p class="table-cell-content font-01 font-size-02 font-weight-400 light-black">{{m.ip}}</p>
+                </div>
+                <div class="table-cell white-bg">
+                        <p class="table-cell-content font-01 font-size-02 font-weight-400 light-black">{{m.client.name}}</p>
+                    </div>
+                <div class="table-cell white-bg">
+                    <p class="table-cell-content font-01 font-size-02 font-weight-400 light-black">{{m.facility.name}}</p>
+                </div>
+                <div class="table-cell white-bg">
+                    <p class="table-cell-content font-01 font-size-02 font-weight-400 light-black">{{m.zone.name}}</p>
+                </div>
+                <div class="table-cell white-bg">
+                    <p class="table-cell-content font-01 font-size-02 font-weight-400 light-black">{{m.name}}</p>
+                </div>
+                <div class="table-cell white-bg">
+                    <p class="table-cell-content font-01 font-size-02 font-weight-400 light-black">
+                        <button class="btn btn-warning" (click)=deleteGateway(m.id)>Delete</button>
+                        <button class="btn btn-danger" (click)=editGateway(m.id)>Edit</button>
+                    </p>
+                </div>
+            </a>
+            <!-- Table Content Row One : ends -->
+        </div>
+        <!-- Alert Table : ends -->
+    </div>
+</div>

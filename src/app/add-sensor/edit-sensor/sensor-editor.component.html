@@ -1,0 +1,131 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="chart-wrapper pad50">
+        <div class="title" style="margin-bottom:20px;">
+          <h4 class="font-01 font-size-05 font-weight-600 text-uppercase" style="display:-webkit-inline-box">
+            <span class="font-weight-300">Add</span> Sensor</h4>
+          <div style="float:right">
+            <app-back></app-back>
+          </div>
+        </div>
+        <form novalidate [formGroup]="sensor" (ngSubmit)="onSubmit(sensor)">
+          <div class="form-group row">
+            <div class="col-sm-6">
+              <div class="group ">
+                <input type="text" required formControlName="sensorId">
+                <span class="highlight"></span>
+                <span class="bar" [ngClass]="{formError: (!sensor.controls.sensorId.valid &&
+                  !sensor.controls.sensorId.pristine)}"></span>
+                <p>Please Enter a Valid Sensor Device Name</p>
+                <label>Sensor Device ID</label>
+              </div>
+            </div>
+            <div class="col-sm-6">
+                <div class=" basic-container">
+                    <mat-form-field>
+                      <mat-select formControlName="type" placeholder="Select Sensor Type">
+                        <mat-option value="Rat">Rat </mat-option>
+                        <mat-option value="Mouse">Mouse </mat-option>
+                        <mat-option value="Cockroach"> Cockroach</mat-option>
+                        <mat-option value="Rodent"> Rodent</mat-option>
+                        <mat-option value="Bed Bug"> Bed Bug</mat-option>
+                        <mat-option value="House Fly"> House Fly</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+            </div>
+          </div>
+          <div class="form-group row">
+              <div class="col-sm-4">
+                  <div formGroupName="client">
+                    <input required formControlName="name" hidden>
+                    <!-- <input required  hidden> -->
+                    <div class=" basic-container">
+                      <mat-form-field>
+                        <mat-select formControlName="id" placeholder="Select Client" (change)="onClientChange($event)">
+                          <mat-option *ngFor="let client of clients" [value]="client.id">
+                            {{ client.name }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+            <div class="col-sm-4">
+              <div formGroupName="facility">
+                <input required formControlName="name" hidden>
+                <!-- <input required  hidden> -->
+                <div class=" basic-container">
+                  <mat-form-field>
+                    <mat-select formControlName="id" placeholder="Select Facility" (change)="onFacilityChange($event)">
+                      <mat-option *ngFor="let facility of facilities" [value]="facility.id">
+                        {{ facility.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-4">
+              <div formGroupName="zone">
+                <input required formControlName="name" hidden>
+                <!-- <input required  hidden> -->
+                <div class=" basic-container">
+                  <mat-form-field>
+                    <mat-select formControlName="id" placeholder="Select Zone" (change)="onZoneChange($event)">
+                      <mat-option *ngFor="let zone of zonesList" [value]="zone.id">
+                        {{ zone.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <!-- <label for="example-text-input" class="col-4 col-form-label">Gateways</label> -->
+              <div formGroupName="gateway">
+                <input required formControlName="name" hidden>
+                <!-- <input required  hidden> -->
+                <div class=" basic-container">
+                  <mat-form-field>
+                    <mat-select formControlName="id" placeholder="Select Gateway" (change)="onGatewayChange($event)">
+                      <mat-option *ngFor="let gateway of gatewayList" [value]="gateway.id">
+                        {{ gateway.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <!-- <div formGroupName="client">
+              <input required formControlName="name" hidden>
+              <input required formControlName="id" hidden>
+            </div> -->
+            <!-- <div formGroupName="facility">
+              <input required formControlName="name" hidden>
+              <input required formControlName="id" hidden>
+            </div> -->
+            <!-- <div formGroupName="zone">
+              <input required formControlName="name" hidden>
+              <input required formControlName="id" hidden>
+            </div>  -->
+            <!-- <div formGroupName="gateway">
+                <input required formControlName="name" hidden>
+                <input required formControlName="id" hidden>
+            </div> -->
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-4">
+              <button type="submit" class="btn btn-success" [disabled]="!sensor.valid">Submit</button>
+            </div>
+          </div>
+          <p>Form value: {{ sensor.value | json }}</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

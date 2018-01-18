@@ -1,0 +1,103 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="chart-wrapper pad50">
+        <div class="title" style="margin-bottom:20px;">
+          <h4 class="font-01 font-size-05 font-weight-600 text-uppercase" style="display:-webkit-inline-box">
+            <span class="font-weight-300">Add</span> Gateway</h4>
+          <div style="float:right">
+            <app-back></app-back>
+          </div>
+        </div>
+        <form novalidate [formGroup]="gateway" (ngSubmit)="onSubmit(gateway)">
+          <div class="form-group row">
+            <div class="col-sm-4">
+              <div class="group ">
+                <input type="text" required formControlName="name">
+                <span class="highlight"></span>
+                <span class="bar" [ngClass]="{formError: (!gateway.controls.name.valid &&
+                  !gateway.controls.name.pristine)}"></span>
+                <p>Please Enter a Valid Gateway Name</p>
+                <label>Gateway Name</label>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="group ">
+                <input type="text" required formControlName="hostName">
+                <span class="highlight"></span>
+                <span class="bar" [ngClass]="{formError: (!gateway.controls.hostName.valid &&
+                      !gateway.controls.hostName.pristine)}"></span>
+                <p>Please Enter a Valid Gateway Host Name</p>
+                <label>Gateway Host Name</label>
+              </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="group ">
+                  <input type="text" required formControlName="ip">
+                  <span class="highlight"></span>
+                  <span class="bar" [ngClass]="{formError: (!gateway.controls.ip.valid &&
+                        !gateway.controls.ip.pristine)}"></span>
+                  <p>Please Enter a Valid IP</p>
+                  <label>Gateway IP</label>
+                </div>
+              </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-4">
+              <div formGroupName="client">
+                <input required formControlName="name" hidden>
+                <!-- <input required  hidden> -->
+                <div class=" basic-container">
+                  <mat-form-field>
+                    <mat-select formControlName="id" placeholder="Select Client" (change)="onClientChange($event)">
+                      <mat-option *ngFor="let client of clients" [value]="client.id">
+                        {{ client.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div formGroupName="facility">
+                <input required formControlName="name" hidden>
+                <!-- <input required  hidden> -->
+                <div class=" basic-container">
+                  <mat-form-field>
+                    <mat-select formControlName="id" placeholder="Select Facility" (change)="onFacilityChange($event)">
+                      <mat-option *ngFor="let facility of facilities" [value]="facility.id">
+                        {{ facility.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div formGroupName="zone">
+                <input required formControlName="name" hidden>
+                <!-- <input required  hidden> -->
+                <div class=" basic-container">
+                  <mat-form-field>
+                    <mat-select formControlName="id" placeholder="Select Zone" (change)="onZoneChange($event)">
+                      <mat-option *ngFor="let zone of zonesList" [value]="zone.id">
+                        {{ zone.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+              <div class="col-sm-4">
+                  <button type="submit" class="btn btn-success" [disabled]="!gateway.valid">Submit</button>
+              </div>
+          </div>
+          <p>Form value: {{ gateway.value | json }}</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

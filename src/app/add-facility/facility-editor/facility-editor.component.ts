@@ -15,6 +15,7 @@ import { } from '@types/googlemaps';
 export class FacilityEditorComponent implements OnInit {
   @ViewChild('fileLogo')
   file: any;
+  disabbleBtn:boolean;
   id: any;
   facility: FormGroup;
   lat: any;
@@ -29,18 +30,18 @@ export class FacilityEditorComponent implements OnInit {
     console.log("Add Client Init")
     this.facility = new FormGroup({
       id: new FormControl(),
-      name: new FormControl("",[Validators.required,Validators.pattern("^[A-Za-z 0-9'.]{2,30}$")]),
+      name: new FormControl("",[Validators.required,Validators.pattern("^[A-Za-z 0-9-#'.]{2,30}$")]),
       image: new FormControl(""),
-      imgType: new FormControl("",[Validators.required, Validators.minLength(2),Validators.pattern("^[a-z0-9'./]{2,30}$")]),
+      imgType: new FormControl("",[Validators.pattern("^[a-z0-9'./]{2,30}$")]),
       geoX: new FormControl(),
       geoY: new FormControl(),
       address: this.formBuilder.group({
-        street: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-z0-9A-Z.]{2,30}$")]],
+        street: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-z0-9 A-Z.]{2,30}$")]],
         address1: ["", [Validators.required, Validators.minLength(2)]],
-        address2: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-z0-9A-Z'.]{2,30}$")]],
-        country: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-zA-Z'.]{2,30}$")]],
-        state: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-zA-Z'.]{2,30}$")]],
-        city: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-zA-Z'.]{2,30}$")]],
+        address2: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-z0-9 A-Z'.]{2,30}$")]],
+        country: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-z A-Z'.]{2,30}$")]],
+        state: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-z A-Z'.]{2,30}$")]],
+        city: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-z A-Z'.]{2,30}$")]],
         pinCode: ["", [Validators.required, Validators.minLength(6),Validators.pattern("^[0-9]{2,30}$")]],
         latitude: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[0-9-.]{2,100}$")]],
         longitude: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[0-9-.]{2,100}$")]]

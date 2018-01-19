@@ -1,6 +1,6 @@
 //10.190.106.205
 export const apiData:any={
-"url":"http://10.190.111.185:8080/api/v1/",
+"url":"http://ec2-13-126-250-246.ap-south-1.compute.amazonaws.com/brandenburge-iop-anana/api/v1/",
 "client":"client",
 "zone":"zone",
 "sensor":"sensor",

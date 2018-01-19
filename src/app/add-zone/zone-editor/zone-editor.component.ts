@@ -18,13 +18,14 @@ export class ZoneEditorComponent implements OnInit {
   facilities: any;
   clientSelectedVal: any
   facilitySelectedVal: any
+  dissableBtn:boolean;
   constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, private _commonDataService: CommonDataService, private _location: Location, private clientService: ClientServiceService) { }
   ngOnInit() {
     this.zone = new FormGroup({
       id: new FormControl(),
-      name: new FormControl("", [Validators.required, Validators.pattern("^[A-Za-z 0-9'.]{2,30}$")]),
+      name: new FormControl("", [Validators.required, Validators.pattern("^[A-Za-z 0-9-#'.]{2,30}$")]),
       image: new FormControl(""),
-      imgType: new FormControl("", [Validators.required, Validators.minLength(2), Validators.pattern("^[a-z0-9'./]{2,30}$")]),
+      imgType: new FormControl("", [ Validators.pattern("^[a-z0-9'./]{2,30}$")]),
       client: this.formBuilder.group({
         id: "",
         name: ""

@@ -18,7 +18,7 @@
                 <input type="text" required formControlName="name">
                 <span class="highlight"></span>
                 <span class="bar" [ngClass]="{formError: (!client.controls.name.valid &&
-                !client.controls.name.pristine)}" ></span>
+                !client.controls.name.pristine)}"></span>
                 <p>Please Enter a Valid Name</p>
                 <label>Client Name</label>
               </div>
@@ -48,7 +48,7 @@
                   <input type="text" required formControlName="address1" autocorrect="off" autocapitalize="off" spellcheck="off" #search>
                   <!-- <input type="text" required formControlName="address1" hidden> -->
                   <span class="highlight"></span>
-                  <span class="bar" [ngClass]="{formError: (!client.controls.logoUrl.valid && client.controls.logoUrl.touched)}"></span>
+                  <span class="bar" [ngClass]="{formError: (!client.controls.address.controls.latitude.valid && !client.controls.address.controls.address1.pristine)}"></span>
                   <!-- <label class="font-01 font-size-03 font-weight-600 text-uppercase">Address Line 1</label> -->
                 </div>
               </div>
@@ -59,8 +59,8 @@
                   <input type="text" required formControlName="street">
                   <span class="highlight"></span>
                   <span class="bar" [ngClass]="{formError: (!client.controls.address.controls.street.valid &&
-                    !client.controls.address.controls.street.pristine)}" ></span>
-                    <p>Please Enter a Valid Street Name</p>
+                    !client.controls.address.controls.street.pristine)}"></span>
+                  <p>Please Enter a Valid Street Name</p>
                   <label>Street</label>
                 </div>
               </div>
@@ -70,7 +70,7 @@
                   <span class="highlight"></span>
                   <span class="bar" [ngClass]="{formError: (!client.controls.address.controls.address2.valid &&
                     !client.controls.address.controls.address2.pristine)}"></span>
-                    <p>Please Enter a Valid Address</p>
+                  <p>Please Enter a Valid Address</p>
                   <label>Address Line 1</label>
                 </div>
               </div>
@@ -82,7 +82,7 @@
                   <span class="highlight"></span>
                   <span class="bar" [ngClass]="{formError: (!client.controls.address.controls.country.valid &&
                     !client.controls.address.controls.country.pristine)}"></span>
-                    <p>Please Enter a Valid Country Name</p>
+                  <p>Please Enter a Valid Country Name</p>
                   <label>Country</label>
                 </div>
               </div>
@@ -94,7 +94,7 @@
                   <span class="highlight"></span>
                   <span class="bar" [ngClass]="{formError: (!client.controls.address.controls.state.valid &&
                     !client.controls.address.controls.state.pristine)}"></span>
-                    <p>Please Enter a Valid State Name</p>
+                  <p>Please Enter a Valid State Name</p>
                   <label>State</label>
                 </div>
               </div>
@@ -104,7 +104,7 @@
                   <span class="highlight"></span>
                   <span class="bar" [ngClass]="{formError: (!client.controls.address.controls.city.valid &&
                     !client.controls.address.controls.city.pristine)}"></span>
-                    <p>Please Enter a Valid City Name</p>
+                  <p>Please Enter a Valid City Name</p>
                   <label>City</label>
                 </div>
               </div>
@@ -115,13 +115,13 @@
                   <input type="text" required formControlName="pinCode">
                   <span class="highlight"></span>
                   <span class="bar" [ngClass]="{formError: (!client.controls.address.controls.pinCode.valid &&
-                    !client.controls.address.controls.pinCode.pristine)}" ></span>
-                    <p>Please Enter a Valid PinCode</p>
+                    !client.controls.address.controls.pinCode.pristine)}"></span>
+                  <p>Please Enter a Valid PinCode</p>
                   <label>PinCode</label>
                 </div>
               </div>
               <div class="col-sm-4">
-                <button type="submit" class="btn btn-success font-01 font-02" [disabled]="!client.valid">Submit</button>
+                <app-submit class="font-01 font-02" [disabbleBtn]="!client.valid"></app-submit>
               </div>
             </div>
           </div>
@@ -129,6 +129,7 @@
       </div>
 
     </div>
-     <p>Form value: {{ client.value | json }}</p> 
+    <p>Form value: {{ client.value | json }}</p>
+    <p>{{client.valid}}</p>
   </div>
 </div>

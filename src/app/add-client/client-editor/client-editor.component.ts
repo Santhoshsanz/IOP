@@ -32,16 +32,16 @@ export class ClientEditorComponent implements OnInit {
     console.log("Add Client Init")
     this.client = new FormGroup({
       id: new FormControl(""),
-      name: new FormControl("", [Validators.required,Validators.pattern("^[A-Za-z 0-9'.]{2,30}$")]),
-      logoUrl: new FormControl("", [Validators.required]),
-      imgType: new FormControl("", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-z0-9'./]{2,30}$")]),
+      name: new FormControl("", [Validators.required,Validators.pattern("^[A-Za-z 0-9'-#.]{2,30}$")]),
+      logoUrl: new FormControl(""),
+      imgType: new FormControl("", [Validators.pattern("^[a-z0-9'./]{2,30}$")]),
       address: this.formBuilder.group({
-        street: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-z0-9A-Z.]{2,30}$")]],
+        street: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-z 0-9A-Z.]{2,30}$")]],
         address1: ["", [Validators.required, Validators.minLength(2)]],
-        address2: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-z0-9A-Z'.]{2,30}$")]],
-        country: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-zA-Z'.]{2,30}$")]],
-        state: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-zA-Z'.]{2,30}$")]],
-        city: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-zA-Z'.]{2,30}$")]],
+        address2: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-z0-9A-Z '. #-()]{2,30}$")]],
+        country: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-z A-Z'.]{2,30}$")]],
+        state: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-z A-Z'.]{2,30}$")]],
+        city: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-z A-Z'.]{2,30}$")]],
         pinCode: ["", [Validators.required, Validators.minLength(6),Validators.pattern("^[0-9]{2,30}$")]],
         latitude: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[0-9-.]{2,100}$")]],
         longitude: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[0-9-.]{2,100}$")]]
@@ -110,7 +110,7 @@ export class ClientEditorComponent implements OnInit {
     let currentFacility = this.clientService.getClient(id).subscribe((res: any) => {
       temp.id = res.clientInfo.id;
       temp.name = res.clientInfo.name;
-      temp.image = res.clientInfo.logoUrl;
+      temp.logoUrl = res.clientInfo.logoUrl;
       temp.address.address1 = res.clientInfo.address.address1
       temp.address.address2 = res.clientInfo.address.address2;
       temp.address.street = res.clientInfo.address.street;

@@ -81,6 +81,9 @@
                                    <li>
                                       <a [routerLink]="['../AddSensor']" class="font-size-02 font-02 font-weight-500">Sensors</a>
                                    </li>
+                                   <li>
+                                        <a [routerLink]="['../AddUser']" class="font-size-02 font-02 font-weight-500">Users</a>
+                                     </li>
                                 </ul>
                              </li>
                 <li class="has-dropdown">
@@ -292,7 +295,7 @@
    
           <router-outlet></router-outlet>
             <!-- Notification Page : starts -->
-            <section class="notifications-page full-width">
+            <section class="notifications-page full-width" id="closeNotification">
                 <div class="row no-gutters">
                     <div class="col-md-6">
 
@@ -339,7 +342,7 @@
                                 <h1 class="font-01 white font-size-07 font-weight-600"><span class="font-weight-300">System</span> Notification</h1>
                             </div>
                             <div>
-                                <div class="page-close" id="closeNotification" style="cursor:pointer" >
+                                <div class="page-close"  style="cursor:pointer" >
                                     <img src="assets/images/close-button.svg" alt="">
                                 </div>
                             </div>

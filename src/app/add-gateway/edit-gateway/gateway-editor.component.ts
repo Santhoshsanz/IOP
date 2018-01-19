@@ -20,13 +20,14 @@ export class GatewayEditorComponent implements OnInit {
   clientSelectedVal: any;
   facilitySelectedVal: any;
   zoneSelectedVal:any;
+  disabbleBtn:boolean;
   constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, private _commonDataService: CommonDataService, private _location: Location, private clientService: ClientServiceService) { }
   ngOnInit() {
     this.gateway = new FormGroup({
       id: new FormControl(),
-      name: new FormControl("", [Validators.required,Validators.pattern("^[A-Za-z 0-9'.]{2,30}$")]),
+      name: new FormControl("", [Validators.required,Validators.pattern("^[A-Za-z 0-9-'.]{2,30}$")]),
       ip:new FormControl("", [Validators.required,Validators.pattern("^[0-9.a-zA-Z ]{2,50}$")]),
-      hostName: new FormControl("", [Validators.required,Validators.pattern("^[A-Za-z 0-9'.]{2,30}$")]),
+      hostName: new FormControl("", [Validators.required,Validators.pattern("^[A-Za-z -0-9'.]{2,30}$")]),
       client: this.formBuilder.group({
         id: "",
         name: ""
@@ -64,20 +65,21 @@ export class GatewayEditorComponent implements OnInit {
     let header = new HttpHeaders();
     header.append("Access-Control-Allow-Origin", "*");
     let currentFacility = this._commonDataService.getData(apiData.url + "/" + apiData.gateway + "/" + id, header).subscribe((res: any) => {
-      temp.id = res.GatewayInfo.id;
-      temp.ip=res.GatewayInfo.ip;
-      temp.name = res.GatewayInfo.name;
-      temp.hostName = res.GatewayInfo.hostName;
-      temp.client.id = res.GatewayInfo.client.id;
-      temp.facility.id = res.GatewayInfo.facility.id;
-      temp.client.name = res.GatewayInfo.client.name;
-      temp.facility.name = res.GatewayInfo.facility.name;
-      temp.zone.name = res.GatewayInfo.zone.name;
-      temp.zone.id = res.GatewayInfo.zone.id;
-      console.log(res.GatewayInfo.zone.id);
-      this.clientSelectedVal = res.GatewayInfo.client.id;
-      this.facilitySelectedVal = res.GatewayInfo.facility.id;
-      this.zoneSelectedVal=res.GatewayInfo.zone.id;
+      debugger;
+      temp.id = res.gatewayInfo.id;
+      temp.ip=res.gatewayInfo.ip;
+      temp.name = res.gatewayInfo.name;
+      temp.hostName = res.gatewayInfo.hostName;
+      temp.client.id = res.gatewayInfo.client.id;
+      temp.facility.id = res.gatewayInfo.facility.id;
+      temp.client.name = res.gatewayInfo.client.name;
+      temp.facility.name = res.gatewayInfo.facility.name;
+      temp.zone.name = res.gatewayInfo.zone.name;
+      temp.zone.id = res.gatewayInfo.zone.id;
+      console.log(res.gatewayInfo.zone.id);
+      this.clientSelectedVal = res.gatewayInfo.client.id;
+      this.facilitySelectedVal = res.gatewayInfo.facility.id;
+      this.zoneSelectedVal=res.gatewayInfo.zone.id;
       this.gateway.setValue(temp);
       this.clientService.getAllClients().subscribe((res: any) => {
         this.clients = res.clientsInfo;

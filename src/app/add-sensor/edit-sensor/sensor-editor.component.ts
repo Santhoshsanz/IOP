@@ -12,6 +12,7 @@ import { ClientServiceService } from '../../client-service.service'
   templateUrl: './sensor-editor.component.html'
 })
 export class SensorEditorComponent implements OnInit {
+  disabbleBtn:boolean;
   sensor: FormGroup;
   id: any;
   selectedType: any;

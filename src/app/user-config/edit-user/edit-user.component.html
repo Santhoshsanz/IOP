@@ -1,0 +1,131 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="chart-wrapper pad50">
+          <div class="title" style="margin-bottom:20px;">
+            <h4 class="font-01 font-size-05 font-weight-600 text-uppercase" style="display:-webkit-inline-box">
+              <span class="font-weight-300">Add</span> Client</h4>
+            <div style="float:right">
+              <app-back></app-back>
+              <toast [config]="config"></toast>
+              <!-- <button class="btn btn-primary" (click)="popToast()">Pop</button> -->
+            </div>
+          </div>
+          <form novalidate [formGroup]="client" (ngSubmit)="onSubmit(client)">
+            <div class="form-group row">
+              <div class="col-sm-4">
+                <div class="group ">
+                  <input type="text" required formControlName="name">
+                  <span class="highlight"></span>
+                  <span class="bar" ></span>
+                  <p>Please Enter a Valid Name</p>
+                  <label>Client Name</label>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                  <div class="group ">
+                    <input type="text" required formControlName="email">
+                    <span class="highlight"></span>
+                    <span class="bar" ></span>
+                    <p>Please Enter a Valid Email</p>
+                    <label>Client Email</label>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="group ">
+                      <input type="text" required formControlName="phone">
+                      <span class="highlight"></span>
+                      <span class="bar" ></span>
+                      <p>Please Enter a Valid Phone No</p>
+                      <label>Client Phone No</label>
+                    </div>
+                  </div>
+            </div>
+            <div formGroupName="address">
+              <h4 style="margin-bottom:30px">Address</h4>
+              <div class="form-group row">
+                <div class="col-sm-12">
+                  <div class="group">
+                    <input type="text" required formControlName="address1" autocorrect="off" autocapitalize="off" spellcheck="off" #search>
+                    <!-- <input type="text" required formControlName="address1" hidden> -->
+                    <span class="highlight"></span>
+                    <span class="bar" ></span>
+                    <label>Select Nearest Address</label>
+                    <!-- <label class="font-01 font-size-03 font-weight-600 text-uppercase">Address Line 1</label> -->
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-4">
+                  <div class="group">
+                    <input type="text" required formControlName="street">
+                    <span class="highlight"></span>
+                    <span class="bar" ></span>
+                    <p>Please Enter a Valid Street Name</p>
+                    <label>Street</label>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="group">
+                    <input type="text" required formControlName="address2">
+                    <span class="highlight"></span>
+                    <span class="bar" ></span>
+                    <p>Please Enter a Valid Address</p>
+                    <label>Address Line 1</label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-4">
+                  <div class="group">
+                    <input type="text" required formControlName="country">
+                    <span class="highlight"></span>
+                    <span class="bar" ></span>
+                    <p>Please Enter a Valid Country Name</p>
+                    <label>Country</label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-4">
+                  <div class="group">
+                    <input type="text" required formControlName="state">
+                    <span class="highlight"></span>
+                    <span class="bar" ></span>
+                    <p>Please Enter a Valid State Name</p>
+                    <label>State</label>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="group">
+                    <input type="text" required formControlName="city">
+                    <span class="highlight"></span>
+                    <span class="bar" ></span>
+                    <p>Please Enter a Valid City Name</p>
+                    <label>City</label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-4">
+                  <div class="group">
+                    <input type="text" required formControlName="pinCode">
+                    <span class="highlight"></span>
+                    <span class="bar" ></span>
+                    <p>Please Enter a Valid PinCode</p>
+                    <label>PinCode</label>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <app-submit class="font-01 font-02" [disabbleBtn]="!client.valid"></app-submit>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+  
+      </div>
+      <p>Form value: {{ client.value | json }}</p>
+      <p>{{client.valid}}</p>
+    </div>
+  </div>

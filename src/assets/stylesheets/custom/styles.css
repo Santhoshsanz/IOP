@@ -313,3 +313,14 @@ background-color: red!important;
 .alert-table-block .alert-table .table .table-content-row .table-cell {
     max-width: 230px;
 }
+.mat-fab.mat-primary, .mat-mini-fab.mat-primary, .mat-raised-button.mat-primary
+{background-color: rgb(76, 163, 174);
+  
+}
+[disabled].mat-button, [disabled].mat-fab, [disabled].mat-icon-button, [disabled].mat-mini-fab, [disabled].mat-raised-button {
+    cursor: not-allowed ;
+}
+button:focus {
+    outline: none !important;
+    
+}

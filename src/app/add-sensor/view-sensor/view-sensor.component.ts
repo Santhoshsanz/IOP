@@ -43,14 +43,14 @@ export class SensorViewComponent implements OnInit {
   }
   getNewSensors(){
     let headers=new HttpHeaders();
-    this._commonDataService.getData("http://10.190.111.185:8080/api/v1/sensor/new/09499b82-0b8e-48c7-b0db-50bfab3ee5dc",headers)
+    this._commonDataService.getData(apiData.url+"sensor/new/879facea-57bc-4bda-872a-533b7d627c2b",headers)
     .subscribe((res:any)=>{
       this.newSensor=res.newlyAddedSensor;
     })
   }
   rejectSensor(id){
     let headers=new HttpHeaders();
-    this._commonDataService.deleteData("http://10.190.111.185:8080/api/v1/sensor/reject/",id).subscribe((res:any)=>{
+    this._commonDataService.deleteData(apiData.url+"sensor/reject/",id).subscribe((res:any)=>{
         this.getNewSensors();
     })
   }

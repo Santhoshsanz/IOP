@@ -34,6 +34,7 @@ import {FacilityViewComponent} from './add-facility/facilityView/facility-view.c
 import {ClientEditorComponent} from './add-client/client-editor/client-editor.component';
 import {ClientViewComponent} from './add-client/client-view/client-view.component';
 import {BackComponent} from './shared/back.component';
+import {SubmitComponent} from './shared/submit.component';
 import {ZoneViewComponent} from './add-zone/zone-view/zone-view.component';
 import {ZoneEditorComponent} from './add-zone/zone-editor/zone-editor.component';
 import {CommonDataService} from './common-data.service';
@@ -44,12 +45,17 @@ import {GatewayEditorComponent } from './add-gateway/edit-gateway/gateway-editor
 import {GatewayViewComponent} from './add-gateway/view-gateway/gateway-view.component';
 import {SensorViewComponent } from './add-sensor/view-sensor/view-sensor.component';
 import {SensorEditorComponent} from "./add-sensor/edit-sensor/sensor-editor.component";
-
-
+import { LoginComponent } from './login/login.component';
+import { AddUserComponent } from './user-config/add-user/add-user.component';
+import { EditUserComponent } from './user-config//edit-user/edit-user.component';
+import {UserConfigComponent} from './user-config/user-config.component'
 //Material
 import {MatSelectModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material'
 import {MatIconModule} from '@angular/material';
+import {MatCardModule} from '@angular/material';
+
+
 
 const appRoutes: Routes = [
   { path: "", component: MissionControlComponent },
@@ -152,6 +158,24 @@ const appRoutes: Routes = [
     ]
   },
   {
+    path: 'AddUser',
+    component: UserConfigComponent,
+    children: [
+      {
+        path: '',
+        component:AddUserComponent 
+      },
+      {
+        path: 'Edit/:id',
+        component: EditUserComponent
+      },
+      {
+        path: 'Add',
+        component: EditUserComponent
+      }
+    ]
+  },
+  {
     path: 'FieldAgent',
     component: FieldAgentComponent
   },
@@ -197,6 +221,7 @@ const appRoutes: Routes = [
     FacilityViewComponent,
     FacilityEditorComponent,
     BackComponent,
+    SubmitComponent,
     ClientEditorComponent,
     ClientViewComponent,
     ZoneViewComponent,
@@ -207,7 +232,11 @@ const appRoutes: Routes = [
     GatewayViewComponent,
     AddGatewayComponent,
     SensorViewComponent,
-    SensorEditorComponent
+    SensorEditorComponent,
+    LoginComponent,
+    AddUserComponent,
+    EditUserComponent,
+    UserConfigComponent
   ],
   imports: [
     BrowserModule,
@@ -220,6 +249,7 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatButtonModule,
     MatIconModule,
+    MatCardModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCzJqL_gU_zg7TLJoCqOEfF74jrsHxvIGQ',
       libraries: ["places"]

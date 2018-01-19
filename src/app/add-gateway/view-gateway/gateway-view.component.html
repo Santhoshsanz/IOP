@@ -6,7 +6,9 @@
                 <span class="font-weight-300">All </span>Gateways</h4>
         </div>
         <div style="float:right">
-            <button class="btn btn-success" (click)="addGateway()">Add</button>
+            <button mat-icon-button mat-raised-button (click)=addGateway()>
+                <mat-icon>add</mat-icon>
+            </button>
         </div>
         <!-- Alert Table : starts -->
         <div class="table">
@@ -16,8 +18,8 @@
                     <h4 class="table-head font-01 font-size-02 light-grey font-weight-400">IP</h4>
                 </div>
                 <div class="table-cell">
-                        <h4 class="table-head font-01 font-size-02 light-grey font-weight-400">Client Name</h4>
-                    </div>
+                    <h4 class="table-head font-01 font-size-02 light-grey font-weight-400">Client Name</h4>
+                </div>
                 <div class="table-cell">
                     <h4 class="table-head font-01 font-size-02 light-grey font-weight-400">Facility Name</h4>
                 </div>
@@ -38,8 +40,8 @@
                     <p class="table-cell-content font-01 font-size-02 font-weight-400 light-black">{{m.ip}}</p>
                 </div>
                 <div class="table-cell white-bg">
-                        <p class="table-cell-content font-01 font-size-02 font-weight-400 light-black">{{m.client.name}}</p>
-                    </div>
+                    <p class="table-cell-content font-01 font-size-02 font-weight-400 light-black">{{m.client.name}}</p>
+                </div>
                 <div class="table-cell white-bg">
                     <p class="table-cell-content font-01 font-size-02 font-weight-400 light-black">{{m.facility.name}}</p>
                 </div>
@@ -51,8 +53,8 @@
                 </div>
                 <div class="table-cell white-bg">
                     <p class="table-cell-content font-01 font-size-02 font-weight-400 light-black">
-                        <button class="btn btn-warning" (click)=deleteGateway(m.id)>Delete</button>
-                        <button class="btn btn-danger" (click)=editGateway(m.id)>Edit</button>
+                            <button mat-icon-button (click)=deleteGateway(m.id)><mat-icon>delete</mat-icon></button>
+                            <button mat-icon-button (click)=editGateway(m.id)><mat-icon>edit</mat-icon></button>                               
                     </p>
                 </div>
             </a>

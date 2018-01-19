@@ -46,6 +46,8 @@
         "assets/javascripts/libs/shuffle.min.js",
         "assets/javascripts/libs/owl-carousel.min.js",
         "assets/javascripts/libs/maps/japanLow.js",
+        "assets/javascripts/libs/maps/worldHigh.js",
+        "assets/javascripts/libs/maps/worldLow.js",
         "assets/javascripts/custom/ammap-init.js",
         "assets/javascripts/custom/charts-init.js",
         "assets/javascripts/custom/main.js"

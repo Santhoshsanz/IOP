@@ -1,41 +1,13 @@
 <section class="container-fluid">
-  <div class="row no-gutters">
-    <div class="col-md-12">
-      <section class="content-pane-left">
-        <div class="inner">
-          <div class="container">
-            <div class="panel-wrapper">
-             <table>
-               <tr>
-                 <th>Add</th>
-                 <th>Edit</th>
-               </tr>
-               <tr>
-                 <td>
-                    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#addEdit">Add</button>
-                 </td>
-                 <td><button type="button" class="btn btn-primary btn-lg btn-block" (click)="edit()">Edit</button></td>
-               </tr>
-             </table>
-            </div>
-          </div>
-          <div class="modal fade" id="addEdit" role="dialog">
-              <div class="modal-dialog">
-                  <!-- Modal content-->
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      </div>
-                      <!-- Add Edit User Modal -->
-                     <div class="panel-wrapper">
-                  
-                     </div>
-                  </div>
-              </div>
-          </div>
+    <div class="row no-gutters">
+        <div class="col-md-12">
+            <section class="content-pane-left">
+                <div class="inner">
+                    <div class="container">
+                        <router-outlet></router-outlet>
+                    </div>
+                </div>
+            </section>
         </div>
-      </section>
-      <p></p>
     </div>
-  </div>
 </section>

@@ -168,10 +168,10 @@ export class MissionControlComponent implements OnInit {
         "event": "rendered",
         "method": function (e) {
           var map = e.chart;
-          map.initialZoomLevel = map.zoomLevel(3);
+          map.initialZoomLevel = map.zoomLevel(1);
           map.initialZoomLatitude = map.zoomLatitude();
           map.initialZoomLongitude = map.zoomLongitude();
-          map.zoomIn();
+          map.zoomOut();
         }
       }],
     }

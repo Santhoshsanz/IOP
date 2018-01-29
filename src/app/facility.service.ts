@@ -13,13 +13,13 @@ export class FacilityService {
   constructor(private _http: HttpClient) { }
 
   getAllFacility(): Observable<any> {
-    console.log("Service  ");
+    //console.log("Service  ");
     let headers = new HttpHeaders();
     headers.append("Access-Control-Allow-Origin", "*");
     return this._http.get(this.url, { headers })
   }
   saveFacility(data): Observable<any> {
-    console.log("Save");
+    //console.log("Save");
     let headers = new HttpHeaders();
     headers.append("Access-Control-Allow-Origin", "*");
     return this._http.post(this.url, data, { headers })

@@ -26,7 +26,7 @@
         </div>
         <!-- Table Head Row : ends -->
         <!-- Table Content Row One : starts -->
-        <a [routerLink]="'../'+[alert.AlertType=='Crawl'?'Client/AlertC/'+alert.ClientId+'/'+alert.FacilityId+'/'+alert.Id:'Client/AlertF/'+alert.ClientId+'/'+alert.FacilityId+'/'+alert.Id]"
+        <a [routerLink]="'../'+[alert.AlertType=='Crawl'?'Client/AlertC/'+alert.sensor[0].client.id+'/'+alert.sensor[0].facility.id+'/'+alert.id:'Client/AlertF/'+alert.sensor[0].client.id+'/'+alert.sensor[0].facility.id+'/'+alert.id]"
             class="table-row table-content-row" *ngFor="let alert of alerts">
             <div class="table-cell white-bg">
                 <p class="table-cell-content font-01 font-size-02 font-weight-400 light-black">{{alert.sensorId}}</p>

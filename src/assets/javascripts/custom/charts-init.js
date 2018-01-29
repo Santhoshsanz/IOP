@@ -154,7 +154,7 @@ var palleteColors={mice:"#1c37c6",
     // Mission Control Chart One
     if($('#pest-vs-facility').length)
     {
-       console.log("Pest")
+       //console.log("Pest")
         pestChart("pest-vs-facility");
     }
     
@@ -190,7 +190,7 @@ var palleteColors={mice:"#1c37c6",
 
     // Single ALERT rat01
     if($('#rodentDir').length){
-        console.log("Rodent")
+        //console.log("Rodent")
         rodentDirection("rodentDir");
     }
     
@@ -201,7 +201,7 @@ var palleteColors={mice:"#1c37c6",
 
     // Single ALERT rat03
     if($('#activityGauge').length){
-        console.log("")
+        //console.log("")
         renderActivitygauge('activityGauge');
     }
     
@@ -344,7 +344,7 @@ customerViewChart2= function(id){
     var yTitle='Pest Alerts';
     var xTitle="Facility Name";
     renderStackedChart(data,category,title,yTitle,xTitle,id);
-    // console.log("called")
+    // //console.log("called")
     // renderStackedChart(data,category2,title,yTitle,xTitle,'pest-vs-facility-client-view3');
 };
 customerViewChart23= function(id){
@@ -380,7 +380,7 @@ customerViewChart23= function(id){
     var yTitle='Pest Alerts';
     var xTitle="Facility Name";
     renderStackedChart(data,category,title,yTitle,xTitle,id);
-    // console.log("called")
+    // //console.log("called")
     // renderStackedChart(data,category2,title,yTitle,xTitle,'pest-vs-facility-client-view3');
 };
 customerViewChart22= function(id){
@@ -416,7 +416,7 @@ customerViewChart22= function(id){
     var yTitle='Pest Alerts';
     var xTitle="Facility Name";
     renderStackedChart(data,category,title,yTitle,xTitle,id);
-    // console.log("called")
+    // //console.log("called")
     // renderStackedChart(data,category2,title,yTitle,xTitle,'pest-vs-facility-client-view3');
 };
 // Pest Vs Time Customer View
@@ -1089,7 +1089,7 @@ renderBarChart(data,category,title,yTitle,xTitle,id);
 };
 
 gauge=function(id){
-    console.log("Guage")
+    //console.log("Guage")
     var data= [{
         name: 'Time',
         data: [25],
@@ -1266,7 +1266,7 @@ renderRangeMap=function(data,category,title,yTitle,xTitle,id){
 });
 };
 renderBarChart=function(data,category,title,yTitle,xTitle,id){
-    console.log(id);
+    //console.log(id);
     Highcharts.chart(id, {
         chart: {
             type: 'column'

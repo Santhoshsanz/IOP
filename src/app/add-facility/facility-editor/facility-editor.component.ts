@@ -27,7 +27,7 @@ export class FacilityEditorComponent implements OnInit {
     private facilityService: FacilityService, private route: ActivatedRoute, private _location: Location,
     private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private clientService: ClientServiceService) { }
   ngOnInit() {
-    console.log("Add Client Init")
+    //console.log("Add Client Init")
     this.facility = new FormGroup({
       id: new FormControl(),
       name: new FormControl("",[Validators.required,Validators.pattern("^[A-Za-z 0-9-#'.]{2,30}$")]),

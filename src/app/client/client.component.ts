@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DataServiceService } from '../data-service.service'
+import { DataServiceService } from '../data-service.service';
+import{CommonDataService} from "../common-data.service";
+import{apiData} from "../common";
+import {HttpHeaders} from "@angular/common/http"
 
 declare let jQuery: any;
 @Component({
@@ -8,15 +11,26 @@ declare let jQuery: any;
     styleUrls: ['./client.component.css']
 })
 export class ClientComponent implements OnInit {
-    ClientsData: object;
-    constructor(private data: DataServiceService) { }
+    clientsData: object;
+    constructor(private data: DataServiceService,private _commonDataService:CommonDataService) { }
     ngOnInit() {
-        this.ClientsData = this.data.getClientsStack();
-        console.log(this.ClientsData)
+        let headers=new HttpHeaders();
+        this._commonDataService.getData(apiData.url+apiData.client,headers).subscribe((res:any)=>{
+            if(res.status=="ok"){
+                    this.clientsData=res.clientsInfo;
+                    //console.log(this.clientsData)
+            }else{
+                throw new Error("getClients Failed")
+            }
+        },error=>{
+            throw new Error(JSON.stringify(error))
+        })
+        this.initJs();
+    }
+    ngAfterViewInit() {
+        //console.log("After Vew Init Client")
         jQuery.getScript('./assets/javascripts/custom/client-init.js', function () {
-        });
-        console.log("Call Init on Clint ");
-        if (jQuery('.re-active-sensor-tab').length) {
+        }); if (jQuery('.re-active-sensor-tab').length) {
             jQuery('.re-active-sensor-tab').each(function () {
                 var activeValueData = jQuery(this).data("active-value");
                 var activeValue = 100 - activeValueData + 2;
@@ -31,10 +45,11 @@ export class ClientComponent implements OnInit {
             });
         }
     }
-    ngAfterViewInit() {
-        console.log("After Vew Init Client")
+    initJs(){
         jQuery.getScript('./assets/javascripts/custom/client-init.js', function () {
-        }); if (jQuery('.re-active-sensor-tab').length) {
+        });
+        //console.log("Call Init on Clint ");
+        if (jQuery('.re-active-sensor-tab').length) {
             jQuery('.re-active-sensor-tab').each(function () {
                 var activeValueData = jQuery(this).data("active-value");
                 var activeValue = 100 - activeValueData + 2;

@@ -1,0 +1,124 @@
+<section class="top-bar blue-bg">
+    <!-- Left Area : starts -->
+    <div class="left-area">
+        <!-- Block 01 -->
+        <div class="user-name-block">
+            <div class="pos-center-wrap">
+                <div class="pos-center">
+                    <p class="inner font-02 font-size-03 font-weight-300 white">
+                        <span class="welcome-text">Hey,</span>
+                        <span class="user-name font-weight-600">Mathew K</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- Block 02 -->
+        <div class="quick-picks-block">
+            <div class="quick-picks-block-inner">
+                <div class="pos-center-wrap">
+                    <div class="pos-center">
+                        <p class="inner font-02 font-size-03 font-weight-600 white">
+                            <span class="icon">
+                                <img src="assets/images/header/icon-quick-picks.svg" alt="icon">
+                            </span>
+                            <span class="title">Quick Picks</span>
+                            <span class="direction-icon fa fa-angle-down white"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Dropdown -->
+            <div class="quick-picks-dropdown dark-blue-bg">
+                <div class="quick-picks-dropdown-inner">
+                    <a href="single-fieldtech.html" class="item text-center field-tech-activity-report">
+                        <img class="icon svg-convert" src="assets/images/quick-picks/icon-01.svg" alt="icon">
+                        <h4 class="title font-size-03 font-01 font-weight-600 white">Field Tech Activity Report</h4>
+                    </a>
+                    <a href="single-facility.html" class="item text-center field-tech-performance">
+                        <img class="icon svg-convert" src="assets/images/quick-picks/icon-02.svg" alt="icon">
+                        <h4 class="title font-size-03 font-01 font-weight-600 white">Nestle Tokyo Facility</h4>
+                    </a>
+                    <a href="single-customer.html" class="item text-center customer-review-report">
+                        <img class="icon svg-convert" src="assets/images/quick-picks/icon-03.svg" alt="icon">
+                        <h4 class="title font-size-03 font-01 font-weight-600 white">Nestle Japan Client</h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Block 03 -->
+        <div class="language-switcher-block has-dropdown">
+            <div class="language-switcher-block-inner">
+                <div class="pos-center-wrap">
+                    <div class="pos-center">
+                        <p class="inner font-02 font-size-03 font-weight-600 white">
+                            <span class="icon">
+                                <img src="assets/images/header/icon-language.svg" alt="icon">
+                            </span>
+                            <span class="title">Language</span>
+                            <span class="direction-icon fa fa-angle-down white"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Dropdown -->
+            <ul class="dropdown white-bg">
+                <li>
+                    <a href="index.html" class="font-size-02 font-02 font-weight-500 light-black">English</a>
+                </li>
+                <li>
+                    <a href="index-jp.html" class="font-size-02 font-02 font-weight-500 light-black">Japanese</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Left Area : ends -->
+    <!-- Right Area : starts -->
+    <div class="right-area">
+        <!-- Block 04 -->
+        <div class="date-block customDate">
+            <div class="pos-center-wrap">
+                <div class="pos-center ">
+                    <p class="inner font-02 font-size-03 font-weight-600 white" style="margin-top:0px">
+                        <span class="icon">
+                            <img src="assets/images/header/icon-date-time.svg" alt="icon">
+                        </span>
+                        <span class="title">15
+                            <sup>th</sup> November, 2017</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- Block 05 -->
+        <div class="events-block">
+            <div class="pos-center-wrap">
+                <div class="pos-center">
+                    <a href="#" class="inner font-02 font-size-03 font-weight-600 white">
+                        <span class="title font-size-03">Events</span>
+                        <span class="icon" style="position:relative">
+                            <img src="assets/images/header/icon-events.svg" alt="icon">
+                            <span class="count font-size-01 red-bg" style="position:absolute;top:-5px;left:15px;">{{events.length}}</span>
+                            <span class="count font-size-01 red-bg" style="position:absolute;top:-5px;left:15px;" *ngif>0</span>
+                        </span>
+
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Block 06 -->
+        <div class="notification-block">
+            <div class="pos-center-wrap">
+                <div class="pos-center">
+                    <a href="#" class="inner font-02 font-size-03 font-weight-600 white">
+                        <span class="title font-size-03">Notification</span>
+                        <span class="icon" style="position:relative">
+                            <img src="assets/images/header/icon-notifications.svg" alt="icon" style="position:relative">
+                            <span class="count font-size-01 green-bg" style="position:absolute;top:-5px;left:15px;">{{newSensors.length}}</span>
+                        </span>
+
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

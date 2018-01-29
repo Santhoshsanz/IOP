@@ -31,10 +31,10 @@ export class CrawlAlertComponent implements OnInit {
       this.alertId=params['alert'];
    });
    this.alert=this.data.getALertsI(this.clientId,this.facilityId,this.alertId);
-   console.log(this.alert)
+   //console.log(this.alert)
   }
   ngAfterViewInit(){
-    console.log("After Vew Init")
+    //console.log("After Vew Init")
     //jQuery.getScript('./assets/javascripts/custom/alertC-init.js', function(){
     //});
    jQuery(this.elRef.nativeElement).find('.svg-convert').svgConvert();

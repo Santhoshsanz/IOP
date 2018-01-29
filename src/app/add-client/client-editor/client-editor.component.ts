@@ -10,7 +10,6 @@ import { } from '@types/googlemaps';
 import { ToasterModule, ToasterService, ToasterConfig, Toast } from 'angular2-toaster';
 import { BodyOutputType } from 'angular2-toaster';
 import { ToastComponent } from '../../shared/Toast/toast.component';
-import { PasswordValidators } from 'ngx-validators';
 @Component({
   selector: 'app-add-facility',
   templateUrl: './client-editor.component.html'
@@ -32,7 +31,7 @@ export class ClientEditorComponent implements OnInit {
     console.log("Add Client Init")
     this.client = new FormGroup({
       id: new FormControl(""),
-      name: new FormControl("", [Validators.required,Validators.pattern("^[A-Za-z 0-9'-#.]{2,30}$")]),
+      name: new FormControl("", [Validators.required,Validators.pattern("^[A-Za-z0-9 ]{2,30}$")]),
       logoUrl: new FormControl(""),
       imgType: new FormControl("", [Validators.pattern("^[a-z0-9'./]{2,30}$")]),
       address: this.formBuilder.group({

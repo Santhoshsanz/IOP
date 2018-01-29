@@ -60,15 +60,16 @@ export class SensorEditorComponent implements OnInit {
     let header = new HttpHeaders();
     header.append("Access-Control-Allow-Origin", "*");
     this._commonDataService.postData(sensor.value, apiData.url + "/" + apiData.sensor, header).subscribe((res: any) => {
+      debugger;
       this._location.back();
     })
   }
   // editSensor(id) {
-  //   console.log(this.clients);
-  //   console.log(this.facilities);
-  //   console.log(this.zonesList);
-  //   console.log(this.gatewayList);
-  //   console.log("Edit Sensor")
+  //   //console.log(this.clients);
+  //   //console.log(this.facilities);
+  //   //console.log(this.zonesList);
+  //   //console.log(this.gatewayList);
+  //   //console.log("Edit Sensor")
   //   let temp = this.sensor.getRawValue();
   //   let header = new HttpHeaders();
   //   header.append("Access-Control-Allow-Origin", "*");
@@ -147,7 +148,7 @@ export class SensorEditorComponent implements OnInit {
           temp.facility.id = this.facilities[0].id;
         }
         this.sensor.setValue(temp);
-        console.log(this.facilities);
+        //console.log(this.facilities);
     })
   }
 
@@ -175,7 +176,7 @@ export class SensorEditorComponent implements OnInit {
         temp.zone.name = self.zonesList[0].name;
         this.sensor.setValue(temp)
         this._commonDataService.getData(apiData.url + apiData.zone + "/" + this.zonesList[0].id, headers).subscribe((res: any) => {
-          console.log(res);
+          //console.log(res);
           self.gatewayList = res.zoneInfo.gateways;
           let temp = this.sensor.getRawValue();
           temp.gateway.id = self.gatewayList[0].id;
@@ -205,7 +206,7 @@ export class SensorEditorComponent implements OnInit {
       if (res.facilityInfo) {
         if (res.facilityInfo.zones != null) {
           if (res.facilityInfo.zones.length > 0) {
-            console.log(res.facilityInfo.zones)
+            //console.log(res.facilityInfo.zones)
             self.zonesList = res.facilityInfo.zones;
             temp.zone.id = self.zonesList[0].id;
             temp.zone.name = self.zonesList[0].name;

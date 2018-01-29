@@ -131,7 +131,7 @@ div#preloader {
   position:relative; 
   margin-bottom:25px; 
 }
-input 				{
+.group input 				{
   font-size:18px;
   padding:10px 10px 10px 5px;
   display:block;
@@ -140,10 +140,10 @@ input 				{
   border-bottom:1px solid #2b60f6;
   background-color: transparent;
 }
-input:focus 		{ outline:none; }
+.group input:focus 		{ outline:none; }
 
 /* LABEL ======================================= */
-label 				 {
+.group label 				 {
   color:#999; 
   font-size:18px;
   font-weight:normal;
@@ -157,7 +157,7 @@ label 				 {
 }
 
 /* active state */
-input:focus ~ label, input:valid ~ label 		{
+.group input:focus ~ label, input:valid ~ label 		{
   top:-20px;
   font-size:14px;
   color:#5264AE;
@@ -189,10 +189,10 @@ input:focus ~ label, input:valid ~ label 		{
 }
 
 /* active state */
-input:focus ~ .bar:before, input:focus ~ .bar:after {
+.group input:focus ~ .bar:before, input:focus ~ .bar:after {
   width:50%;
 }
-input:focus ~ .bar:before, input:focus ~ .bar:after {
+.group input:focus ~ .bar:before, input:focus ~ .bar:after {
     width:50%;
   }
    .formError:before, .formError:after {
@@ -213,7 +213,7 @@ input:focus ~ .bar:before, input:focus ~ .bar:after {
 }
 
 /* active state */
-input:focus ~ .highlight {
+.group input:focus ~ .highlight {
   -webkit-animation:inputHighlighter 0.3s ease;
   -moz-animation:inputHighlighter 0.3s ease;
   animation:inputHighlighter 0.3s ease;
@@ -323,4 +323,27 @@ background-color: red!important;
 button:focus {
     outline: none !important;
     
+}
+.mat-select, .mat-option{
+    font-family: "Assistant", sans-serif !important;
+    font-size: 16px;
+    line-height: 23px;
+}
+.mat-form-field-underline {
+    background-color: rgb(44, 95, 246);
+}
+.mat-form-field-invalid .mat-form-field-ripple {
+    background-color: #2b60f6
+}
+.group2 label{
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: -22px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
 }

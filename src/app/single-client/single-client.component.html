@@ -1,5 +1,4 @@
-
-<section class="contain-fluid single-customer"  *ngFor="let client of clients">
+<section class="contain-fluid single-customer">
   <div class="row no-gutters">
     <div class="col-md-7">
 
@@ -12,31 +11,27 @@
 
               <!-- Block Title -->
               <div class="block-title">
-                <h4 class="font-01 font-weight-600 text-uppercase"><span class="font-weight-300"></span>{{client.ClientName}}</h4>
+                <h4 class="font-01 font-weight-600 text-uppercase">
+                  <span class="font-weight-300"></span>{{client?.name}}</h4>
               </div>
 
               <!-- Button -->
               <div class="switch-user-button">
                 <div class="button has-dropdown round-button switch-button hover-blue white-bg">
-                  <a href="#" class="font-02 font-size-01 light-black font-weight-400">Switch Client<span class="direction-icon fa fa-map-marker"></span></a>
+                  <a href="#" class="font-02 font-size-01 light-black font-weight-400">Switch Client
+                    <span class="direction-icon fa fa-map-marker"></span>
+                  </a>
                   <ul class="dropdown">
-                    <li><a [routerLink]="['../1']" class="font-size-02 font-01">Nestle</a></li>
-                    <li><a [routerLink]="['../2']" class="font-size-02 font-01">Hilton</a></li>
-                    <li><a [routerLink]="['../3']" class="font-size-02 font-01">Yoshinoya</a></li>
+                    <li *ngFor="let singleClient of allClients" >
+                      <a [routerLink]="['../'+singleClient?.id]" class="font-size-02 font-01">{{singleClient?.name}}</a>
+                    </li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
           <!-- Map Block : starts -->
-          <div class="map-block">
-            <div class="row">
-              <div class="offset-md-1"></div>
-              <div class="col-md-10">
-                <div class="map" id="single-customer-maps"></div>
-              </div>
-            </div>
-          </div>
+          <app-map-component [facilityData]="facilityData"></app-map-component>
           <!-- Map Block : ends -->
           <!-- Info Bubble Block : starts -->
           <div class="info-bubble-block">
@@ -55,7 +50,6 @@
                   <div class="info-bubble-text">
                     <h5 class="font-02 font-weight-400 font-size-02 light-black">Active Alerts</h5>
                   </div>
-
                 </div>
               </div>
 
@@ -65,7 +59,8 @@
                   <div class="info-bubble-image">
                     <img class="svg-convert" src="assets/images/info-bubble/icon-02.svg" alt="info-bubble">
                     <div class="count-to-wrap">
-                      <p><span class="count-to font-weight-400 font-01" data-from="0" data-to="-87"></span>%</p>
+                      <p>
+                        <span class="count-to font-weight-400 font-01" data-from="0" data-to="-87"></span>%</p>
                     </div>
                   </div>
                   <div class="info-bubble-text">
@@ -80,7 +75,9 @@
                   <div class="info-bubble-image">
                     <img class="svg-convert" src="assets/images/info-bubble/icon-03.svg" alt="info-bubble">
                     <div class="count-to-wrap">
-                      <p><span class="count-to font-weight-400 font-01" data-from="0" data-to="40"></span></p>
+                      <p>
+                        <span class="count-to font-weight-400 font-01" data-from="0" data-to="40"></span>
+                      </p>
                     </div>
                   </div>
                   <div class="info-bubble-text">
@@ -95,7 +92,8 @@
                   <div class="info-bubble-image">
                     <img class="svg-convert" src="assets/images/info-bubble/icon-04.svg" alt="info-bubble">
                     <div class="count-to-wrap">
-                      <p><span class="count-to font-weight-400 font-01" data-from="0" data-to="77"></span>%</p>
+                      <p>
+                        <span class="count-to font-weight-400 font-01" data-from="0" data-to="77"></span>%</p>
                     </div>
                   </div>
                   <div class="info-bubble-text">
@@ -110,7 +108,9 @@
                   <div class="info-bubble-image">
                     <img class="svg-convert" src="assets/images/info-bubble/icon-05.svg" alt="info-bubble">
                     <div class="count-to-wrap">
-                      <p><span class="count-to font-weight-400 font-01" data-from="0" data-to="5"></span></p>
+                      <p>
+                        <span class="count-to font-weight-400 font-01" data-from="0" data-to="5"></span>
+                      </p>
                     </div>
                   </div>
                   <div class="info-bubble-text">
@@ -122,19 +122,19 @@
           </div>
           <!-- Info Bubble Block : ends -->
 
-        
+
 
           <!-- Alert Table Block : starts -->
           <div class="alert-table-block">
-                            <div class="row">
+            <div class="row">
               <div class="offset-md-1"></div>
               <div class="col-md-10">
-                                     <!-- Insert Latest Alerts here -->
-                               <app-latest-alerts [alerts]="alerts"></app-latest-alerts>
-                               <!-- Ends -->
-                                </div>
-                            </div>
-                        </div>
+                <!-- Insert Latest Alerts here -->
+                <app-latest-alerts [alerts]="alerts"></app-latest-alerts>
+                <!-- Ends -->
+              </div>
+            </div>
+          </div>
           <!-- Alert Table Block : ends -->
 
         </div>
@@ -154,7 +154,7 @@
               <div class="offset-md-3"></div>
               <div class="col-md-6">
                 <div class="client-logo">
-                  <img [src]="client.ClientLogoUrl" alt="">
+                  <img [src]="client?.ClientLogoUrl" alt="">
                 </div>
                 <div class="client-location text-right">
                   <h5 class="font-size-06 font-01 light-black font-weight-400"></h5>
@@ -170,7 +170,7 @@
                   <a class="black font-01 font-weight-600 font-size-05" href="tel:544789 5050">544789 5050</a>
                 </div>
                 <div class="client-email">
-                  <a class="light-black font-01 font-weight-400 font-size-04" href="">{{client.ClientEmail}}</a>
+                  <a class="light-black font-01 font-weight-400 font-size-04" href="">{{client?.email}}</a>
                 </div>
               </div>
             </div>
@@ -204,46 +204,58 @@
           </div>
           <!-- Client Extra Options : ends -->
 
-         <!-- Client Facilities Block : starts -->
-								<div class="client-facilities-block">
-									<div class="row">
-										<div class="col-md-12">
-											<div class="title text-left">
-												<h4 class="light-black text-uppercase font-size-05 font-01 font-weight-600"><span class="font-weight-300">Client</span> Facilities</h4>
-											</div>
+          <!-- Client Facilities Block : starts -->
+          <div class="client-facilities-block">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="title text-left">
+                  <h4 class="light-black text-uppercase font-size-05 font-01 font-weight-600">
+                    <span class="font-weight-300">Client</span> Facilities</h4>
+                </div>
 
-											<!-- Facility Carousel : starts  theme-carousel -->
-											<div id="theme-carousel" data-animatein="fadeIn" data-animateout="slideOutDown" data-autoplay="false" data-autoplaytimeout="3500" data-autoplayhoverpause="false" data-autoheight="false" data-center="false" data-loop="true" data-itemsdefault="2" data-margin="13" data-stagepadding="0" data-startposition="0" data-slideby="1" data-nav="false" data-dots="true" data-touchdrag="true" data-mousedrag="true" data-xsnumber="1" data-smnumber="1" data-mdnumber="2" >
-												<div>
-													<a [routerLink]="['./'+facility.FacilityName]" class="first-block item client-facilitiy-link text-center" style="width:100%;display:inline-block;"  *ngFor="let facility of client.Facilities">
-													  	<span class="id-one light-black font-01 font-weight-600 font-size-05">{{facility.FacilityId}}</span>
-														<span class="location light-black font-01 font-weight-600 font-size-05"></span>
-														<span class="id-two light-black font-01 font-weight-600 font-size-06 text-uppercase">{{facility.FacilityName}}</span>
-													</a>
-											</div>
-											</div>
-											<!-- Facility Carousel : ends -->
+                <!-- Facility Carousel : starts  theme-carousel -->
+                <div id="theme-carousel" data-animatein="fadeIn" data-animateout="slideOutDown" data-autoplay="false" data-autoplaytimeout="3500"
+                  data-autoplayhoverpause="false" data-autoheight="false" data-center="false" data-loop="true" data-itemsdefault="2"
+                  data-margin="13" data-stagepadding="0" data-startposition="0" data-slideby="1" data-nav="false" data-dots="true"
+                  data-touchdrag="true" data-mousedrag="true" data-xsnumber="1" data-smnumber="1" data-mdnumber="2">
+                  <div>
+                    <a [routerLink]="['./'+facility?.id]" class="first-block item client-facilitiy-link text-center" style="width:100%;display:inline-block;"
+                      *ngFor='let facility of client?.facilities'>
+                      <!-- <span class="id-one light-black font-01 font-weight-600 font-size-05">{{facility.id}}</span> -->
+                      <span class="location light-black font-01 font-weight-600 font-size-05"></span>
+                      <span class="id-two light-black font-01 font-weight-600 font-size-06 text-uppercase">{{facility==null?"":facility.name}}</span>
+                    </a>
+                  </div>
+                </div>
+                <!-- Facility Carousel : ends -->
 
-										</div>
-									</div>
-								</div>
-								<!-- Client Facilities Block : ends -->
+              </div>
+            </div>
+          </div>
+          <!-- Client Facilities Block : ends -->
 
 
           <!-- Client Chart One : starts -->
           <div class="chart-block-wrap space-top">
             <div class="title">
-              <h4 class="font-01 font-size-05 font-weight-600 text-uppercase"><span class="font-weight-300">Pest activity last 30 days - </span>Top 10 facilities</h4>
+              <h4 class="font-01 font-size-05 font-weight-600 text-uppercase">
+                <span class="font-weight-300">Pest activity last 30 days - </span>Top 10 facilities</h4>
             </div>
             <div class="switch-facility-button" style="float:right;border: 1px solid #979797;border-radius: 20px;">
-                <div class="button round-button has-dropdown hover-blue switch-button white-bg">
-                  <a href="#" class="font-02 font-size-01 light-black font-weight-400">Options<span class="direction-icon "></span></a>
-                  <ul class="dropdown">
-                    <li><a href="#" class="font-size-02 font-01">Expand</a></li>
-                    <li><a href="#" class="font-size-02 font-01">Date Range</a></li>
-                  </ul>
-                </div>
+              <div class="button round-button has-dropdown hover-blue switch-button white-bg">
+                <a href="#" class="font-02 font-size-01 light-black font-weight-400">Options
+                  <span class="direction-icon "></span>
+                </a>
+                <ul class="dropdown">
+                  <li>
+                    <a href="#" class="font-size-02 font-01">Expand</a>
+                  </li>
+                  <li>
+                    <a href="#" class="font-size-02 font-01">Date Range</a>
+                  </li>
+                </ul>
               </div>
+            </div>
             <!-- <div id="pest-vs-facility-client-view" class="chart-block"></div> -->
             <div [ng2-highcharts]="optionsPest30" class="chart-block"></div>
           </div>
@@ -252,17 +264,24 @@
           <!-- Client Chart Two : starts-->
           <div class="chart-block-wrap space-top">
             <div class="title">
-              <h4 class="font-01 font-size-05 font-weight-600 text-uppercase"><span class="font-weight-300">Pest activity </span>over the last 12 months</h4>
+              <h4 class="font-01 font-size-05 font-weight-600 text-uppercase">
+                <span class="font-weight-300">Pest activity </span>over the last 12 months</h4>
             </div>
             <div class="switch-facility-button" style="float:right;border: 1px solid #979797;border-radius: 20px;">
-                <div class="button round-button has-dropdown hover-blue switch-button white-bg">
-                  <a href="#" class="font-02 font-size-01 light-black font-weight-400">Options<span class="direction-icon "></span></a>
-                  <ul class="dropdown">
-                    <li><a href="#" class="font-size-02 font-01">Expand</a></li>
-                    <li><a href="#" class="font-size-02 font-01">Date Range</a></li>
-                  </ul>
-                </div>
+              <div class="button round-button has-dropdown hover-blue switch-button white-bg">
+                <a href="#" class="font-02 font-size-01 light-black font-weight-400">Options
+                  <span class="direction-icon "></span>
+                </a>
+                <ul class="dropdown">
+                  <li>
+                    <a href="#" class="font-size-02 font-01">Expand</a>
+                  </li>
+                  <li>
+                    <a href="#" class="font-size-02 font-01">Date Range</a>
+                  </li>
+                </ul>
               </div>
+            </div>
             <!-- <div id="pest-vs-time-client-view"  class="chart-block"></div> -->
             <div [ng2-highcharts]="optionsPest30" class="chart-block"></div>
           </div>

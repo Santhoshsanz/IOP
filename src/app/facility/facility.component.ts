@@ -25,7 +25,7 @@ export class FacilityComponent implements OnInit {
   private router:Router) { }
 
   ngOnInit() {
-    console.log("Init")
+    //console.log("Init")
     this.sub = this.route.params.subscribe(params => {
       this.clientId = params['client']; 
       this.facilityId=params['facility'];
@@ -33,12 +33,12 @@ export class FacilityComponent implements OnInit {
  
   this.clients=this.data.getClients(this.clientId);
   this.facility=this.data.getFacilty(this.clientId,this.facilityId);
-  console.log("below")
-  console.log(this.clients);
-  console.log("here")
-  console.log(this.facility);
+  //console.log("below")
+  //console.log(this.clients);
+  //console.log("here")
+  //console.log(this.facility);
   this.alerts=this.facility[0].Alerts
-  console.log(this.facility[0].IaqIndex)
+  //console.log(this.facility[0].IaqIndex)
   switch(this.facility[0].IaqIndex/10){
     case 1:{
       this.bg="bg-gradientPurple"
@@ -81,7 +81,7 @@ export class FacilityComponent implements OnInit {
   }
 
   ngAfterViewInit(){
-    console.log("After Vew Init Facility")
+    //console.log("After Vew Init Facility")
     jQuery.getScript('./assets/javascripts/custom/facility-init.js', function(){
     });
     jQuery(this.elRef.nativeElement).find('.count-to').each(function() {
@@ -95,11 +95,11 @@ facilityChange(){
     this.clientId = params['client']; 
     this.facilityId=params['facility'];
  });
- console.log(this.facilityId);
+ //console.log(this.facilityId);
 //  this.clients=this.data.getClients(this.clientId);
 //  this.facility=this.data.getFacilty(this.clientId,this.facilityId);
 }
 ngOnChanges(){
-  console.log("onChange")
+  //console.log("onChange")
 }
 }

@@ -38,7 +38,7 @@ export class ZoneEditorComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = params['id'];
       if (this.id != null) {
-        console.log("param Zone")
+        //console.log("param Zone")
         this.editZone(this.id);
       }
     })
@@ -71,7 +71,7 @@ export class ZoneEditorComponent implements OnInit {
     })
   }
   editZone(id) {
-    console.log("Edit ZOne")
+    //console.log("Edit ZOne")
     let temp = this.zone.getRawValue();
     let header = new HttpHeaders();
     header.append("Access-Control-Allow-Origin", "*");
@@ -104,7 +104,7 @@ export class ZoneEditorComponent implements OnInit {
           temp.facility.id = this.facilities[0].id;
         }
         this.zone.setValue(temp);
-        console.log(this.facilities);
+        //console.log(this.facilities);
       }
 
     })

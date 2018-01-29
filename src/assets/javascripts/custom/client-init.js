@@ -212,7 +212,7 @@
 
 //         //Add sizer width
 //         $grid.find('.sizer').each(function () {
-//             console.log("sizer running");
+//             //console.log("sizer running");
 //             $(this).css({
 //                 'width': width + '%',
 //             });

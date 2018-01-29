@@ -13,7 +13,7 @@ export class SingleFieldAgentComponent implements OnInit {
 
   }
   ngAfterViewInit(){
-    console.log("After Vew Init")
+    //console.log("After Vew Init")
     jQuery.getScript('./assets/javascripts/custom/singleFiledTech-init.js', function(){
     });
     var contentOneH = jQuery('.content-pane-left').outerHeight();

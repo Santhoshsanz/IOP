@@ -1,143 +1,148 @@
-
 <section class="container-fluid customer-pool">
-    <div class="row no-gutters">
-        <div class="col-md-12">
-                      <!-- Content Pane : start -->
-                      <section class="content-pane-left">
-                        <div class="inner">
-                          <div class="row">
-                            <div class="col-md-1"></div>
-                            <div class="col-md-11">
-                              <!-- Block Title -->
-                              <div class="block-title">
-                                <h4 class="font-01 font-weight-600 font-size-05 text-uppercase"><span class="font-weight-300">Client</span> Stack</h4>
-                              </div>
-                            </div>
-                          </div>
-            
-                          <!-- Grid Container Wrap : starts -->
-                          <div class="grid-container-wrap">
-            
-                            <!-- Options Button : starts -->
-                            <div class="options-button-block">
-                              <div class="options-button">
-                                <div class="button round-button hover-blue">
-                                  <a href="#" class="font-01 font-size-01 text-uppercase light-black font-weight-600">Options</a>
-                                </div>
-                              </div>
-                              <div class="options-button-expand sort-options">
-                                <div class="options-button-expand-inner white-bg">
-                                  <a class="options-button-expand-close red" href="#">
-                                      <span class="option-icon fa fa-times-circle-o"></span>
-                                    </a>
-                                  <ul>
-                                    <li class="sort" data-sort-group="all">
-                                      <a href="#" class="light-grey">
-                                          <span class="option-text font-size-01">
-                                              <i class="fa fa-long-arrow-up" aria-hidden="true"></i>
-                                              <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
-                                          </span>
-                                        </a>
-                                    </li>
-                                    <li class="sort" data-sort-group="sort-alpha">
-                                      <a href="#" class="light-grey">
-                                          <span class="option-text font-size-01">
-                                            Alert Count
-                                          </span>
-                                        </a>
-                                    </li>
-                                    <li class="sort">
-                                      <a href="#" class="light-grey">
-                                          <span class="option-text font-size-01">
-                                            Customer Satisfacion
-                                          </span>
-                                        </a>
-                                    </li>
-                                    <li class="sort">
-                                      <a href="#" class="light-grey">
-                                          <span class="option-text font-size-01">
-                                            Pest Activity Change
-                                          </span>
-                                        </a>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- Options Button : ends -->
-            
-                            <!-- Grid Container : starts -->
-                            <div class="grid-container container">
-            
-                              <!-- Grid : starts -->
-                              <div id="customer-pool-grid" class="grid shuffle-grid text-center customer-pool-grid row" data-col-no="3" data-gutter="">
-            
-                                <!-- Item-01 -->
-                                <div class="shuf-item sizer col-md-6 col-sm-12 col-12 col-lg-4" data-sort-order="2"  *ngFor="let Client of ClientsData">
-                                  <div class="customer-details-wrap">
-                                    <a [routerLink]="['./'+Client.ClientId]" class="customer-details-wrap-st2 dark-blue-bg">
-                                      <div class="d-flex h-100">
-                                        <div class="row justify-content-center align-self-center">
-                                          <h3 class="hover-content font-size-06 font-weight-200 white">{{Client.InfoAlerts}}<br/><br/>{{Client.InfoReview}}</h3>
-                                        </div>
-                                      </div>
-                                    </a>
-                                    <div class="row">
-                                      <div class="col-md-12 text-center pool-pad-top">
-                                        <div class="client-image">
-                                          <img [src]="Client.ClientLogoUrl" alt="image" />
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                      <div class="col-md-12 text-center">
-                                        <div class="top-block">
-                                          <h2 class="font-01 black">{{Client.ClientName}}</h2>
-                                          <h4 class="font-01 font-size-06 light-grey properties">{{Client.PropertiesCount}} Properties</h4>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row justify-content-md-center pool-pad-top-secondary">
-                                      <div class="col-md-5 col-6 text-center info-heads">
-                                        <h4 class="font-01 font-size-01 font-weight-400 light-grey text-center">Active Alerts</h4>
-                                        <h3 class="font-01 font-weight-200 font-size-07 light-black">{{Client.ActiveAlerts}}</h3>
-                                      </div>
-                                      <div class="col-md-4  col-6 text-center info-heads">
-                                        <h4 class="font-01 font-size-01 font-weight-400 light-grey text-center">No Of Properties</h4>
-                                        <h3 class="font-01 font-weight-200 font-size-07 light-black">{{Client.PropertiesCount}}</h3>
-                                      </div>
-                                    </div>
-                                    <p class="font-01 font-size-01 font-weight-400 light-grey text-center" style="margin-top: 33px;">Customer Satisfaction</p>
-                                    <div class="re-active-sensor-tab" attr.data-active-value={{Client.CustomerSatisfaction}}></div>
-                                  </div>
-                                </div>
-            
-                                <!-- Item-04 -->
-                                <div class="shuf-item sizer" data-sort-order="99">
-                                  <div class="customer-details-wrap dotted-details" style="cursor:pointer;">
-                                    <div class="content-wrap">
-                                      <div class="icon">
-                                        <a [routerLink]="['../AddClient']"><i class="fa fa-plus" aria-hidden="true"></i></a>
-                                        
-                                      </div>
-                                      <div class="text">
-                                        <h4>Add Customer</h4>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <!-- Grid : ends -->
-            
-                            </div>
-                            <!-- Grid Container : ends -->
-            
-                          </div>
-                          <!-- Grid Container Wrap : ends -->
+  <div class="row no-gutters">
+    <div class="col-md-12">
+      <!-- Content Pane : start -->
+      <section class="content-pane-left">
+        <div class="inner">
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-11">
+              <!-- Block Title -->
+              <div class="block-title">
+                <h4 class="font-01 font-weight-600 font-size-05 text-uppercase">
+                  <span class="font-weight-300">Client</span> Stack</h4>
+              </div>
+            </div>
+          </div>
+
+          <!-- Grid Container Wrap : starts -->
+          <div class="grid-container-wrap">
+
+            <!-- Options Button : starts -->
+            <div class="options-button-block">
+              <div class="options-button">
+                <div class="button round-button hover-blue">
+                  <a href="#" class="font-01 font-size-01 text-uppercase light-black font-weight-600">Options</a>
+                </div>
+              </div>
+              <div class="options-button-expand sort-options">
+                <div class="options-button-expand-inner white-bg">
+                  <a class="options-button-expand-close red" href="#">
+                    <span class="option-icon fa fa-times-circle-o"></span>
+                  </a>
+                  <ul>
+                    <li class="sort" data-sort-group="all">
+                      <a href="#" class="light-grey">
+                        <span class="option-text font-size-01">
+                          <i class="fa fa-long-arrow-up" aria-hidden="true"></i>
+                          <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
+                        </span>
+                      </a>
+                    </li>
+                    <li class="sort" data-sort-group="sort-alpha">
+                      <a href="#" class="light-grey">
+                        <span class="option-text font-size-01">
+                          Alert Count
+                        </span>
+                      </a>
+                    </li>
+                    <li class="sort">
+                      <a href="#" class="light-grey">
+                        <span class="option-text font-size-01">
+                          Customer Satisfacion
+                        </span>
+                      </a>
+                    </li>
+                    <li class="sort">
+                      <a href="#" class="light-grey">
+                        <span class="option-text font-size-01">
+                          Pest Activity Change
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- Options Button : ends -->
+
+            <!-- Grid Container : starts -->
+            <div class="grid-container container">
+
+              <!-- Grid : starts -->
+              <div id="customer-pool-grid" class="grid shuffle-grid text-center customer-pool-grid row" data-col-no="3" data-gutter="">
+
+                <!-- Item-01 -->
+                <div class="shuf-item sizer col-md-6 col-sm-12 col-12 col-lg-4" data-sort-order="2" *ngFor="let client of clientsData">
+                  <div class="customer-details-wrap">
+                    <a [routerLink]="['./'+client.id]" class="customer-details-wrap-st2 dark-blue-bg">
+                      <div class="d-flex h-100">
+                        <div class="row justify-content-center align-self-center">
+                          <h3 class="hover-content font-size-06 font-weight-200 white">NIL
+                            <br/>
+                            <br/>Nil</h3>
                         </div>
-                      </section>
-                      <!-- Content Pane : ends -->
-            
+                      </div>
+                    </a>
+                    <div class="row">
+                      <div class="col-md-12 text-center pool-pad-top">
+                        <div class="client-image">
+                          <img [src]="client.logoUrl | safeUrl" alt="image" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 text-center">
+                        <div class="top-block">
+                          <h2 class="font-01 black">{{client.name}}</h2>
+                          <h4 class="font-01 font-size-06 light-grey properties">{{client.facilities==null?0:client.facilities.length}} Properties</h4>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row justify-content-md-center pool-pad-top-secondary">
+                      <div class="col-md-5 col-6 text-center info-heads">
+                        <h4 class="font-01 font-size-01 font-weight-400 light-grey text-center">Active Alerts</h4>
+                        <h3 class="font-01 font-weight-200 font-size-07 light-black">0</h3>
+                      </div>
+                      <div class="col-md-4  col-6 text-center info-heads">
+                        <h4 class="font-01 font-size-01 font-weight-400 light-grey text-center">No Of Properties</h4>
+                        <h3 class="font-01 font-weight-200 font-size-07 light-black">{{client.facilities==null?0:client.facilities.length}}</h3>
+                      </div>
+                    </div>
+                    <p class="font-01 font-size-01 font-weight-400 light-grey text-center" style="margin-top: 33px;">Customer Satisfaction</p>
+                    <div class="re-active-sensor-tab" attr.data-active-value=0></div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="shuf-item sizer" data-sort-order="99">
+                    <div class="customer-details-wrap dotted-details" style="cursor:pointer;">
+                      <div class="content-wrap" style="text-align:-webkit-center">
+                        <div class="icon">
+                          <a [routerLink]="['../AddClient']">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                          </a>
+                        </div>
+                        <div class="text">
+                          <h4>Add Customer</h4>
+                        </div>
+                      </div>
                     </div>
                   </div>
+                </div>
+              </div>
+              <!-- Grid : ends -->
+
+            </div>
+            <!-- Grid Container : ends -->
+
+          </div>
+          <!-- Grid Container Wrap : ends -->
+        </div>
+      </section>
+      <!-- Content Pane : ends -->
+
+    </div>
+  </div>
 </section>

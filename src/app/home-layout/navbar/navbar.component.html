@@ -1,0 +1,175 @@
+<header class="header white-bg">
+    <!-- Nav Trigger -->
+    <div class="nav-trigger">
+        <a href="#">
+            <img src="assets/images/logo.svg" alt="nav-trigger" />
+        </a>
+    </div>
+    <div class="header-inner">
+        <!-- Nav : starts -->
+        <nav class="nav white-bg">
+            <ul>
+                <!-- Nav Item 01 -->
+                <li>
+                    <a routerLink="" title="Mission Control" class="font-size-03 font-02 font-weight-500 light-black active">
+                        <span class="nav-menu-icon">
+                            <img class="svg-convert" src="assets/images/header/nav-menu-icon-01.svg" alt="menu-icon">
+                        </span>
+                        <span class="nav-menu-text">
+                            Mission Control
+                        </span>
+                    </a>
+                </li>
+                <!-- Nav Item 02 -->
+                <li class="has-dropdown">
+                    <a href="#" title="Clients" class="font-size-03 font-02 font-weight-500 light-black">
+                        <span class="nav-menu-icon">
+                            <img class="svg-convert" src="assets/images/header/nav-menu-icon-02.svg" alt="menu-icon">
+                        </span>
+                        <span class="nav-menu-text">
+                            Clients
+                        </span>
+                    </a>
+                    <!-- Dropdown -->
+                    <ul class="dropdown light-blue">
+                        <li>
+                            <a [routerLink]="['/Client']" class="font-size-02 font-02 font-weight-500">Client Stack</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/AddClient']" class="font-size-02 font-02 font-weight-500">Add New Client</a>
+                        </li>
+                        <li>
+                            <a href="#" class="font-size-02 font-02 font-weight-500">Add New Facility</a>
+                        </li>
+                        <li>
+                            <a href="#" class="font-size-02 font-02 font-weight-500">Manage Surveys</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Nav Item 03 -->
+                <!-- Nav Item 02 -->
+                <li class="has-dropdown">
+                    <a href="#" title="Clients" class="font-size-03 font-02 font-weight-500 light-black">
+                        <span class="nav-menu-icon">
+                            <img class="svg-convert" src="assets/images/header/nav-menu-icon-05.svg" alt="menu-icon">
+                        </span>
+                        <span class="nav-menu-text">
+                            Configuration
+                        </span>
+                    </a>
+                    <!-- Dropdown -->
+                    <ul class="dropdown light-blue">
+                        <li>
+                            <a [routerLink]="['/AddClient']" routerLinkActive="active" class="font-size-02 font-02 font-weight-500">Clients</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/AddFacility']" routerLinkActive="active" class="font-size-02 font-02 font-weight-500">Facilities</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/AddZone']" routerLinkActive="active" class="font-size-02 font-02 font-weight-500">Zones</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/AddGateway']" class="font-size-02 font-02 font-weight-500">Gateways</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/AddSensor']" class="font-size-02 font-02 font-weight-500">Sensors</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/AddUser']" class="font-size-02 font-02 font-weight-500">Users</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="#" title="Field Agents" class="font-size-03 font-02 font-weight-500 light-black">
+                        <span class="nav-menu-icon">
+                            <img class="svg-convert" src="assets/images/header/nav-menu-icon-03.svg" alt="menu-icon">
+                        </span>
+                        <span class="nav-menu-text">
+                            Field Agents
+                        </span>
+                    </a>
+                    <!-- Dropdown -->
+                    <ul class="dropdown light-blue">
+                        <li>
+                            <a routerLink="FieldAgent" class="font-size-02 font-02 font-weight-500">Field Agents Stack</a>
+                        </li>
+                        <li>
+                            <a href="#" class="font-size-02 font-02 font-weight-500">Add New Field Agents</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Nav Item 04 -->
+                <li>
+                    <a href="#" title="Reports" class="font-size-03 font-02 font-weight-500 light-black">
+                        <span class="nav-menu-icon">
+                            <img class="svg-convert" src="assets/images/header/nav-menu-icon-04.svg" alt="menu-icon">
+                        </span>
+                        <span class="nav-menu-text">
+                            Reports
+                        </span>
+                    </a>
+                </li>
+                <!-- Nav Item 05 -->
+                <li>
+                    <a href="#" title="Canvas" class="font-size-03 font-03 font-weight-500 light-black">
+                        <span class="nav-menu-icon">
+                            <img class="svg-convert" src="assets/images/header/nav-menu-icon-05.svg" alt="menu-icon">
+                        </span>
+                        <span class="nav-menu-text">
+                            Canvas
+                        </span>
+                    </a>
+                </li>
+                <!-- Nav Item 06 -->
+                <li>
+                    <a href="#" title="Central Intelligence" class="font-size-03 font-02 font-weight-500 light-black">
+                        <span class="nav-menu-icon">
+                            <img class="svg-convert" src="assets/images/header/nav-menu-icon-06.svg" alt="menu-icon">
+                        </span>
+                        <span class="nav-menu-text">
+                            Central Intelligence
+                        </span>
+                    </a>
+                </li>
+                <!-- Nav Item 07 -->
+                <li>
+                    <a href="#" title="Inventory Intel" class="font-size-03 font-02 font-weight-500 light-black">
+                        <span class="nav-menu-icon">
+                            <img class="svg-convert" src="assets/images/header/nav-menu-icon-07.svg" alt="menu-icon">
+                        </span>
+                        <span class="nav-menu-text">
+                            Inventory Intel
+                        </span>
+                    </a>
+                </li>
+                <!-- <li>
+                    <a routerLink="UserConfig" title="User Config" class="font-size-03 font-02 font-weight-500 light-black">
+                    <span class="nav-menu-icon">
+                    <img class="svg-convert" src="assets/images/header/nav-menu-icon-06.svg" alt="menu-icon">
+                    </span>
+                    <span class="nav-menu-text">
+                   Use Config   
+                    </span>
+                    </a>
+                 </li> -->
+            </ul>
+        </nav>
+        <!-- Nav : ends -->
+        <!-- Text Logo -->
+        <div class="text-logo">
+            <a href="#">
+                <img src="assets/images/text-logo.svg" alt="nav-trigger" />
+            </a>
+        </div>
+        <!-- Sign Out : starts -->
+        <div class="sign-out-block red-bg">
+            <a href="#" title="Sign Out" (click)="signOut()">
+                <span class="sign-out-icon">
+                    <img src="assets/images/header/sign-out-icon.svg" class="svg-convert" alt="icon">
+                </span>
+                <span class="sign-out-text white font-02 font-weight-500">Sign Out</span>
+            </a>
+        </div>
+        <!-- Sign Out : ends -->
+    </div>
+</header>

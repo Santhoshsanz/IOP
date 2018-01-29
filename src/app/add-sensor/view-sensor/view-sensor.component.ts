@@ -28,11 +28,11 @@ export class SensorViewComponent implements OnInit {
     let headers=new HttpHeaders();
     if (confirm("Are you sure to delete " + name)) {
       let url=apiData.url+apiData.sensor;
-      console.log(url);
+      //console.log(url);
       this._commonDataService.deleteData(url,id).subscribe((res: any) => {
         this.getAllSensors();
       })
-      console.log(id);
+      //console.log(id);
     }
   }
   addSensor() {
@@ -43,7 +43,7 @@ export class SensorViewComponent implements OnInit {
   }
   getNewSensors(){
     let headers=new HttpHeaders();
-    this._commonDataService.getData(apiData.url+"sensor/new/879facea-57bc-4bda-872a-533b7d627c2b",headers)
+    this._commonDataService.getData(apiData.url+"sensor/new/7a8b979c-9a13-423e-abd6-0f22cea9820c",headers)
     .subscribe((res:any)=>{
       this.newSensor=res.newlyAddedSensor;
     })

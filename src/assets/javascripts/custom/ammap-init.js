@@ -5,7 +5,7 @@
 //-----------------------------------------------------------------
 
 // Mission Control Map
-console.log("Map")
+//console.log("Map")
 var map = AmCharts.makeChart( "1mission-control-map", {
     "type": "map",
     "dragMap": true,

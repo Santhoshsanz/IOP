@@ -33,7 +33,7 @@ customerViewChart2= function(id){
     var yTitle='Pest Alerts';
     var xTitle="Facility Name";
     renderStackedChart(data,category,title,yTitle,xTitle,id);
-    // console.log("called")
+    // //console.log("called")
     // renderStackedChart(data,category2,title,yTitle,xTitle,'pest-vs-facility-client-view3');
 };
 pestChartPestVsTimeCustomerView("pest-vs-time-client-view");
@@ -123,7 +123,7 @@ $('.theme-carousel').each(function() {
 
 switch(location.pathname[8]){
 case "1":
-console.log("1 CLient");
+//console.log("1 CLient");
 var singleCustomerMap = AmCharts.makeChart( "single-customer-map", {
     
         "type": "map",
@@ -180,7 +180,7 @@ var singleCustomerMap = AmCharts.makeChart( "single-customer-map", {
     });
 break;
 case "2":
-console.log(" Client 2");
+//console.log(" Client 2");
 var singleCustomerMap2 = AmCharts.makeChart( "single-customer-map", {
     
         "type": "map",
@@ -272,7 +272,7 @@ var singleCustomerMap2 = AmCharts.makeChart( "single-customer-map", {
     });
 break;
 case "3":
-console.log(" Client 3");
+//console.log(" Client 3");
 var singleCustomerMap3 = AmCharts.makeChart( "single-customer-map", {
     
         "type": "map",

@@ -1,0 +1,126 @@
+<section class="notifications-page full-width" id="closeNotification">
+    <div class="row no-gutters">
+        <div class="col-md-6">
+
+            <!-- Notifications Count Block : starts -->
+            <div class="notifications-count-block full-height text-center">
+                <div class="pos-center-wrap">
+                    <div class="pos-center">
+                        <div class="icon-wrap green-bg">
+                            <div class="pos-center-wrap">
+                                <div class="pos-center">
+                                    <div class="icon">
+                                        <img src="assets/images/icon-notifications.svg" alt="icon">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notifications Count : starts  -->
+                        <div class="notifications-count">
+                            <ul>
+                                <li>
+                                    <span class="title font-size-06 font-01 white font-weight-600">New Sensors</span>
+                                    <span class="count font-size-07 font-01 white font-weight-300">{{newSensors.length}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Notifications Count : ends  -->
+
+                        <!-- Button Block -->
+
+                    </div>
+                </div>
+            </div>
+            <!-- Notifications Count Block : ends -->
+
+        </div>
+        <div class="col-md-6">
+
+            <!-- Notifications List Block : starts -->
+            <div class="notifications-list-block full-height">
+
+                <!-- Page Title -->
+                <div class="page-title green-bg">
+                    <h1 class="font-01 white font-size-07 font-weight-600">
+                        <span class="font-weight-300">System</span> Notification</h1>
+                </div>
+                <div>
+                    <div class="page-close" style="cursor:pointer">
+                        <img src="assets/images/close-button.svg" alt="">
+                    </div>
+                </div>
+
+                <!-- Grid Container Wrap : starts -->
+                <div class="grid-container-wrap">
+
+                    <!-- Grid Container : starts -->
+                    <div class="grid-container">
+
+                        <!-- Grid : starts -->
+                        <div id="notification-grid" class="grid shuffle-grid text-center white-bg notification-grid" data-col-no="1" data-gutter="">
+
+                            <!-- Notificaation-01 -->
+                            <!-- <div class="shuf-item sizer" data-groups='["all","category-2"]'>
+                                        <a href="#" class="survey-notification clearfix">
+                    <div class="icon">
+                                              <img src="assets/images/notifications/survey-notification.svg" class="svg-convert" alt="">
+                    </div>
+                    <div class="notification-message font-01 font-weight-400 light-grey font-size-06">
+                      <span class="message font-01 font-weight-600 light-blue font-size-06">John Smith</span> from
+                      <span class="font-01 gold font-weight-600 font-size-06">Nestle</span>
+                      <span class="font-size-06 font-01 font-weight-400 light-black">has send you a message</span>
+                    </div>
+                                        </a>
+                                    </div> -->
+
+                            <!-- Notificaation-02 -->
+                            <div class="shuf-item sizer" *ngFor="let notification of newSensors">
+                                <a [routerLink]="['AddSensor']" class="notification clearfix">
+                                    <div class="left-block text-right">
+                                        <div class="icon-wrap green-bg">
+                                            <div class="pos-center-wrap">
+                                                <div class="pos-center">
+                                                    <div class="icon rat">
+                                                        <!-- <img class="svg-convert" src="assets/images/bugs-pests/icon-rat.svg" alt=""> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <span class="id">
+                                            <p class="green font-01 font-weight-400 text-uppercase font-size-04">{{notification.sensorId}}</p>
+                                        </span>
+                                    </div>
+                                    <div class="right-block text-left">
+                                        <div class="notification-message">
+                                            <span class="message font-01 font-weight-400 light-black font-size-04">
+                                                Sensor Detected
+                                            </span>
+                                            <span class="id green font-01 font-weight-700">
+                                                In Gateway {{notification.gatewayId}}
+                                            </span>
+                                        </div>
+                                        <div class="time">
+                                            <p class="font-01 font-weight-400 light-grey font-size-03">
+                                                <!-- 9.28Am  +5.30GMT , 20 Nov,17 -->
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Grid : ends -->
+
+                    </div>
+                    <!-- Grid Container : ends -->
+
+                </div>
+                <!-- Grid Container Wrap : ends -->
+
+            </div>
+            <!-- Notifications List Block : ends -->
+
+        </div>
+    </div>
+</section>

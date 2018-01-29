@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "http-server dist/",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -12,7 +12,7 @@
     "build:sass": "node-sass src/assets/stylesheets/custom/ -o src/assets/stylesheets/custom/",
     "watch:sass": "npm run build:sass && node-sass src/assets/stylesheets/custom/ -wo src/assets/stylesheets/custom/",
     "postinstall": "ng build --aot -prod",
-    "deploy": "git push origin master && git push heroku master"
+    "deploy": ""
   },
   "engines": {
     "node": "6.11.1",

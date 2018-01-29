@@ -28,7 +28,7 @@ export class GatewayViewComponent implements OnInit {
       this._commonDataService.deleteData(apiData.url+apiData.gateway,id).subscribe((res: any) => {
         this.getAllGateways();
       })
-      console.log(id);
+      //console.log(id);
     }
   }
   addGateway() {

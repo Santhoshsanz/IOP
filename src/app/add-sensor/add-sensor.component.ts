@@ -14,7 +14,7 @@ export class AddSensorComponent implements OnInit {
 showModal:boolean
   ngOnInit() {
     this.showModal=false;
-    console.log("Add Client Init")
+    //console.log("Add Client Init")
     this.Client = new FormGroup({
       Name: new FormControl(),
       LogoUrl: new FormControl(),
@@ -31,11 +31,11 @@ showModal:boolean
     })
   }
   onSubmit(myModel) {
-    console.log(myModel.value);
+    //console.log(myModel.value);
   }
   open(){
     this.showModal=true;
-    console.log(this.showModal)
+    //console.log(this.showModal)
     
   }
   close(){

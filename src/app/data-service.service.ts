@@ -34,7 +34,7 @@ export class DataServiceService {
         })
       })
     });
-    console.log(typeof (data));
+    //console.log(typeof (data));
     return data;
   }
   //Individual Clients
@@ -81,16 +81,16 @@ export class DataServiceService {
         })
       }
     })
-    console.log("Maping")
+    //console.log("Maping")
     facility.map(function (e, x) {
-      console.log("first")
+      //console.log("first")
       e.Alerts.map(function (i, j) {
-        console.log("Second")
+        //console.log("Second")
         i.ClientId = clientId;
         i.FacilityId = facilityId
       })
     })
-    console.log(facility)
+    //console.log(facility)
     return facility;
   }
 
@@ -384,7 +384,7 @@ export class DataServiceService {
     return data;
   }
   getGuageData(num, measure,title1,title2) {
-    console.log(num);
+    //console.log(num);
     let gaugeOptions = {
       navigation: {
         buttonOptions: {

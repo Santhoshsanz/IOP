@@ -14,7 +14,6 @@ export class NavbarComponent implements OnChanges {
   ngOnChanges() {
   }
   signOut(){
-    debugger;
     this._loginService.logOut(this._authService.getUserEmail()).subscribe((res:any)=>{
       if(res.status=="ok"){
         this._authService.loggedOut();

@@ -37,14 +37,12 @@ export class AddUserComponent implements OnInit {
   deleteUser(id) {
     if (confirm("Are you sure to delete " + name)) {
       this._commonDataService.deleteData(apiData.url+apiData.user,id).subscribe((res: any) => {
-        debugger;
         if(res.status=="ok"){
           this.getAllUsers();   
         } else{
           throw new Error("deleteUser Failed");
         }
       },error=>{
-        debugger;
         throw new Error(JSON.stringify(error))
     })
       //console.log(id);

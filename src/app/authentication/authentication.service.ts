@@ -21,7 +21,6 @@ export class AuthenticationService {
     this.user.userId = "";
   }
   private setUser(user: any) {
-    debugger;
     this.user.email = user.email;
     this.user.firstName = user.firstName;
     this.user.lastName = user.lastName;

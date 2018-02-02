@@ -62,7 +62,7 @@ export class SingleClientComponent implements OnInit {
   }
   initData() {
     let headers = new HttpHeaders();
-    this._commonDataService.getData(apiData.url + apiData.client + "/" + this.id, headers).subscribe((res: any) => {
+    this._commonDataService.getData(apiData.url + apiData.client + this.id, headers).subscribe((res: any) => {
       if (res.status == "ok") {
         this.client = res.clientInfo;
         //console.log(this.client);

@@ -19,61 +19,66 @@
                                 <a href="#" class="light-grey">
                                     <span class="option-icon fa fa-handshake-o"></span>
                                     <span class="option-text font-size-01">
-        Clients
-        </span>
+                                        Clients
+                                    </span>
                                 </a>
                                 <ul class="dropdown">
-                                    <li class="font-size-02 font-01"><a href="#">Nestle</a>
-                                    </li>
-                                    <li class="font-size-02 font-01"><a href="#">Hilton</a>
-                                    </li>
-                                    <li class="font-size-02 font-01"><a href="#">Yoshinoya</a>
+                                    <li class="font-size-02 font-01" *ngFor="let client of clientsData">
+                                        <a (click)="dropDownChange(client.id)">{{client.name}}</a>
                                     </li>
                                 </ul>
                             </li>
-                            <li class="has-dropdown select-country">
+                            <!-- <li class="has-dropdown select-country">
                                 <a href="#" class="light-grey">
                                     <span class="option-icon fa fa-map-marker"></span>
                                     <span class="option-text font-size-01">
-        States
-        </span>
+                                        States
+                                    </span>
                                 </a>
                                 <ul class="dropdown">
-                                    <li class="font-size-02 font-01 "><a href="#" data-location-id="US">Osaka</a>
+                                    <li class="font-size-02 font-01 ">
+                                        <a href="#" data-location-id="US">Osaka</a>
                                     </li>
-                                    <li class="font-size-02 font-01 "><a href="#" data-location-id="LK">Tokyo</a>
+                                    <li class="font-size-02 font-01 ">
+                                        <a href="#" data-location-id="LK">Tokyo</a>
                                     </li>
-                                    <li class="font-size-02 font-01 "><a href="#" data-location-id="IT">Kobe</a>
+                                    <li class="font-size-02 font-01 ">
+                                        <a href="#" data-location-id="IT">Kobe</a>
                                     </li>
-                                    <li class="font-size-02 font-01 "><a href="#" data-location-id="GB">Miyazaki</a>
+                                    <li class="font-size-02 font-01 ">
+                                        <a href="#" data-location-id="GB">Miyazaki</a>
                                     </li>
-                                    <li class="font-size-02 font-01 "><a href="#" data-location-id="JP">Kumamoto</a>
+                                    <li class="font-size-02 font-01 ">
+                                        <a href="#" data-location-id="JP">Kumamoto</a>
                                     </li>
-                                    <li class="font-size-02 font-01 "><a href="#" data-location-id="AE">Kagoshima</a>
+                                    <li class="font-size-02 font-01 ">
+                                        <a href="#" data-location-id="AE">Kagoshima</a>
                                     </li>
-                                    <li class="font-size-02 font-01 "><a href="#" data-location-id="IN">Hakkaido</a>
+                                    <li class="font-size-02 font-01 ">
+                                        <a href="#" data-location-id="IN">Hakkaido</a>
                                     </li>
-                                    <li class="font-size-02 font-01 "><a href="#" data-location-id="ZA">Fukushima</a>
+                                    <li class="font-size-02 font-01 ">
+                                        <a href="#" data-location-id="ZA">Fukushima</a>
                                     </li>
                                 </ul>
                             </li>
                             <li>
                                 <a href="#" class="map-zoom-in light-grey">
                                     <span class="option-icon fa fa-search-plus">
-        </span>
+                                    </span>
                                     <span class="option-text font-size-01">
-        Zoom In
-        </span>
+                                        Zoom In
+                                    </span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#" class="map-zoom-out light-grey">
                                     <span class="option-icon fa fa-search-minus"></span>
                                     <span class="option-text font-size-01">
-        Zoom Out
-        </span>
+                                        Zoom Out
+                                    </span>
                                 </a>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>

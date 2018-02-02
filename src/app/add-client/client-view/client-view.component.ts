@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { ViewChild, ElementRef, NgZone } from '@angular/core';
-import { ClientServiceService } from '../../client-service.service';
-import { RouterModule, Routes, Router } from '@angular/router'
+import { CommonDataService } from '../../common-data.service';
+import { RouterModule, Routes, Router } from '@angular/router';
+import { apiData } from '../../common'
 
 @Component({
   selector: 'app-add-facility',
@@ -10,24 +11,26 @@ import { RouterModule, Routes, Router } from '@angular/router'
 })
 export class ClientViewComponent implements OnInit {
   model: any;
-  constructor(private _http: HttpClientModule, private clientService: ClientServiceService, private router: Router) { }
+  constructor(private _http: HttpClientModule, private _commonDataService: CommonDataService, private router: Router) { }
   ngOnInit() {
     //console.log("Add Client Init")
     this.getAllClients();
   }
   getAllClients() {
+    let headers = new HttpHeaders();
     //console.log("called")
-    this.clientService.getAllClients().subscribe((res: any) => {
-      debugger;
-      this.model = res.clientsInfo;
-      //console.log(this.model)
+    this._commonDataService.getData(apiData.url + apiData.client, headers).subscribe((res: any) => {
+      if (res.status == "ok") {
+        this.model = res.clientsInfo;
+      }
     });
-    //console.log(this.model);
   }
   deleteClient(id) {
     if (confirm("Are you sure to delete " + name)) {
-      this.clientService.deleteClient(id).subscribe((res: any) => {
-        this.getAllClients();
+      this._commonDataService.deleteData(apiData.url, id).subscribe((res: any) => {
+        if (res.status == "ok") {
+          this.getAllClients();
+        }
       })
       //console.log(id);
     }

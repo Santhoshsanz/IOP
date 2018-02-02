@@ -1,10 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output,Input,EventEmitter } from '@angular/core';
 import { apiData, images, pestType } from '../common';
 import { CommonDataService } from '../common-data.service'
 import { HttpHeaders } from '@angular/common/http';
 import { LoginService } from "../login-service.service";
 import { AuthenticationService } from "../authentication/authentication.service";
 import { ElementRef } from '@angular/core';
+//Toaster Notification
+import { ToasterModule, ToasterService, ToasterConfig, Toast } from 'angular2-toaster';
+import { BodyOutputType } from 'angular2-toaster';
+import { ToastComponent } from '../shared/Toast/toast.component';
+//Live Queue
+declare let SockJS: any;
+declare let Stomp: any;
+//
 declare let jQuery: any;
 @Component({
   selector: 'app-home-layout',
@@ -12,10 +20,19 @@ declare let jQuery: any;
   styleUrls: ['./home-layout.component.css']
 })
 export class HomeLayoutComponent implements OnInit {
+  @Input() eventsEmitter;
+  sockJs = SockJS;
+  //Stomp Variables
+  private serverUrl = 'http://10.190.111.245:8082/iop-websocket'
+  private topic = '/topic/notification';
+  private stompClient;
+  //Ends
+  config: ToasterConfig;
   image = images;
   pest = pestType;
   newSensors: any = [];
-  constructor(private elRef: ElementRef, private _commonDataService: CommonDataService, private _loginService: LoginService, private _authService: AuthenticationService) { }
+  constructor(private elRef: ElementRef, private _commonDataService: CommonDataService, private _loginService: LoginService,
+    private _authService: AuthenticationService, private _toasterService: ToasterService) { }
   events: any = [];
   unAssigned: any = 0;
   inProgress: any = 0;
@@ -24,9 +41,57 @@ export class HomeLayoutComponent implements OnInit {
     this.getData();
     //console.log("Init Mission");
     // //console.log(this.events);
-
+    this.initializeWebSocketConnection();
     this.getNewSensors();
   }
+
+  //Stom Code
+  initializeWebSocketConnection() {
+    let ws = new this.sockJs(this.serverUrl);
+    this.stompClient = Stomp.over(ws);
+    let that = this;
+    this.stompClient.connect({}, function (frame) {
+      console.log("Stomp CLient Connected.....")
+      that.stompClient.subscribe(that.topic, (message) => {
+        if (message.body) {
+          //Handle Service for incoming Queue
+         // if(message.body.type=="Activity")
+          that.popToast("Sensor Event");
+          this.getData();
+          this.getNewSensors();
+         that._commonDataService.eventEmitterData.emit("Emitted Data");
+          //else
+          //that.popToast("New Notificaton");
+          // console.log(message.body);
+        }
+      });
+    });
+  }
+  //Ends
+
+  //Toaster Notification
+  popToast(sensorEvent) {
+    this.config = new ToasterConfig({
+      positionClass: 'toast-bottom-right',
+      timeout: 500
+    });
+    var toast: Toast = {
+      type: 'error',
+      title: sensorEvent,
+      body: '',
+      showCloseButton: true,
+      bodyOutputType: BodyOutputType.TrustedHtml,
+      onHideCallback: () => {
+      }
+
+    };
+
+    this._toasterService.pop(toast);
+  }
+
+
+  //Ends
+
   // ngAfterViewInit() {
   //   jQuery.getScript('./assets/javascripts/custom/main.js', function () {
   //   });
@@ -89,8 +154,12 @@ export class HomeLayoutComponent implements OnInit {
     let headers = new HttpHeaders();
     this._commonDataService.getData(apiData.url + "sensor/new/7a8b979c-9a13-423e-abd6-0f22cea9820c", headers)
       .subscribe((res: any) => {
+        if(res.status=="ok"){
         this.newSensors = res.newlyAddedSensor;
         //console.log(this.newSensors)
+        }else{
+
+        }
       })
   }
   ngAfterViewInit() {

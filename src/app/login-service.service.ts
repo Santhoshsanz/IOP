@@ -7,13 +7,12 @@ import {apiData} from "./common";
 export class LoginService {
   constructor(private _route:Router,private _http:HttpClient,) { }
   showLogin(url){
-    debugger;
     this._route.navigate(['./',url]);
   }
   login(loginVal:any){
     return this._http.post(apiData.url+apiData.login,loginVal);
   }
   logOut(userEmail:any){
-    return this._http.get(apiData.url+apiData.logout+"/"+userEmail+"/");
+    return this._http.get(apiData.url+apiData.logout+userEmail+"/");
   }
 }

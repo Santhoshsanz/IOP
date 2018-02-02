@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormsModule, FormControl, FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
-import { ClientServiceService } from '../../client-service.service';
+import { CommonDataService } from '../../common-data.service';
 import { ActivatedRoute } from '@angular/router';
 import { MapsAPILoader, AgmMap } from '@agm/core';
 import { Location } from '@angular/common';
@@ -10,6 +10,8 @@ import { } from '@types/googlemaps';
 import { ToasterModule, ToasterService, ToasterConfig, Toast } from 'angular2-toaster';
 import { BodyOutputType } from 'angular2-toaster';
 import { ToastComponent } from '../../shared/Toast/toast.component';
+import { HttpHeaders } from '@angular/common/http';
+import {apiData} from '../../common';
 @Component({
   selector: 'app-add-facility',
   templateUrl: './client-editor.component.html'
@@ -24,7 +26,7 @@ export class ClientEditorComponent implements OnInit {
   @ViewChild('search') public searchElement: ElementRef;
   config: ToasterConfig;
   constructor(private formBuilder: FormBuilder,
-    private clientService: ClientServiceService, private route: ActivatedRoute, private _location: Location,
+    private _commonDataService: CommonDataService, private route: ActivatedRoute, private _location: Location,
     private mapsAPILoader: MapsAPILoader, private ngZone: NgZone,
     private toasterService: ToasterService) { }
   ngOnInit() {
@@ -73,7 +75,7 @@ export class ClientEditorComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = params['id'];
       if (this.id != null) {
-        this.editFacility(this.id);
+        this.editClient(this.id);
       }
     })
   }
@@ -98,25 +100,35 @@ export class ClientEditorComponent implements OnInit {
   }
   onSubmit(client) {
     var self = this;
-    this.clientService.saveClient(client.value).subscribe((res: any) => {
-      self.client.reset();
-      this.file.nativeElement.value = "";
-      this._location.back();
+    let headers= new HttpHeaders();
+    this._commonDataService.postData(client.value,apiData.url+apiData.client,headers).subscribe((res: any) => {
+      if(res.status=="ok"){
+        self.client.reset();
+        this.file.nativeElement.value = "";
+        this._location.back();
+      }
     })
   }
-  editFacility(id) {
+  editClient(id) {
+    let self=this;
+    let headers= new HttpHeaders();
     let temp = this.client.getRawValue();
-    let currentFacility = this.clientService.getClient(id).subscribe((res: any) => {
-      temp.id = res.clientInfo.id;
-      temp.name = res.clientInfo.name;
-      temp.logoUrl = res.clientInfo.logoUrl;
-      temp.address.address1 = res.clientInfo.address.address1
-      temp.address.address2 = res.clientInfo.address.address2;
-      temp.address.street = res.clientInfo.address.street;
-      temp.address.state = res.clientInfo.address.state;
-      temp.address.country = res.clientInfo.address.country;
-      temp.address.pinCode = res.clientInfo.address.pinCode;
-      this.client.setValue(temp);
+    this._commonDataService.getData(apiData.url+apiData.client+id,headers)
+    .subscribe((res: any) => {
+      if(res.status=="ok"){
+        temp.id = res.clientInfo.id;
+        temp.name = res.clientInfo.name;
+        temp.logoUrl = res.clientInfo.logoUrl;
+        temp.address.address1 = res.clientInfo.address.address1
+        temp.address.address2 = res.clientInfo.address.address2;
+        temp.address.street = res.clientInfo.address.street;
+        temp.address.state = res.clientInfo.address.state;
+        temp.address.country = res.clientInfo.address.country;
+        temp.address.pinCode = res.clientInfo.address.pinCode;
+        temp.address.latitude=res.clientInfo.address.latitude;
+        temp.address.longitude=res.clientInfo.address.longitude;
+        self.client.setValue(temp);
+      }
     });
   }
   popToast() {
@@ -140,4 +152,7 @@ export class ClientEditorComponent implements OnInit {
   }
   customfunction() {
   }
+  eventsEmitter(agreed: boolean) {
+    console.log("Event Emitted In Child:",agreed);
+   }
 }

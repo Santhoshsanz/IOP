@@ -22,16 +22,26 @@ export class ZoneViewComponent implements OnInit {
   }
   deleteZone(id) {
     if (confirm("Are you sure to delete " )) {
-      this._commonDataService.deleteData(apiData.url + "/" + apiData.zone, id).subscribe(() => {
-        this.getAllZones();
+      this._commonDataService.deleteData(apiData.url + apiData.zone, id).subscribe((res:any) => {
+        if(res.status=="ok"){
+          this.getAllZones();
+        }else{
+  
+        }
+        
       })
     }
   }
   getAllZones() {
     let header = new HttpHeaders();
     header.append("Access-Control-Allow-Origin", "*");
-    this._commonDataService.getData(apiData.url + "/" + apiData.zone, header).subscribe((res: any) => {
-      this.model = res.zonesInfo;
+    this._commonDataService.getData(apiData.url + apiData.zone, header).subscribe((res: any) => {
+      if(res.status=="ok"){
+         this.model = res.zonesInfo;
+      }else{
+
+      }
+     
     })
   }
 }

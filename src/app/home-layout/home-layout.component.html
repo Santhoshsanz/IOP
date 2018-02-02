@@ -8,7 +8,8 @@
 
 <router-outlet></router-outlet>
 <!-- Notification Page : starts -->
-<app-notification [newSensors]="newSensors" ></app-notification>
+<app-notification [newSensors]="newSensors"></app-notification>
+<toast [config]="config"></toast>
 <!-- Notification Page : ends -->
 <!-- Sensor Event Page :starts -->
 <app-events-notification [events]="events" [unAssigned]="unAssigned" [inProgress]="inProgress" [actionRequired]="actionRequired"></app-events-notification>

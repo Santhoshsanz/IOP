@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { ViewChild, ElementRef, NgZone } from '@angular/core';
-import { FacilityService } from '../../facility.service';
+import { CommonDataService } from '../../common-data.service';
 import { RouterModule, Routes, Router } from '@angular/router'
+import { apiData } from '../../common';
 
 @Component({
   selector: 'app-add-facility',
@@ -10,25 +11,28 @@ import { RouterModule, Routes, Router } from '@angular/router'
 })
 export class FacilityViewComponent implements OnInit {
   model: any;
-  constructor(private _http: HttpClientModule, private facilityService: FacilityService, private router: Router) { }
+  constructor(private _http: HttpClientModule, private _commonDataService: CommonDataService, private router: Router) { }
   ngOnInit() {
     //console.log("Add Client Init")
     this.getAllFacilities();
   }
   getAllFacilities() {
+    let headers = new HttpHeaders()
     //console.log("called")
-    this.facilityService.getAllFacility().subscribe((res: any) => {
-      this.model = res.facilitiesInfo;
-      //console.log(this.model)
+    this._commonDataService.getData(apiData.url + apiData.facility, headers).subscribe((res: any) => {
+      if (res.status == "ok") {
+        this.model = res.facilitiesInfo;
+      }
     });
     //console.log(this.model);
   }
   deleteFacility(id) {
     if (confirm("Are you sure to delete ")) {
-      this.facilityService.deleteFacility(id).subscribe((res: any) => {
-        this.getAllFacilities();
+      this._commonDataService.deleteData(apiData.url, id).subscribe((res: any) => {
+        if (res.status == "ok") {
+          this.getAllFacilities();
+        }
       })
-      //console.log(id);
     }
   }
   addFacility() {

@@ -1,13 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormsModule, FormControl, FormGroup, FormBuilder, FormArray,Validators } from '@angular/forms';
-import { FacilityService } from '../../facility.service';
+import { FormsModule, FormControl, FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { MapsAPILoader, AgmMap } from '@agm/core';
 import { Location } from '@angular/common';
 import { ElementRef, NgZone } from '@angular/core';
 import { BackComponent } from '../../shared/back.component';
-import { ClientServiceService } from '../../client-service.service'
+import { CommonDataService } from '../../common-data.service'
 import { } from '@types/googlemaps';
+import { HttpHeaders } from '@angular/common/http';
+import { apiData } from "../../common";
 @Component({
   selector: 'app-add-facility',
   templateUrl: './facility-editor.component.html'
@@ -15,40 +16,39 @@ import { } from '@types/googlemaps';
 export class FacilityEditorComponent implements OnInit {
   @ViewChild('fileLogo')
   file: any;
-  disabbleBtn:boolean;
+  disabbleBtn: boolean;
   id: any;
   facility: FormGroup;
   lat: any;
   lng: any;
   clients: any;
-  selectedVal:any;
+  selectedVal: any;
   @ViewChild('search') public searchElement: ElementRef;
-  constructor(private formBuilder: FormBuilder,
-    private facilityService: FacilityService, private route: ActivatedRoute, private _location: Location,
-    private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private clientService: ClientServiceService) { }
+  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private _location: Location,
+    private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private _commonDataService: CommonDataService) { }
   ngOnInit() {
     //console.log("Add Client Init")
     this.facility = new FormGroup({
       id: new FormControl(),
-      name: new FormControl("",[Validators.required,Validators.pattern("^[A-Za-z 0-9-#'.]{2,30}$")]),
+      name: new FormControl("", [Validators.required, Validators.pattern("^[A-Za-z 0-9-#'.]{2,30}$")]),
       image: new FormControl(""),
-      imgType: new FormControl("",[Validators.pattern("^[a-z0-9'./]{2,30}$")]),
+      imgType: new FormControl("", [Validators.pattern("^[a-z0-9'./]{2,30}$")]),
       geoX: new FormControl(),
       geoY: new FormControl(),
       address: this.formBuilder.group({
-        street: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-z0-9 A-Z.]{2,30}$")]],
+        street: ["", [Validators.required, Validators.minLength(2), Validators.pattern("^[a-z0-9 A-Z.]{2,30}$")]],
         address1: ["", [Validators.required, Validators.minLength(2)]],
-        address2: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-z0-9 A-Z'.]{2,30}$")]],
-        country: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-z A-Z'.]{2,30}$")]],
-        state: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-z A-Z'.]{2,30}$")]],
-        city: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[a-z A-Z'.]{2,30}$")]],
-        pinCode: ["", [Validators.required, Validators.minLength(6),Validators.pattern("^[0-9]{2,30}$")]],
-        latitude: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[0-9-.]{2,100}$")]],
-        longitude: ["", [Validators.required, Validators.minLength(2),Validators.pattern("^[0-9-.]{2,100}$")]]
+        address2: ["", [Validators.required, Validators.minLength(2), Validators.pattern("^[a-z0-9 A-Z'.]{2,30}$")]],
+        country: ["", [Validators.required, Validators.minLength(2), Validators.pattern("^[a-z A-Z'.]{2,30}$")]],
+        state: ["", [Validators.required, Validators.minLength(2), Validators.pattern("^[a-z A-Z'.]{2,30}$")]],
+        city: ["", [Validators.required, Validators.minLength(2), Validators.pattern("^[a-z A-Z'.]{2,30}$")]],
+        pinCode: ["", [Validators.required, Validators.minLength(6), Validators.pattern("^[0-9]{2,30}$")]],
+        latitude: ["", [Validators.required, Validators.minLength(2), Validators.pattern("^[0-9-.]{2,100}$")]],
+        longitude: ["", [Validators.required, Validators.minLength(2), Validators.pattern("^[0-9-.]{2,100}$")]]
       }),
-      client:this.formBuilder.group({
-        id:"",
-        name:""
+      client: this.formBuilder.group({
+        id: "",
+        name: ""
       })
     })
     //Location API
@@ -103,21 +103,25 @@ export class FacilityEditorComponent implements OnInit {
   }
   onSubmit(facility) {
     var self = this;
-    this.facilityService.saveFacility(facility.value).subscribe((res: any) => {
-      self.facility.reset();
-      this.file.nativeElement.value = "";
-      this._location.back();
+    let headers=new HttpHeaders();
+    this._commonDataService.postData(facility.value,apiData.url+apiData.facility,headers).subscribe((res: any) => {
+      if(res.status=="ok"){
+        self.facility.reset();
+        this.file.nativeElement.value = "";
+        this._location.back();
+      }
     })
   }
   editFacility(id) {
     let temp = this.facility.getRawValue();
-    let currentFacility = this.facilityService.getFacility(id).subscribe((res: any) => {
-      this.selectedVal=res.facilityInfo.client.id;
+    let headers=new HttpHeaders();
+    let currentFacility = this._commonDataService.getData(apiData.url+apiData.facility+id,headers).subscribe((res: any) => {
+      this.selectedVal = res.facilityInfo.client.id;
       temp.id = res.facilityInfo.id;
       temp.name = res.facilityInfo.name;
       temp.image = res.facilityInfo.image;
-      temp.client.id=res.facilityInfo.client.id;
-      temp.client.name=res.facilityInfo.client.name;
+      temp.client.id = res.facilityInfo.client.id;
+      temp.client.name = res.facilityInfo.client.name;
       temp.address.address1 = res.facilityInfo.address.address1
       temp.address.address2 = res.facilityInfo.address.address2;
       temp.address.street = res.facilityInfo.address.street;
@@ -129,22 +133,23 @@ export class FacilityEditorComponent implements OnInit {
 
   }
   getAllClients() {
-    this.clientService.getAllClients().subscribe((res: any) => {
+    let headers = new HttpHeaders();
+    this._commonDataService.getData(apiData.url + apiData.client, headers).subscribe((res: any) => {
       this.clients = res.clientsInfo;
-      
-      if(!this.id){
-      let temp=this.facility.getRawValue();
-      temp.client.name=this.clients[0].name;
-      temp.client.id=this.clients[0].id;
-      this.facility.setValue(temp);
-    }
+
+      if (!this.id) {
+        let temp = this.facility.getRawValue();
+        temp.client.name = this.clients[0].name;
+        temp.client.id = this.clients[0].id;
+        this.facility.setValue(temp);
+      }
     })
   }
-  onClientChange(event){
-    let temp=this.facility.getRawValue();
-    temp.client.name=event.source.triggerValue;
-    temp.client.id=event.value;
+  onClientChange(event) {
+    let temp = this.facility.getRawValue();
+    temp.client.name = event.source.triggerValue;
+    temp.client.id = event.value;
     this.facility.setValue(temp);
-    this.selectedVal=event.target.value;
+    this.selectedVal = event.target.value;
   }
 }

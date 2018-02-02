@@ -6,13 +6,12 @@ import { HttpHeaders } from '@angular/common/http'
 import { HttpHeaderResponse } from '@angular/common/http/src/response';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { ClientServiceService } from '../../client-service.service'
 @Component({
   selector: 'app-edit-sensor',
   templateUrl: './sensor-editor.component.html'
 })
 export class SensorEditorComponent implements OnInit {
-  disabbleBtn:boolean;
+  disabbleBtn: boolean;
   sensor: FormGroup;
   id: any;
   selectedType: any;
@@ -24,7 +23,8 @@ export class SensorEditorComponent implements OnInit {
   zoneSelectedVal: any;
   gatewaySelectedVal: any;
   gatewayList: any
-  constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, private _commonDataService: CommonDataService, private _location: Location, private clientService: ClientServiceService) { }
+  constructor(private route: ActivatedRoute, private formBuilder: FormBuilder,
+    private _commonDataService: CommonDataService, private _location: Location) { }
   ngOnInit() {
     this.sensor = new FormGroup({
       id: new FormControl(),
@@ -59,8 +59,7 @@ export class SensorEditorComponent implements OnInit {
   onSubmit(sensor) {
     let header = new HttpHeaders();
     header.append("Access-Control-Allow-Origin", "*");
-    this._commonDataService.postData(sensor.value, apiData.url + "/" + apiData.sensor, header).subscribe((res: any) => {
-      debugger;
+    this._commonDataService.postData(sensor.value, apiData.url + apiData.sensor, header).subscribe((res: any) => {
       this._location.back();
     })
   }
@@ -73,7 +72,7 @@ export class SensorEditorComponent implements OnInit {
   //   let temp = this.sensor.getRawValue();
   //   let header = new HttpHeaders();
   //   header.append("Access-Control-Allow-Origin", "*");
-  //   this._commonDataService.getData(apiData.url + "/" + apiData.sensor + "/" + id, header).subscribe((res: any) => {
+  //   this._commonDataService.getData(apiData.url + apiData.sensor + id, header).subscribe((res: any) => {
   //     temp.id = res.sensorInfo.id;
   //     temp.type=res.sensorInfo.type;
   //     temp.sensorId = res.sensorInfo.sensorId;
@@ -97,23 +96,23 @@ export class SensorEditorComponent implements OnInit {
   //       this.clients = res.clientsInfo;
   //     })
   //     //Facilities
-  //     this._commonDataService.getData(apiData.url + "/" + apiData.client + "/" + this.clientSelectedVal, header).subscribe((res:any) => {
+  //     this._commonDataService.getData(apiData.url + apiData.client + this.clientSelectedVal, header).subscribe((res:any) => {
   //         this.facilities=res.clientInfo.facilities;
   //     });
   //     //Zones
-  //     this._commonDataService.getData(apiData.url + "/" + apiData.facility + "/" + this.facilitySelectedVal, header).subscribe((res:any) => {
+  //     this._commonDataService.getData(apiData.url + apiData.facility + this.facilitySelectedVal, header).subscribe((res:any) => {
   //       this.zonesList=res.facilityInfo.zones;
   //     });
   //     //Gateways
-  //     this._commonDataService.getData(apiData.url + "/" + apiData.zone + "/" + this.zoneSelectedVal, header).subscribe((res:any) => {
+  //     this._commonDataService.getData(apiData.url + apiData.zone + this.zoneSelectedVal, header).subscribe((res:any) => {
   //       this.gatewayList=res.zoneInfo.gateways;
   //     });
   //   });
   // }
 
   editSensor(id) {
-   let temp=this.sensor.getRawValue();
-   temp.sensorId=id;
+    let temp = this.sensor.getRawValue();
+    temp.sensorId = id;
     this.sensor.setValue(temp);
     this.getClients()
   }
@@ -122,17 +121,18 @@ export class SensorEditorComponent implements OnInit {
 
   getClients() {
     let self = this;
-    this.clientService.getAllClients().subscribe((res: any) => {
+    let headers = new HttpHeaders();
+    this._commonDataService.getData(apiData.url + apiData.client, headers).subscribe((res: any) => {
       self.clients = res.clientsInfo;
       self.facilities = this.clients[0].facilities;
       let headers = new HttpHeaders();
-      this._commonDataService.getData(apiData.url + apiData.facility + "/" + this.facilities[0].id, headers).subscribe((res: any) => {
+      this._commonDataService.getData(apiData.url + apiData.facility + this.facilities[0].id, headers).subscribe((res: any) => {
         self.zonesList = res.facilityInfo.zones;
         let temp = this.sensor.getRawValue();
         temp.zone.id = self.zonesList[0].id;
         temp.zone.name = self.zonesList[0].name;
         self.sensor.setValue(temp);
-        this._commonDataService.getData(apiData.url + apiData.zone + "/" + self.zonesList[0].id, headers).subscribe((res: any) => {
+        this._commonDataService.getData(apiData.url + apiData.zone + self.zonesList[0].id, headers).subscribe((res: any) => {
           self.gatewayList = res.zoneInfo.gateways;
           let temp = this.sensor.getRawValue();
           temp.gateway.id = self.gatewayList[0].id;
@@ -140,15 +140,15 @@ export class SensorEditorComponent implements OnInit {
           self.sensor.setValue(temp)
         })
       })
-        let temp = this.sensor.getRawValue();
-        temp.client.name = this.clients[0].name;
-        temp.client.id = this.clients[0].id;
-        if (this.facilities) {
-          temp.facility.name = this.facilities[0].name;
-          temp.facility.id = this.facilities[0].id;
-        }
-        this.sensor.setValue(temp);
-        //console.log(this.facilities);
+      let temp = this.sensor.getRawValue();
+      temp.client.name = this.clients[0].name;
+      temp.client.id = this.clients[0].id;
+      if (this.facilities) {
+        temp.facility.name = this.facilities[0].name;
+        temp.facility.id = this.facilities[0].id;
+      }
+      this.sensor.setValue(temp);
+      //console.log(this.facilities);
     })
   }
 
@@ -169,13 +169,13 @@ export class SensorEditorComponent implements OnInit {
     if (this.facilities) {
       temp.facility.name = this.facilities[0].name;
       temp.facility.id = this.facilities[0].id;
-      this._commonDataService.getData(apiData.url + apiData.facility + "/" + this.facilities[0].id, headers).subscribe((res: any) => {
+      this._commonDataService.getData(apiData.url + apiData.facility + this.facilities[0].id, headers).subscribe((res: any) => {
         self.zonesList = res.facilityInfo.zones;
         let temp = this.sensor.getRawValue();
         temp.zone.id = self.zonesList[0].id;
         temp.zone.name = self.zonesList[0].name;
         this.sensor.setValue(temp)
-        this._commonDataService.getData(apiData.url + apiData.zone + "/" + this.zonesList[0].id, headers).subscribe((res: any) => {
+        this._commonDataService.getData(apiData.url + apiData.zone + this.zonesList[0].id, headers).subscribe((res: any) => {
           //console.log(res);
           self.gatewayList = res.zoneInfo.gateways;
           let temp = this.sensor.getRawValue();
@@ -201,7 +201,7 @@ export class SensorEditorComponent implements OnInit {
     temp.facility.name = event.source.triggerValue;
     temp.facility.id = event.value;
     this.sensor.setValue(temp);
-    this._commonDataService.getData(apiData.url + apiData.facility + "/" + temp.facility.id, headers).subscribe((res: any) => {
+    this._commonDataService.getData(apiData.url + apiData.facility + temp.facility.id, headers).subscribe((res: any) => {
       let temp = this.sensor.getRawValue();
       if (res.facilityInfo) {
         if (res.facilityInfo.zones != null) {
@@ -212,7 +212,7 @@ export class SensorEditorComponent implements OnInit {
             temp.zone.name = self.zonesList[0].name;
             self.sensor.setValue(temp);
             //Set gateway Initail Val Drop Down
-            this._commonDataService.getData(apiData.url + apiData.zone + "/" + temp.zone.id, headers).subscribe((res: any) => {
+            this._commonDataService.getData(apiData.url + apiData.zone + temp.zone.id, headers).subscribe((res: any) => {
               let self = this;
               let temp = self.sensor.getRawValue();
               if (res.zoneInfo != null) {
@@ -259,7 +259,7 @@ export class SensorEditorComponent implements OnInit {
     temp.zone.name = event.source.triggerValue;
     temp.zone.id = event.value;
     this.sensor.setValue(temp);
-    this._commonDataService.getData(apiData.url + apiData.zone + "/" + event.value, headers).subscribe((res: any) => {
+    this._commonDataService.getData(apiData.url + apiData.zone + event.value, headers).subscribe((res: any) => {
       let temp = this.sensor.getRawValue();
       if (res.zoneInfo) {
         if (res.zoneInfo.gateways != null) {

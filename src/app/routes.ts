@@ -39,7 +39,7 @@ import { HomeLayoutComponent } from "./home-layout/home-layout.component";
 export const appRoutes: Routes = [
   {
     path: '', component: HomeLayoutComponent,
-    canActivate: [AuthGuard],
+    //canActivate: [AuthGuard],
     children: [
       {
         path: '',

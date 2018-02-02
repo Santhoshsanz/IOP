@@ -17,13 +17,12 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = new FormGroup({
-      email: new FormControl("",[Validators.required, Validators.pattern("^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$")]),
+      email: new FormControl("",Validators.required),
       password: new FormControl("",Validators.required)
 
     })
   }
   onSubmit(login:any) {
-    debugger;
     this._loginService.login(login).subscribe((res:any)=>{
       if(res.status=="ok"){
         this._authenticationService.startSession(res.user);

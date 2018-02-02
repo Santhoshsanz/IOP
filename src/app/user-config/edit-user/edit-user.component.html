@@ -43,7 +43,7 @@
           </div>
           <div class="form-group row">
             <div class="col-sm-4" *ngIf="!id">
-              <div class="group" >
+              <div class="group">
                 <input type="text" required formControlName="email">
                 <span class="highlight"></span>
                 <span class="bar" [ngClass]="{formError: (!user.controls.email.valid &&
@@ -65,14 +65,99 @@
           </div>
           <div class="form-group row">
             <div class="col-sm-4">
-                <div class=" basic-container">
-                    <mat-form-field>
-                      <mat-select formControlName="role" placeholder="Select User Role">
-                        <mat-option value="Admin">Admin </mat-option>
-                        <mat-option value="FieldTech">FieldTech </mat-option>
-                      </mat-select>
-                    </mat-form-field>
+              <div class=" basic-container">
+                <mat-form-field>
+                  <mat-select formControlName="role" placeholder="Select User Role">
+                    <mat-option value="Admin">Admin </mat-option>
+                    <mat-option value="FieldTech">FieldTech </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <!-- *ngIf='user.controls.role.value=="Admin"' -->
+              <!-- <ul>
+                <li><input type="checkbox">C1</li>
+                <ul>
+                  <li><input type="checkbox">F1</li>
+                  <ul>
+                    <li><input type="checkbox">Z1</li>
+                    <li><input type="checkbox">Z2</li>
+                    <li><input type="checkbox">Z3</li>
+                  </ul>
+                  <li><input type="checkbox">F2</li>
+                  <ul>
+                    <li><input type="checkbox">Z1</li>
+                    <li><input type="checkbox">Z2</li>
+                    <li><input type="checkbox">Z3</li>
+                  </ul>
+                </ul>
+                <li><input type="checkbox">C2</li>
+                <ul>
+                  <li><input type="checkbox">F1</li>
+                  <ul>
+                    <li><input type="checkbox">Z1</li>
+                    <li><input type="checkbox">Z2</li>
+                    <li><input type="checkbox">Z3</li>
+                  </ul>
+                  <li><input type="checkbox">F2</li>
+                  <ul>
+                    <li><input type="checkbox">Z1</li>
+                    <li><input type="checkbox">Z2</li>
+                    <li><input type="checkbox">Z3</li>
+                  </ul>
+                </ul>
+              </ul> -->
+              <!-- <ul>
+                <li>
+                  <input type="checkbox">
+                  <label>C</label>
+                  <ul>
+                    <li>
+                      <input type="checkbox">
+                      <label>F</label>
+                      <ul>
+                        <li>
+                          <input type="checkbox">
+                          <label>Z1</label>
+                        </li>
+                        <li>
+                          <input type="checkbox">
+                          <label>Z2</label>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul> *ngFor="let c of clientList; let i = index;"-->
+
+              <div formArrayName="assignedClients">
+                <div *ngFor="let client of getClients(user); let i = index;">
+                  <div [formGroupName]="i">
+                    <input type="text" formControlName="id" hidden> 
+                    <input type="text" formControlName="name" hidden>
+                    <div formArrayName="facility">
+                      <div *ngFor="let f of getFacilities(client); let j = index;">
+                        <div [formGroupName]="j">
+                          <input type="text" formControlName="id" hidden> 
+                          <input type="text" formControlName="name" hidden>
+                          <div formArrayName="zone">
+                              <div *ngFor="let z of getZones(f); let k = index;">
+                                <div [formGroupName]="k">
+                                  <input type="text" formControlName="id" hidden> 
+                                  <input type="text" formControlName="name" hidden>
+                                  <div><input *ngIf="z.controls.name.value!=''" type="checkbox" formControlName="currentStatus">{{z.controls.name.value}} </div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
+                </div>
+              </div>
             </div>
             <div class="col-sm-4">
               <app-submit class="font-01 font-02" [disabbleBtn]="!user.valid"></app-submit>

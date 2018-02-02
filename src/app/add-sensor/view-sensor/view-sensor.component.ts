@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ViewChild, ElementRef, NgZone } from '@angular/core';
-import { ClientServiceService } from '../../client-service.service';
 import { apiData } from '../../common';
 import { RouterModule, Routes, Router } from '@angular/router';
 import{CommonDataService} from '../../common-data.service'
@@ -13,7 +12,7 @@ import {HttpHeaders} from "@angular/common/http"
 export class SensorViewComponent implements OnInit {
   model: any;
   newSensor:any;
-  constructor(private _http: HttpClientModule, private clientService: ClientServiceService, private router: Router,private _commonDataService:CommonDataService) { }
+  constructor(private _http: HttpClientModule, private router: Router,private _commonDataService:CommonDataService) { }
   ngOnInit() {
     this.getAllSensors();
     this.getNewSensors();
@@ -21,7 +20,12 @@ export class SensorViewComponent implements OnInit {
   getAllSensors() {
     let headers=new HttpHeaders();
     this._commonDataService.getData(apiData.url+apiData.sensor,headers).subscribe((res: any) => {
-      this.model = res.sensorsInfo;
+      if(res.status=="ok"){
+this.model = res.sensorsInfo;
+      }else{
+
+      }
+      
     });
   }
   deleteSensor(id) {
@@ -30,7 +34,12 @@ export class SensorViewComponent implements OnInit {
       let url=apiData.url+apiData.sensor;
       //console.log(url);
       this._commonDataService.deleteData(url,id).subscribe((res: any) => {
-        this.getAllSensors();
+        if(res.status=="ok"){
+          this.getAllSensors();
+        }else{
+
+        }
+        
       })
       //console.log(id);
     }
@@ -45,13 +54,23 @@ export class SensorViewComponent implements OnInit {
     let headers=new HttpHeaders();
     this._commonDataService.getData(apiData.url+"sensor/new/7a8b979c-9a13-423e-abd6-0f22cea9820c",headers)
     .subscribe((res:any)=>{
-      this.newSensor=res.newlyAddedSensor;
+      if(res.status=="ok"){
+        this.newSensor=res.newlyAddedSensor;
+      }else{
+
+      }
+      
     })
   }
   rejectSensor(id){
     let headers=new HttpHeaders();
     this._commonDataService.deleteData(apiData.url+"sensor/reject/",id).subscribe((res:any)=>{
-        this.getNewSensors();
+      if(res.status=="ok"){
+         this.getNewSensors();
+      }else{
+
+      }
+       
     })
   }
 }

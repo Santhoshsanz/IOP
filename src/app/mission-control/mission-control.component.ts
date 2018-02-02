@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { DataServiceService } from '../data-service.service'
 import { AmChartsService, AmChart } from '@amcharts/amcharts3-angular';
@@ -14,7 +14,7 @@ import { LatestAlerts } from '../model/latestAlerts';
   templateUrl: './mission-control.component.html',
   styleUrls: ['./mission-control.component.css']
 })
-export class MissionControlComponent implements OnInit {
+export class MissionControlComponent implements OnInit, OnChanges {
   alerts: any;
   image = images;
   pest = pestType;
@@ -25,6 +25,8 @@ export class MissionControlComponent implements OnInit {
   optionsGuage3: object;
   latestAlerts = "From Mission";
   facilityData: any = [];
+  evenstEmitter: any;
+  clientsData:any;
   //  alerts=this.sample.map(function(j,i){
   //   j.map(function(e,x){ return e.Alerts})
   //    });;
@@ -45,7 +47,10 @@ export class MissionControlComponent implements OnInit {
     //Am Charts
     //this.initChart();
 
-
+    this._commonDataService.eventEmitterData.subscribe(() => {
+      console.log("Subscibed Here In Child");
+      this.getData();
+    })
 
     //Get Alerts Data
     this.getData();
@@ -98,11 +103,21 @@ export class MissionControlComponent implements OnInit {
         this.facilityData = []
       }
     })
+    this._commonDataService.getData(apiData.url + apiData.client, headers).subscribe((res:any)=>{
+      if(res.status=="ok"){
+        this.clientsData=res.clientsInfo;
+      }
+    },error=>{
+        throw new Error(JSON.stringify(error));
+    })
   }
   ngAfterViewInit() {
     //console.log("After Vew Init")
   }
   //initChart(facilityData) {
 
-  //}
+  ngOnChanges() {
+    console.log("OnChange inside Mission");
+
+  }
 }

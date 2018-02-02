@@ -6,7 +6,6 @@ import { HttpHeaders } from '@angular/common/http'
 import { HttpHeaderResponse } from '@angular/common/http/src/response';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { ClientServiceService } from '../../client-service.service'
 @Component({
   selector: 'app-add-client',
   templateUrl: './zone-editor.component.html'
@@ -18,14 +17,14 @@ export class ZoneEditorComponent implements OnInit {
   facilities: any;
   clientSelectedVal: any
   facilitySelectedVal: any
-  dissableBtn:boolean;
-  constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, private _commonDataService: CommonDataService, private _location: Location, private clientService: ClientServiceService) { }
+  dissableBtn: boolean;
+  constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, private _commonDataService: CommonDataService, private _location: Location) { }
   ngOnInit() {
     this.zone = new FormGroup({
       id: new FormControl(),
       name: new FormControl("", [Validators.required, Validators.pattern("^[A-Za-z 0-9-#'.]{2,30}$")]),
       image: new FormControl(""),
-      imgType: new FormControl("", [ Validators.pattern("^[a-z0-9'./]{2,30}$")]),
+      imgType: new FormControl("", [Validators.pattern("^[a-z0-9'./]{2,30}$")]),
       client: this.formBuilder.group({
         id: "",
         name: ""
@@ -66,8 +65,13 @@ export class ZoneEditorComponent implements OnInit {
   onSubmit(zone) {
     let header = new HttpHeaders();
     header.append("Access-Control-Allow-Origin", "*");
-    this._commonDataService.postData(zone.value, apiData.url + "/" + apiData.zone, header).subscribe((res: any) => {
-      this._location.back();
+    this._commonDataService.postData(zone.value, apiData.url + apiData.zone, header).subscribe((res: any) => {
+      if (res.status == "ok") {
+        this._location.back();
+      } else {
+
+      }
+
     })
   }
   editZone(id) {
@@ -75,40 +79,52 @@ export class ZoneEditorComponent implements OnInit {
     let temp = this.zone.getRawValue();
     let header = new HttpHeaders();
     header.append("Access-Control-Allow-Origin", "*");
-    let currentFacility = this._commonDataService.getData(apiData.url + "/" + apiData.zone + "/" + id, header).subscribe((res: any) => {
-      temp.id = res.zoneInfo.id;
-      temp.name = res.zoneInfo.name;
-      temp.image = res.zoneInfo.image;
-      temp.client.id = res.zoneInfo.client.id;
-      temp.facility.id = res.zoneInfo.facility.id;
-      temp.client.name = res.zoneInfo.client.name;
-      temp.facility.name = res.zoneInfo.facility.name;
-      this.clientSelectedVal = res.zoneInfo.client.id;
-      this.facilitySelectedVal = res.zoneInfo.facility.id;
-      this.zone.setValue(temp);
-      this._commonDataService.getData(apiData.url + "/" + apiData.client + "/" + temp.client.id, header).subscribe((res: any) => {
-        this.facilities = res.clientInfo.facilities;
-      })
+    let currentFacility = this._commonDataService.getData(apiData.url + apiData.zone + id, header).subscribe((res: any) => {
+      if (res.status == "ok") {
+        temp.id = res.zoneInfo.id;
+        temp.name = res.zoneInfo.name;
+        temp.image = res.zoneInfo.image;
+        temp.client.id = res.zoneInfo.client.id;
+        temp.facility.id = res.zoneInfo.facility.id;
+        temp.client.name = res.zoneInfo.client.name;
+        temp.facility.name = res.zoneInfo.facility.name;
+        this.clientSelectedVal = res.zoneInfo.client.id;
+        this.facilitySelectedVal = res.zoneInfo.facility.id;
+        this.zone.setValue(temp);
+        this._commonDataService.getData(apiData.url + apiData.client + temp.client.id, header).subscribe((res: any) => {
+          if (res.status == "ok") {
+            this.facilities = res.clientInfo.facilities;
+          } else {
+
+          }
+        })
+      } else {
+
+      }
+
     });
   }
   getClients() {
-    this.clientService.getAllClients().subscribe((res: any) => {
-      this.clients = res.clientsInfo;
-      this.facilities = this.clients[0].facilities;
-      if (!this.id) {
-        let temp = this.zone.getRawValue();
-        temp.client.name = this.clients[0].name;
-        temp.client.id = this.clients[0].id;
-        if (this.facilities) {
-          temp.facility.name = this.facilities[0].name;
-          temp.facility.id = this.facilities[0].id;
+    let headers=new HttpHeaders();
+    this._commonDataService.getData(apiData.url+apiData.client,headers).subscribe((res: any) => {
+      if (res.status == "ok") {
+        this.clients = res.clientsInfo;
+        this.facilities = this.clients[0].facilities;
+        if (!this.id) {
+          let temp = this.zone.getRawValue();
+          temp.client.name = this.clients[0].name;
+          temp.client.id = this.clients[0].id;
+          if (this.facilities) {
+            temp.facility.name = this.facilities[0].name;
+            temp.facility.id = this.facilities[0].id;
+          }
+          this.zone.setValue(temp);
+          //console.log(this.facilities);
         }
-        this.zone.setValue(temp);
-        //console.log(this.facilities);
+      } else {
+
       }
-
     })
-
   }
   onClientChange(event) {
     let self = this;

@@ -24,8 +24,6 @@ import { AddFacilityComponent } from './add-facility/add-facility.component';
 import { AddZoneComponent } from './add-zone/add-zone.component';
 import { AddSensorComponent } from './add-sensor/add-sensor.component';
 import { AgmCoreModule, MapsAPILoader } from '@agm/core';
-import { ClientServiceService } from './client-service.service';
-import { FacilityService } from './facility.service';
 import { HttpClientModule, HttpClient, HttpRequest, HttpHeaders } from '@angular/common/http';
 import { SafeUrlPipe,ActiveInActivePipe,ActivityPipe,CapitalizeFirstPipe } from './safe-pipe';
 import { MapContentComponent } from './add-facility/mapWrapper.component';
@@ -67,6 +65,10 @@ import { TopbarComponent } from './home-layout/topbar/topbar.component';
 import { EventsNotificationComponent } from './home-layout/events-notification/events-notification.component';
 import { NotificationComponent } from './home-layout/notification/notification.component';
 import { HomeLayoutComponent } from './home-layout/home-layout.component';
+
+import Stomp from 'stompjs';
+import SockJS from 'sockjs-client';
+
 
 @NgModule({
   declarations: [
@@ -134,10 +136,10 @@ import { HomeLayoutComponent } from './home-layout/home-layout.component';
       apiKey: 'AIzaSyCzJqL_gU_zg7TLJoCqOEfF74jrsHxvIGQ',
       libraries: ["places"]
     }),
-   RouterModule.forRoot(appRoutes, { enableTracing: false }),
+   RouterModule.forRoot(appRoutes, { enableTracing: false,  useHash: true  }),
     RouterModule.forChild(appRoutes),
   ],
-  providers: [DataServiceService, ClientServiceService,ActivityPipe,CapitalizeFirstPipe, SafeUrlPipe, FacilityService, CommonDataService, LoginService,AuthenticationService,AuthGuard,{
+  providers: [DataServiceService,ActivityPipe,CapitalizeFirstPipe, SafeUrlPipe, CommonDataService, LoginService,AuthenticationService,AuthGuard,{
     provide: ErrorHandler, 
     useClass: GlobalErrorHandler
   }],
